@@ -1,0 +1,153 @@
+---
+const navLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Portfolio', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-400" id="header">
+  <nav class="max-w-5xl mx-auto px-6 h-14 md:h-16 flex justify-between items-center transition-all">
+    <a href="#home" class="text-xl font-bold text-title">
+      Hector
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-8">
+      <ul class="flex space-x-12">
+        {navLinks.map(link => (
+          <li>
+            <a href={link.href} class="nav__link font-medium text-title hover:text-primary transition-colors">
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <!-- Theme Toggle -->
+      <button id="theme-button" class="flex items-center justify-center p-2 rounded-lg hover:bg-primary/10 transition-colors group">
+        <iconify-icon icon="line-md:moon-rising-loop" class="text-xl text-title group-hover:text-primary transition-colors"></iconify-icon>
+      </button>
+    </div>
+
+    <!-- Mobile menu buttons -->
+    <div class="flex items-center gap-2 md:hidden">
+      <button id="theme-button-mobile" class="p-2 text-title">
+        <iconify-icon icon="line-md:moon-rising-loop" class="text-xl"></iconify-icon>
+      </button>
+      <button class="p-2 text-xl text-title" id="nav-toggle">
+        <iconify-icon icon="line-md:grid-3-filled"></iconify-icon>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  @reference "../styles/global.css";
+
+  /* Header scroll effect */
+  :global(.scroll-header) {
+    @apply bg-[var(--color-body)]/80 backdrop-blur-md shadow-lg border-b border-white/5;
+  }
+  
+  /* Active link style */
+  :global(.active-link) {
+    @apply text-[var(--color-primary)] relative;
+  }
+  :global(.active-link::after) {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+</style>
+
+<script>
+  /* Change Background Header */
+  function scrollHeader() {
+    const header = document.getElementById('header');
+    if (window.scrollY >= 50) header?.classList.add('scroll-header');
+    else header?.classList.remove('scroll-header');
+  }
+  window.addEventListener('scroll', scrollHeader);
+
+  /* Dark Light Theme */
+  const themeButtons = [document.getElementById('theme-button'), document.getElementById('theme-button-mobile')];
+  const darkTheme = 'dark';
+  const sunIcon = 'line-md:sunny-outline-loop';
+  const moonIcon = 'line-md:moon-rising-loop';
+
+  // Previously selected topic (if user selected)
+  const selectedTheme = localStorage.getItem('selected-theme');
+
+  // Helper to update icons
+  const updateIcons = (isDark: boolean) => {
+    themeButtons.forEach(btn => {
+      const icon = btn?.querySelector('iconify-icon');
+      if (icon) icon.setAttribute('icon', isDark ? sunIcon : moonIcon);
+    });
+  };
+
+  // Initial load
+  if (selectedTheme) {
+    const isDark = selectedTheme === 'dark';
+    document.documentElement.classList[isDark ? 'add' : 'remove'](darkTheme);
+    updateIcons(isDark);
+  }
+
+  // Activate / deactivate the theme manually with the button
+  themeButtons.forEach(btn => {
+    btn?.addEventListener('click', () => {
+      const toggle = () => {
+        const isDark = !document.documentElement.classList.contains(darkTheme);
+        document.documentElement.classList.toggle(darkTheme);
+        updateIcons(isDark);
+        localStorage.setItem('selected-theme', isDark ? 'dark' : 'light');
+      };
+
+      // View Transition API for the circular animation
+      if (!document.startViewTransition) {
+        toggle();
+        return;
+      }
+
+      // Calculate position for the mask
+      const rect = btn.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      
+      // Update the mask position variables
+      document.documentElement.style.setProperty('--x', `${x}px`);
+      document.documentElement.style.setProperty('--y', `${y}px`);
+
+      document.startViewTransition(() => {
+        toggle();
+      });
+    });
+  });
+
+
+  /* Scroll Sections Active Link */
+  const sections = document.querySelectorAll('section[id]');
+  function scrollActive() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach((current: any) => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 58;
+      const sectionId = current.getAttribute('id');
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        document.querySelector(`.nav__menu a[href*=${sectionId}]`)?.classList.add('active-link');
+      } else {
+        document.querySelector(`.nav__menu a[href*=${sectionId}]`)?.classList.remove('active-link');
+      }
+    });
+  }
+  window.addEventListener('scroll', scrollActive);
+</script>

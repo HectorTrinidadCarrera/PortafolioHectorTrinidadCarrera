@@ -1,0 +1,144 @@
+{
+  "profile": {
+    "name": "Hector Trinidad Carrera",
+    "title": "Creative Developer",
+    "titles": ["Fullstack Developer", "UI/UX Designer", "Frontend Architect", "Problem Solver", "Digital Creative"],
+    "bio": "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.",
+    "email": "hector@example.com",
+    "phone": "+52 XXX XXX XXX",
+    "location": "Ciudad de México, México",
+    "available": true,
+    "info": [
+      { "label": "Email", "value": "hector@example.com", "icon": "line-md:email-twotone" },
+      { "label": "Teléfono", "value": "+52 XXX XXX XXX", "icon": "line-md:phone-call-loop" },
+      { "label": "Ubicación", "value": "CDMX, México", "icon": "line-md:map-marker-twotone" }
+    ]
+  },
+  "about": {
+    "description": "Soy un desarrollador enfocado en los detalles y en la optimización de rendimiento. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos que resuelvan problemas reales.",
+    "experience": [
+      {
+        "company": "Freelance",
+        "role": "Fullstack Developer",
+        "years": "2023 - Presente",
+        "description": "Desarrollo de aplicaciones web personalizadas para clientes locales.",
+        "icon": "line-md:laptop-twotone"
+      },
+      {
+        "company": "Tech Studio",
+        "role": "Junior Frontend",
+        "years": "2022 - 2023",
+        "description": "Mantenimiento y mejora de interfaces de usuario para plataformas SAAS.",
+        "icon": "logos:figma"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Universidad Tecnológica",
+        "degree": "Ingeniería en Sistemas",
+        "years": "2019 - 2023",
+        "description": "Formación integral en desarrollo de software, bases de datos y redes.",
+        "icon": "line-md:academic-cap-twotone"
+      },
+      {
+        "institution": "Platzi / Udemy",
+        "degree": "Especialización Frontend",
+        "years": "2021",
+        "description": "Certificaciones en React, Next.js y arquitecturas CSS modernas.",
+        "icon": "logos:react"
+      }
+    ]
+  },
+  "services": [
+    {
+      "title": "UI/UX Design",
+      "description": "Diseños modernos y minimalistas enfocados en la experiencia del usuario.",
+      "icon": "line-md:layout-content"
+    },
+    {
+      "title": "Web Development",
+      "description": "Desarrollo de sitios web rápidos, seguros y totalmente responsivos.",
+      "icon": "line-md:code-loop"
+    },
+    {
+      "title": "App Optimization",
+      "description": "Mejora del rendimiento y la velocidad de carga de tus aplicaciones existentes.",
+      "icon": "line-md:speed-loop"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Modern Portfolio",
+      "description": "Mi portafolio personal construido con Astro, siguiendo los mejores estándares de diseño y rendimiento.",
+      "image": "/images/projects/project-1.jpg",
+      "technologies": ["Astro", "Tailwind", "JavaScript"],
+      "icon": "logos:astro-icon",
+      "links": {
+        "demo": "#",
+        "github": "#"
+      },
+      "category": "frontend"
+    },
+    {
+      "id": 2,
+      "title": "E-commerce App",
+      "description": "Una tienda virtual con carrito de compras y pasarela de pagos integrada.",
+      "image": "/images/projects/project-2.jpg",
+      "technologies": ["React", "Node.js", "MongoDB"],
+      "icon": "logos:shopify",
+      "links": {
+        "demo": "#",
+        "github": "#"
+      },
+      "category": "fullstack"
+    },
+    {
+      "id": 3,
+      "title": "AI Dashboard",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/project-3.jpg",
+      "technologies": ["Vue", "D3.js", "Firebase"],
+      "icon": "logos:openai-icon",
+      "links": {
+        "demo": "#",
+        "github": "#"
+      },
+      "category": "frontend"
+    }
+  ],
+  "skills": {
+    "frontend": [
+      { "name": "HTML", "icon": "logos:html-5" },
+      { "name": "CSS", "icon": "logos:css-3" },
+      { "name": "JavaScript", "icon": "logos:javascript" },
+      { "name": "React", "icon": "logos:react" },
+      { "name": "Astro", "icon": "logos:astro-icon" },
+      { "name": "Tailwind", "icon": "logos:tailwindcss-icon" }
+    ],
+    "backend": [
+      { "name": "Node.js", "icon": "logos:nodejs-icon" },
+      { "name": "Express", "icon": "logos:express" },
+      { "name": "Python", "icon": "logos:python" },
+      { "name": "SQL", "icon": "logos:postgresql" }
+    ],
+    "tools": [
+      { "name": "Git", "icon": "logos:git-icon" },
+      { "name": "GitHub", "icon": "logos:github-icon" },
+      { "name": "VS Code", "icon": "logos:visual-studio-code" },
+      { "name": "Figma", "icon": "logos:figma" },
+      { "name": "Vercel", "icon": "logos:vercel-icon" }
+    ],
+    "design": [
+      { "name": "UI/UX", "icon": "line-md:layout-content" },
+      { "name": "Responsive", "icon": "line-md:phone-twotone" },
+      { "name": "Prototyping", "icon": "line-md:edit-twotone" }
+    ]
+  },
+  "socials": {
+    "github": "https://github.com/hectortrinidad",
+    "linkedin": "https://linkedin.com/in/hectortrinidad",
+    "twitter": "https://twitter.com/hectortrinidad",
+    "email": "mailto:hector@example.com"
+  }
+}

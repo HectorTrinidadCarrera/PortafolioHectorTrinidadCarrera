@@ -1,0 +1,80 @@
+---
+import data from '../data/portfolio.json';
+const { skills } = data;
+---
+
+<section class="section relative overflow-hidden" id="skills">
+  <div class="container relative z-10">
+    <div id="skills-header" class="text-center mb-16">
+      <h2 class="section-title mb-2 opacity-0">Habilidades Técnicas</h2>
+      <span class="section-subtitle opacity-0">Mi stack tecnológico principal</span>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="skills-grid">
+      {Object.entries(skills).map(([category, list], catIndex) => (
+        <div class="skill-category bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-8 rounded-[2rem] border border-white/10 dark:border-white/5 opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              {category === 'frontend' && <iconify-icon icon="line-md:code-loop" class="text-xl"></iconify-icon>}
+              {category === 'backend' && <iconify-icon icon="line-md:database-twotone" class="text-xl"></iconify-icon>}
+              {category === 'tools' && <iconify-icon icon="line-md:cog-loop" class="text-xl"></iconify-icon>}
+              {category === 'design' && <iconify-icon icon="line-md:image-twotone" class="text-xl"></iconify-icon>}
+            </div>
+            <h3 class="text-lg font-bold text-title tracking-tight">
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </h3>
+          </div>
+
+          <div class="space-y-4">
+            {list.map((skill, index) => (
+              <div class="flex items-center justify-between group/item">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover/item:bg-primary/20 transition-colors">
+                    <iconify-icon icon={skill.icon} class="text-lg"></iconify-icon>
+                  </div>
+                  <span class="text-sm font-medium text-text group-hover/item:text-primary transition-colors">{skill.name}</span>
+                </div>
+                <iconify-icon icon="line-md:confirm-circle" class="text-primary/30 group-hover/item:text-primary transition-colors"></iconify-icon>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const initSkills = () => {
+    // Header Animation
+    inView("#skills-header", () => {
+      animate(
+        "#skills-header .section-title",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.8 }
+      );
+      animate(
+        "#skills-header .section-subtitle",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.8, delay: 0.2 }
+      );
+    });
+
+    // Grid Stagger Animation
+    inView("#skills-grid", () => {
+      animate(
+        ".skill-category",
+        { opacity: [0, 1], y: [40, 0] },
+        { delay: stagger(0.12), duration: 0.7, easing: [0.22, 1, 0.36, 1] }
+      );
+    });
+  };
+
+  // Run on initial load
+  initSkills();
+
+  // Re-run on navigation (for view transitions)
+  document.addEventListener('astro:page-load', initSkills);
+</script>

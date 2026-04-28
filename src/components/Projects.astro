@@ -1,0 +1,76 @@
+---
+import data from '../data/portfolio.json';
+import ProjectCard from './ProjectCard.astro';
+import ProjectModal from './ProjectModal.astro';
+const { projects } = data;
+---
+
+<section class="py-32" id="projects">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-20" id="projects-header">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display opacity-0">Mis Proyectos</h2>
+      <p class="text-gray-500 max-w-xl mx-auto italic opacity-0">"Transformando ideas en soluciones digitales elegantes"</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
+      {projects.map((project, index) => (
+        <div class="project-trigger cursor-pointer" data-project={JSON.stringify(project)}>
+          <ProjectCard {...project} index={index} />
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <ProjectModal />
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const initProjects = () => {
+    const triggers = document.querySelectorAll('.project-trigger');
+    triggers.forEach(trigger => {
+      const card = trigger.querySelector('.project-card');
+      const projectData = JSON.parse(trigger.getAttribute('data-project'));
+      const cardLinks = trigger.querySelectorAll('a');
+
+      // Prevent card links from opening the modal
+      cardLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      trigger.addEventListener('click', (e) => {
+        if (window.openProjectModal) {
+          window.openProjectModal(card, projectData);
+        }
+      });
+
+      // Hover effect
+      trigger.addEventListener('mouseenter', () => {
+        animate(card, { y: -12, scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }, { duration: 0.3 });
+      });
+      
+      trigger.addEventListener('mouseleave', () => {
+        animate(card, { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }, { duration: 0.3 });
+      });
+    });
+
+    // Animate header and grid
+    inView("#projects-header", () => {
+      animate("#projects-header h2", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8 });
+      animate("#projects-header p", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.2 });
+    });
+
+    inView("#projects-grid", () => {
+      animate(".project-card", { opacity: [0, 1], y: [40, 0], scale: [0.9, 1] }, { delay: stagger(0.15), duration: 0.6 });
+    });
+  };
+
+  // Run on initial load
+  initProjects();
+
+  // Re-run on navigation
+  document.addEventListener('astro:page-load', initProjects);
+</script>

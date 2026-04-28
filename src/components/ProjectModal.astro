@@ -1,0 +1,221 @@
+---
+---
+
+<div id="project-modal" class="fixed inset-0 z-[999] hidden flex items-center justify-center p-4 md:p-10">
+  <!-- Overlay -->
+  <div id="modal-overlay" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-500 cursor-pointer"></div>
+  
+  <!-- Modal Content Container -->
+  <div id="modal-content" class="relative bg-container overflow-hidden shadow-2xl transition-all duration-500 ease-out max-w-4xl w-full max-h-[90vh] pointer-events-auto">
+    <!-- Close Button -->
+    <button id="close-modal" class="absolute top-6 right-6 w-12 h-12 bg-white/10 dark:bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center text-title hover:text-primary transition-all z-[1000] border border-white/20 shadow-xl cursor-pointer hover:rotate-90" aria-label="Close modal">
+      <iconify-icon icon="line-md:close" class="text-2xl"></iconify-icon>
+    </button>
+
+    <!-- Header/Image Area -->
+    <div id="modal-header" class="relative h-64 md:h-80 bg-[var(--color-body)] overflow-hidden">
+      <div id="modal-gradient" class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
+      <div id="modal-placeholder" class="absolute inset-0 flex items-center justify-center text-title font-bold opacity-10 text-6xl">
+        P
+      </div>
+    </div>
+
+    <!-- Body Area -->
+    <div id="modal-body" class="p-8 md:p-12 overflow-y-auto max-h-[calc(90vh-20rem)] opacity-0">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10" id="modal-project-icon-container">
+          <!-- Icon will be injected here -->
+        </div>
+        <h2 id="modal-title" class="text-3xl md:text-5xl font-black text-title tracking-tight">Project Title</h2>
+      </div>
+      
+      <div class="flex flex-wrap gap-2 mb-8" id="modal-tech">
+        <!-- Tech tags will be injected here -->
+      </div>
+
+      <div class="prose prose-invert max-w-none">
+        <p id="modal-description" class="text-lg text-text-light leading-relaxed mb-8">
+          Detailed project description will appear here...
+        </p>
+      </div>
+
+      <div class="flex items-center gap-6 mt-8">
+        <a href="#" id="modal-demo" target="_blank" class="px-8 py-4 bg-primary text-white font-black rounded-xl hover:scale-105 transition-transform flex items-center gap-2 text-sm shadow-lg shadow-primary/20 group">
+          LIVE DEMO <iconify-icon icon="line-md:external-link" class="text-xl group-hover:translate-x-1 transition-transform"></iconify-icon>
+        </a>
+        <a href="#" id="modal-github" target="_blank" class="text-3xl text-text-light hover:text-title transition-all hover:scale-110">
+          <iconify-icon icon="line-md:github-loop"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #project-modal {
+    pointer-events: none;
+  }
+  #project-modal.active {
+    pointer-events: auto;
+  }
+
+  #modal-content {
+    border-radius: 2.5rem;
+    will-change: transform, top, left, width, height, opacity;
+    pointer-events: auto !important;
+  }
+
+  #modal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  #modal-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #modal-body::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 10px;
+  }
+
+  :global(body.modal-open) {
+    overflow: hidden;
+  }
+
+  #close-modal {
+    transform: translateZ(0);
+    pointer-events: auto !important;
+  }
+</style>
+
+<script>
+  import { animate } from "motion";
+
+  if (!window.modalState) {
+    window.modalState = {
+      activeCard: null,
+      isAnimating: false
+    };
+  }
+
+  const closeModal = () => {
+    const modal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalBody = document.getElementById('modal-body');
+    const state = window.modalState;
+
+    if (!modal || state.isAnimating) return;
+    
+    state.isAnimating = true;
+
+    if (state.activeCard) {
+      const bounds = state.activeCard.getBoundingClientRect();
+      animate(modalBody, { opacity: 0, y: 15 }, { duration: 0.2 });
+      animate("#modal-header", { height: "256px" }, { duration: 0.5 });
+      animate(modalContent, {
+        top: bounds.top,
+        left: bounds.left,
+        width: bounds.width,
+        height: bounds.height,
+        borderRadius: '2rem'
+      }, { 
+        duration: 0.5,
+        easing: [0.22, 1, 0.36, 1]
+      });
+      
+      animate(modalOverlay, { opacity: 0 }, { duration: 0.4 }).finished.then(() => {
+        finishClose(modal);
+      });
+    } else {
+      animate(modalOverlay, { opacity: 0 }, { duration: 0.3 });
+      animate(modalContent, { opacity: 0, scale: 0.9 }, { duration: 0.3 }).finished.then(() => {
+        finishClose(modal);
+      });
+    }
+  };
+
+  const finishClose = (modal) => {
+    modal.classList.add('hidden');
+    modal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    window.modalState.activeCard = null;
+    window.modalState.isAnimating = false;
+  };
+
+  const setupModal = () => {
+    const modal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeBtn = document.getElementById('close-modal');
+
+    if (!modal || !closeBtn) return;
+
+    const handleClose = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeModal();
+    };
+
+    closeBtn.onclick = handleClose;
+    modalOverlay.onclick = closeModal;
+
+    window.openProjectModal = (cardElement, projectData) => {
+      if (window.modalState.isAnimating) return;
+      
+      window.modalState.activeCard = cardElement;
+      const bounds = cardElement.getBoundingClientRect();
+
+      document.getElementById('modal-title').textContent = projectData.title;
+      document.getElementById('modal-project-icon-container').innerHTML = `<iconify-icon icon="${projectData.icon}" class="text-3xl"></iconify-icon>`;
+      document.getElementById('modal-description').textContent = projectData.description;
+      document.getElementById('modal-placeholder').textContent = projectData.title.charAt(0);
+      document.getElementById('modal-demo').href = projectData.links.demo;
+      document.getElementById('modal-github').href = projectData.links.github;
+      document.getElementById('modal-tech').innerHTML = projectData.technologies.map(tech => `
+        <span class="px-3 py-1.5 bg-[var(--color-border)] text-text-light text-[10px] font-black rounded-lg uppercase tracking-widest transition-colors">
+          ${tech}
+        </span>
+      `).join('');
+
+      document.body.classList.add('modal-open');
+      modal.classList.remove('hidden');
+      modal.classList.add('active');
+      
+      modalContent.style.opacity = '1';
+      modalContent.style.transform = 'none';
+      modalContent.style.position = 'fixed';
+      modalContent.style.top = `${bounds.top}px`;
+      modalContent.style.left = `${bounds.left}px`;
+      modalContent.style.width = `${bounds.width}px`;
+      modalContent.style.height = `${bounds.height}px`;
+
+      const targetWidth = Math.min(window.innerWidth * 0.95, 900);
+      const targetHeight = Math.min(window.innerHeight * 0.9, 850);
+      const targetTop = (window.innerHeight - targetHeight) / 2;
+      const targetLeft = (window.innerWidth - targetWidth) / 2;
+
+      window.modalState.isAnimating = true;
+
+      animate(modalOverlay, { opacity: [0, 1] }, { duration: 0.4 });
+      
+      animate(modalContent, {
+        top: targetTop,
+        left: targetLeft,
+        width: targetWidth,
+        height: targetHeight,
+        borderRadius: '2.5rem'
+      }, { 
+        duration: 0.6,
+        easing: [0.22, 1, 0.36, 1]
+      }).finished.then(() => {
+          animate("#modal-body", { opacity: [0, 1], y: [15, 0] }, { duration: 0.4 });
+          window.modalState.isAnimating = false;
+      });
+
+      animate("#modal-header", { height: ["256px", "320px"] }, { duration: 0.6 });
+    };
+  };
+
+  setupModal();
+  document.addEventListener('astro:page-load', setupModal);
+</script>
+

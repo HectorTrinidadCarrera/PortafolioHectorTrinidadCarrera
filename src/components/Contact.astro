@@ -1,0 +1,57 @@
+---
+import data from '../data/portfolio.json';
+const { socials } = data;
+---
+
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Contacto</h2>
+    <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Ponte en contacto conmigo</span>
+    
+    <div class="grid md:grid-cols-2 gap-16 items-start max-w-5xl mx-auto">
+      <div data-aos="fade-right">
+        <h3 class="text-3xl font-bold mb-4 text-title">¡Hablemos!</h3>
+        <p class="text-lg text-text mb-8">
+          Si tienes un proyecto en mente o solo quieres saludar, no dudes en contactarme.
+        </p>
+
+        <div class="space-y-4">
+          <a href={socials.linkedin} target="_blank" class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
+            <iconify-icon icon="logos:linkedin-icon" class="text-xl"></iconify-icon>
+            <span>LinkedIn</span>
+            <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
+          </a>
+          <a href={socials.github} target="_blank" class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
+            <iconify-icon icon="logos:github-icon" class="text-xl dark:invert"></iconify-icon>
+            <span>GitHub</span>
+            <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
+          </a>
+          <a href={socials.email} class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
+            <iconify-icon icon="line-md:email-twotone" class="text-xl"></iconify-icon>
+            <span>Email</span>
+            <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
+          </a>
+        </div>
+      </div>
+
+      <form action="#" class="space-y-6 bg-container p-8 rounded-3xl shadow-xl border border-[var(--color-border)]">
+        <div class="relative">
+          <label class="absolute -top-3 left-4 px-2 bg-container text-xs font-bold text-text-light transition-colors">Nombre</label>
+          <input type="text" placeholder="Tu nombre" class="w-full px-4 py-4 rounded-xl border-2 border-[var(--color-border)] bg-transparent outline-none focus:border-primary transition-colors font-sans text-title">
+        </div>
+
+        <div class="relative">
+          <label class="absolute -top-3 left-4 px-2 bg-container text-xs font-bold text-text-light transition-colors">Email</label>
+          <input type="email" placeholder="Tu email" class="w-full px-4 py-4 rounded-xl border-2 border-[var(--color-border)] bg-transparent outline-none focus:border-primary transition-colors font-sans text-title">
+        </div>
+
+        <div class="relative">
+          <label class="absolute -top-3 left-4 px-2 bg-container text-xs font-bold text-text-light transition-colors">Mensaje</label>
+          <textarea placeholder="Tu mensaje" class="w-full px-4 py-4 rounded-xl border-2 border-[var(--color-border)] bg-transparent outline-none focus:border-primary transition-colors font-sans h-32 resize-none text-title"></textarea>
+        </div>
+
+        <button type="submit" class="w-full btn py-4">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>

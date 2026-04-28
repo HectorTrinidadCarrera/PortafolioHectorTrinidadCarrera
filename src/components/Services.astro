@@ -1,0 +1,40 @@
+---
+import data from '../data/portfolio.json';
+const { services } = data;
+---
+
+<section class="section relative overflow-hidden" id="services">
+  <div class="container relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="section-title mb-2" data-aos="fade-up">Servicios</h2>
+      <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Lo que ofrezco para tus proyectos</span>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div 
+          class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-10 rounded-[2.5rem] border border-white/10 dark:border-white/5 flex flex-col items-center text-center gap-6 transition-all duration-500 hover:border-primary/40 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:-translate-y-2 group shadow-xl shadow-black/5"
+          data-aos="fade-up"
+          data-aos-delay={index * 150}
+        >
+          <div class="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-4xl text-primary transition-all duration-500 group-hover:bg-primary group-hover:text-white group-hover:rotate-12 group-hover:scale-110 shadow-lg shadow-primary/5">
+            <iconify-icon icon={service.icon}></iconify-icon>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-bold text-title mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+            <p class="text-text text-sm leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">
+              {service.description}
+            </p>
+          </div>
+          
+          <div class="pt-4 mt-auto">
+            <span class="text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 transition-all">
+              Consultar <iconify-icon icon="line-md:arrow-right" class="text-lg"></iconify-icon>
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,158 @@
+---
+import data from '../data/portfolio.json';
+const { name, title, bio } = data.profile;
+---
+
+<section class="min-h-screen flex items-center relative overflow-hidden" id="home">
+  <!-- Top Left Glow -->
+  <div class="absolute -top-20 -left-20 w-96 h-96 glow-purple opacity-50"></div>
+
+  <div class="container grid grid-cols-1 lg:grid-cols-3 gap-10 items-center relative z-10 py-12">
+    
+    <!-- Left Content -->
+    <div class="order-2 lg:order-1 flex flex-col items-center lg:items-start" id="hero-left">
+      <div class="text-center lg:text-left">
+        <span class="text-primary font-medium tracking-wider text-lg opacity-0">Hello, I'm</span>
+        <h1 class="text-6xl md:text-8xl font-black leading-none mt-2 opacity-0">
+          {name.split(' ')[0]} <br/> 
+          <span class="text-title">{name.split(' ').slice(1).join(' ')}</span>
+        </h1>
+        
+        <!-- Socials below name -->
+        <div class="flex gap-8 pt-8 justify-center lg:justify-start text-2xl text-text-light" id="hero-socials">
+          <a href="#" class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125"><iconify-icon icon="line-md:linkedin"></iconify-icon></a>
+          <a href="#" class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125"><iconify-icon icon="line-md:github-loop"></iconify-icon></a>
+          <a href="#" class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125"><iconify-icon icon="line-md:twitter-x"></iconify-icon></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Image with Glow -->
+    <div class="order-1 lg:order-2 flex justify-center relative" id="hero-image">
+      <!-- Glow behind image -->
+      <div class="absolute inset-0 glow-purple scale-150 animate-pulse"></div>
+      
+      <div class="relative w-full max-w-[600px] aspect-[4/5] flex items-end animate-float profile-mask opacity-0">
+        <img 
+          src="/images/hector-profile.png" 
+          alt={name} 
+          class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
+        />
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div class="order-3 lg:order-3 text-center lg:text-left" id="hero-right">
+      <div class="space-y-2">
+        <span class="text-primary font-medium tracking-wider text-lg block opacity-0">Creative</span>
+        <div class="h-[120px] md:h-[180px] flex flex-col justify-start">
+          <h2 class="text-5xl md:text-7xl font-black leading-tight text-title transition-colors min-h-[2em] opacity-0">
+            <span id="typed-text"></span>
+            <span id="cursor" class="w-1 h-10 md:h-14 bg-primary inline-block ml-1 animate-pulse align-middle"></span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ titles: data.profile.titles }}>
+    const textElement = document.getElementById('typed-text');
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function type() {
+      const currentTitle = titles[titleIndex];
+      
+      if (isDeleting) {
+        textElement.textContent = currentTitle.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+      } else {
+        textElement.textContent = currentTitle.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+      }
+
+      if (!isDeleting && charIndex === currentTitle.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        typeSpeed = 500; // Pause before next word
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    // Start animation
+    if (textElement) {
+      type();
+    }
+  </script>
+
+  <script>
+    import { animate, stagger } from "motion";
+
+    // Entrance animations
+    animate("#hero-left span", { opacity: [0, 1], x: [-50, 0] }, { duration: 0.8 });
+    animate("#hero-left h1", { opacity: [0, 1], x: [-50, 0] }, { duration: 0.8, delay: 0.2 });
+    
+    animate(".social-icon", 
+      { opacity: [0, 1], y: [20, 0] }, 
+      { delay: stagger(0.1, { start: 0.5 }), duration: 0.5 }
+    );
+
+    animate(".profile-mask", 
+      { opacity: [0, 1], scale: [0.8, 1], y: [50, 0] }, 
+      { duration: 1, easing: [0.22, 1, 0.36, 1] }
+    );
+
+    animate("#hero-right span", { opacity: [0, 1], x: [50, 0] }, { duration: 0.8 });
+    animate("#hero-right h2", { opacity: [0, 1], x: [50, 0] }, { duration: 0.8, delay: 0.2 });
+  </script>
+
+  <!-- Bottom Decorative elements -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-text-light opacity-30">
+    <iconify-icon icon="line-md:chevron-small-double-down" class="text-3xl"></iconify-icon>
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  h1 {
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+  
+  h2 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .profile-mask {
+    mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,1) 80%, 
+      rgba(0,0,0,0) 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,1) 80%, 
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  .profile-mask::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, var(--color-body), transparent);
+    z-index: 20;
+    pointer-events: none;
+  }
+</style>

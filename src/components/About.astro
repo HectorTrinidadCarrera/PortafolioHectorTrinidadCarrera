@@ -1,0 +1,95 @@
+---
+import data from '../data/portfolio.json';
+const { description, experience } = data.about;
+---
+
+<section class="section" id="about">
+  <h2 class="section-title" data-aos="fade-up">Sobre Mí</h2>
+  <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Mi introducción</span>
+
+  <div class="container grid md:grid-cols-2 gap-10 items-center">
+    <div class="flex justify-center" data-aos="fade-right">
+      <div class="relative w-72 h-80 md:w-80 md:h-[400px] flex items-end profile-mask">
+        <img 
+          src="/images/hector-profile.png" 
+          alt={data.profile.name} 
+          class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+        />
+      </div>
+    </div>
+
+    <div class="space-y-8" data-aos="fade-left">
+      <p class="text-text leading-relaxed">
+        {description}
+      </p>
+
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+          <iconify-icon icon="line-md:calendar" class="text-2xl text-primary block mb-1"></iconify-icon>
+          <h3 class="text-sm font-bold text-title transition-colors">Experiencia</h3>
+          <span class="text-xs text-text-light">2+ Años</span>
+        </div>
+        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+          <iconify-icon icon="line-md:clipboard-check-twotone" class="text-2xl text-primary block mb-1"></iconify-icon>
+          <h3 class="text-sm font-bold text-title transition-colors">Completado</h3>
+          <span class="text-xs text-text-light">15+ Proyectos</span>
+        </div>
+        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+          <iconify-icon icon="line-md:phone-call-loop" class="text-2xl text-primary block mb-1"></iconify-icon>
+          <h3 class="text-sm font-bold text-title transition-colors">Soporte</h3>
+          <span class="text-xs text-text-light">24/7 Online</span>
+        </div>
+      </div>
+
+      <!-- Contact Info with Icons -->
+      <div class="flex flex-col gap-4 py-6 border-y border-[var(--color-border)]">
+        {data.profile.info.map(item => (
+          <div class="flex items-center gap-4 group">
+            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <iconify-icon icon={item.icon} class="text-xl"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-xs text-text-light font-bold uppercase tracking-wider">{item.label}</p>
+              <p class="text-title font-medium">{item.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="pt-4">
+        <a href="#contact" class="btn">
+          Saber más <iconify-icon icon="line-md:arrow-right"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  .profile-mask {
+    mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,1) 80%, 
+      rgba(0,0,0,0) 100%
+    );
+    -webkit-mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,1) 80%, 
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  .profile-mask::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, var(--color-body), transparent);
+    z-index: 20;
+    pointer-events: none;
+  }
+</style>

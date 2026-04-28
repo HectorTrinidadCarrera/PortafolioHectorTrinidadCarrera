@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* Common */
+  --color-primary: #6e57e0;
+  --color-primary-alt: #5a43cb;
+  --font-display: "Poppins", sans-serif;
+
+  /* Light Theme (Default) */
+  --color-title: #242329;
+  --color-text: #6d6a7c;
+  --color-text-light: #a19fad;
+  --color-body: #fbfbfe;
+  --color-container: #fff;
+  --color-border: #e2e8f0;
+}
+
+@layer base {
+  .dark {
+    --color-title: #ffffff;
+    --color-text: #a19fad;
+    --color-text-light: #706f7b;
+    --color-body: #0b0b0b;
+    --color-container: #151515;
+    --color-border: rgba(255, 255, 255, 0.05);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[var(--color-body)] text-[var(--color-text)] font-sans antialiased transition-colors duration-300;
+  }
+  h1, h2, h3 {
+    @apply text-[var(--color-title)] font-semibold font-display transition-colors duration-300;
+  }
+}
+
+/* Custom Glow Effects */
+.glow-purple {
+  background: radial-gradient(circle, rgba(110, 87, 224, 0.4) 0%, rgba(110, 87, 224, 0) 70%);
+  filter: blur(40px);
+  animation: pulse-glow 4s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.dark .glow-purple {
+  opacity: 0.8;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: fade-in-up 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@layer components {
+  .section {
+    @apply py-12 md:py-20;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-center mb-4;
+  }
+  .section-subtitle {
+    @apply block text-sm text-center mb-10 text-[var(--color-text-light)];
+  }
+  
+  .btn {
+    @apply inline-flex items-center gap-2 px-6 py-4 bg-[var(--color-primary)] text-white rounded-xl font-medium transition-all hover:bg-[var(--color-primary-alt)] hover:shadow-lg;
+  }
+  
+  .container {
+    @apply max-w-5xl mx-auto px-6;
+  }
+
+  /* Bedimcode specific card style */
+  .card {
+    @apply bg-container p-8 rounded-3xl shadow-sm border border-[var(--color-border)] transition-all duration-400 hover:shadow-xl hover:translate-y-[-4px];
+  }
+}
+
+/* Theme Toggle Animation (Circle with Blur) */
+::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 999;
+  animation: 1.2s cubic-bezier(0.4, 0, 0.2, 1) both circle-expand;
+}
+
+@keyframes circle-expand {
+  from {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+  to {
+    clip-path: circle(150% at var(--x) var(--y));
+  }
+}
+
+/* Deshabilitar animaciones predeterminadas de View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
