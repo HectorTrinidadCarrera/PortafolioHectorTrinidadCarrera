@@ -12,11 +12,15 @@ const { skills } = data;
     
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="skills-grid">
       {Object.entries(skills).map(([category, list], catIndex) => (
-        <div class="skill-category bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-8 rounded-[2rem] border border-white/10 dark:border-white/5 opacity-0 translate-y-10 group hover:border-primary/30 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5">
+        <div class="skill-category bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-8 rounded-[2rem] border border-white/10 dark:border-white/5 opacity-0 translate-y-10 group hover:border-primary/30 premium-transition hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1">
           <div class="flex items-center gap-3 mb-8">
-            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-              {category === 'frontend' && <iconify-icon icon="line-md:code-loop" class="text-xl"></iconify-icon>}
-              {category === 'backend' && <iconify-icon icon="line-md:database-twotone" class="text-xl"></iconify-icon>}
+            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden p-2">
+              {category === 'frontend' && (
+                <div class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m17.674 11.408l-1.905 5.715a.6.6 0 0 1-.398.386L3.693 20.98a.6.6 0 0 1-.74-.765L6.745 8.841a.6.6 0 0 1 .34-.365l5.387-2.218a.6.6 0 0 1 .653.13l4.404 4.406a.6.6 0 0 1 .145.614M3.296 20.602l6.364-6.364"/><path d="m17.792 11.056l2.828-2.829a2 2 0 0 0 0-2.828L18.5 3.277a2 2 0 0 0-2.829 0l-2.828 2.829m-1.062 6.01a1.5 1.5 0 1 0-2.121 2.122a1.5 1.5 0 0 0 2.121-2.122"/></g></svg>`} />
+              )}
+              {category === 'backend' && (
+                <div class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" d="m388.632 393.82l107.191-137.88l-107.139-137.762l-25.26 19.644l91.864 118.122l-91.92 118.236zm-240.053-19.639L56.712 255.999l91.917-118.176l-25.258-19.646L16.177 255.993l107.137 137.826zM330.529 16h-32.97L178.441 496h32.971z"/></svg>`} />
+              )}
               {category === 'tools' && <iconify-icon icon="line-md:cog-loop" class="text-xl"></iconify-icon>}
               {category === 'design' && <iconify-icon icon="line-md:image-twotone" class="text-xl"></iconify-icon>}
             </div>
@@ -30,7 +34,11 @@ const { skills } = data;
               <div class="flex items-center justify-between group/item">
                 <div class="flex items-center gap-3">
                   <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover/item:bg-primary/20 transition-colors">
-                    <iconify-icon icon={skill.icon} class="text-lg"></iconify-icon>
+                    {skill.svg ? (
+                      <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+                    ) : (
+                      <iconify-icon icon={skill.icon} class="text-lg"></iconify-icon>
+                    )}
                   </div>
                   <span class="text-sm font-medium text-text group-hover/item:text-primary transition-colors">{skill.name}</span>
                 </div>

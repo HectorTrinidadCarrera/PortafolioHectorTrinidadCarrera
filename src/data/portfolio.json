@@ -2,16 +2,34 @@
   "profile": {
     "name": "Hector Trinidad Carrera",
     "title": "Creative Developer",
-    "titles": ["Fullstack Developer", "UI/UX Designer", "Frontend Architect", "Problem Solver", "Digital Creative"],
+    "titles": [
+      "Fullstack Developer",
+      "UI/UX Designer",
+      "Frontend Architect",
+      "Problem Solver",
+      "Digital Creative"
+    ],
     "bio": "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.",
     "email": "hector@example.com",
     "phone": "+52 XXX XXX XXX",
     "location": "Ciudad de México, México",
     "available": true,
     "info": [
-      { "label": "Email", "value": "hector@example.com", "icon": "line-md:email-twotone" },
-      { "label": "Teléfono", "value": "+52 XXX XXX XXX", "icon": "line-md:phone-call-loop" },
-      { "label": "Ubicación", "value": "CDMX, México", "icon": "line-md:map-marker-twotone" }
+      {
+        "label": "Email",
+        "value": "hector@example.com",
+        "icon": "line-md:email-twotone"
+      },
+      {
+        "label": "Teléfono",
+        "value": "+52 XXX XXX XXX",
+        "icon": "line-md:phone-call-loop"
+      },
+      {
+        "label": "Ubicación",
+        "value": "CDMX, México",
+        "icon": "line-md:map-marker-twotone"
+      }
     ]
   },
   "about": {
@@ -53,12 +71,14 @@
     {
       "title": "UI/UX Design",
       "description": "Diseños modernos y minimalistas enfocados en la experiencia del usuario.",
-      "icon": "line-md:layout-content"
+      "icon": "line-md:layout-content",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14.5 17.742v8.37c0 2.29 1.793 4.146 4.01 4.146c2.215 0 4.012-1.856 4.012-4.146v-8.37m10.978 0l-8.018 12.516m0-12.516L33.5 30.258\" stroke-width=\"1\"/><rect width=\"37\" height=\"37\" x=\"5.5\" y=\"5.5\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" rx=\"4\" ry=\"4\" stroke-width=\"1\"/></svg>"
     },
     {
       "title": "Web Development",
       "description": "Desarrollo de sitios web rápidos, seguros y totalmente responsivos.",
-      "icon": "line-md:code-loop"
+      "icon": "line-md:code-loop",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><path fill=\"currentColor\" d=\"M50 12.5c-20.712 0-37.5 16.793-37.5 37.502S29.288 87.5 50 87.5s37.5-16.788 37.5-37.498S70.712 12.5 50 12.5M22.897 54.969h5.752a37.33 37.33 0 0 0 8.826 19.569c-7.501-3.844-13.015-11.022-14.578-19.569m5.752-9.939h-5.752c1.564-8.546 7.078-15.724 14.579-19.568a37.33 37.33 0 0 0-8.827 19.568M45.03 68.059a27.47 27.47 0 0 1-6.313-13.089h6.313zm0-23.029h-6.313a27.5 27.5 0 0 1 6.313-13.088zm32.072 0h-5.751a37.33 37.33 0 0 0-8.825-19.567c7.499 3.845 13.013 11.023 14.576 19.567M54.97 68.057V54.969h6.313a27.5 27.5 0 0 1-6.313 13.088m0-23.027V31.941a27.47 27.47 0 0 1 6.313 13.089zm7.553 29.509a37.33 37.33 0 0 0 8.828-19.57h5.752c-1.563 8.548-7.078 15.726-14.58 19.57\"/></svg>"
     },
     {
       "title": "App Optimization",
@@ -72,7 +92,11 @@
       "title": "Modern Portfolio",
       "description": "Mi portafolio personal construido con Astro, siguiendo los mejores estándares de diseño y rendimiento.",
       "image": "/images/projects/project-1.jpg",
-      "technologies": ["Astro", "Tailwind", "JavaScript"],
+      "technologies": [
+        "Astro",
+        "Tailwind",
+        "JavaScript"
+      ],
       "icon": "logos:astro-icon",
       "links": {
         "demo": "#",
@@ -85,7 +109,11 @@
       "title": "E-commerce App",
       "description": "Una tienda virtual con carrito de compras y pasarela de pagos integrada.",
       "image": "/images/projects/project-2.jpg",
-      "technologies": ["React", "Node.js", "MongoDB"],
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
       "icon": "logos:shopify",
       "links": {
         "demo": "#",
@@ -98,7 +126,11 @@
       "title": "AI Dashboard",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/project-3.jpg",
-      "technologies": ["Vue", "D3.js", "Firebase"],
+      "technologies": [
+        "Vue",
+        "D3.js",
+        "Firebase"
+      ],
       "icon": "logos:openai-icon",
       "links": {
         "demo": "#",
@@ -109,30 +141,117 @@
   ],
   "skills": {
     "frontend": [
-      { "name": "HTML", "icon": "logos:html-5" },
-      { "name": "CSS", "icon": "logos:css-3" },
-      { "name": "JavaScript", "icon": "logos:javascript" },
-      { "name": "React", "icon": "logos:react" },
-      { "name": "Astro", "icon": "logos:astro-icon" },
-      { "name": "Tailwind", "icon": "logos:tailwindcss-icon" }
+      {
+        "name": "HTML",
+        "icon": "logos:html-5"
+      },
+      {
+        "name": "CSS",
+        "icon": "logos:css-3"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "logos:javascript"
+      },
+      {
+        "name": "React",
+        "icon": "logos:react"
+      },
+      {
+        "name": "Astro",
+        "icon": "logos:astro-icon"
+      },
+      {
+        "name": "Tailwind",
+        "icon": "logos:tailwindcss-icon"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "logos:typescript-icon",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.363 15.53c.483.263.813.527 1.156.825c.343.298.571.646.817 1.097c.246.451.429.983.549 1.636c.12 1.102-.052 2.012-.518 2.739c-.466.727-1.103 1.224-1.909 1.493c-.806.268-1.933.39-3.397.362c-1.22-.032-2.22-.162-3-.398a4.594 4.594 0 0 1-1.347-.68a3.838 3.838 0 0 1-1.014-1.023c-.262-.363-.483-.73-.663-1.101l1.432-.84c.16.27.34.52.54.75c.2.23.45.43.75.6c.3.17.65.3 1.05.38c.4.08.86.12 1.38.12c.76 0 1.39-.11 1.89-.34c.5-.23.88-.58 1.13-1.07c.25-.49.37-1.1.37-1.84c0-.52-.07-.95-.21-1.27a2.13 2.13 0 0 0-.54-.87a3.41 3.41 0 0 0-1.02-.64c-.48-.22-1.17-.46-2.07-.74c-.9-.28-1.64-.54-2.22-.78c-.58-.24-1.01-.5-1.3-.77c-.28-.27-.49-.58-.63-.93c-.14-.35-.2-.78-.2-1.28c0-.96.22-1.74.66-2.35c.44-.61 1.13-1.06 2.06-1.35a8.7 8.7 0 0 1 3.01-.36a7.1 7.1 0 0 1 2.36.43a4.04 4.04 0 0 1 1.56 1.05a4.45 4.45 0 0 1 .83 1.56l-1.48.61c-.11-.32-.28-.6-.5-.84a2.41 2.41 0 0 0-.82-.58c-.32-.14-.74-.21-1.26-.21s-1.13.07-1.53.22c-.4.15-.7.34-.9.59c-.2.25-.3.54-.3.88c0 .28.06.51.18.71a1.42 1.42 0 0 0 .54.54c.24.13.6.27 1.08.4c.48.13 1.03.28 1.65.45c.62.17 1.23.36 1.83.57zM3 5.312h8.062v1.359H8.835v10.71H7.312V6.671H4.562V5.312z\"/></svg>"
+      },
+      {
+        "name": "Angular",
+        "icon": "logos:angular-icon",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 2L3.1 5.16l1.4 12.18L12 22l7.5-4.66l1.4-12.18L12 2zm0 2.2l6.18 2.2l-1.04 8.95L12 18.6l-5.14-3.25l-1.04-8.95L12 4.2zm0 2.8l-4.7 10.1h1.9l.9-2.2h3.8l.9 2.2h1.9L12 7zm0 2.5l1.4 3.3h-2.8L12 9.5z\"/></svg>"
+      }
     ],
     "backend": [
-      { "name": "Node.js", "icon": "logos:nodejs-icon" },
-      { "name": "Express", "icon": "logos:express" },
-      { "name": "Python", "icon": "logos:python" },
-      { "name": "SQL", "icon": "logos:postgresql" }
+      {
+        "name": "Node.js",
+        "icon": "logos:nodejs-icon"
+      },
+      {
+        "name": "Express",
+        "icon": "logos:express",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"256\" height=\"256\" viewBox=\"0 0 256 256\"><g fill=\"none\"><rect width=\"256\" height=\"256\" fill=\"#242938\" rx=\"60\"/><path fill=\"#fff\" d=\"M228 182.937a12.73 12.73 0 0 1-15.791-6.005c-9.063-13.567-19.071-26.522-28.69-39.755l-4.171-5.56c-11.454 15.346-22.908 30.08-33.361 45.371a12.23 12.23 0 0 1-15.012 5.894l42.98-57.659l-39.978-52.1a13.29 13.29 0 0 1 15.847 5.56c9.285 13.568 19.572 26.523 29.802 40.257c10.287-13.623 20.462-26.634 29.97-40.09a11.95 11.95 0 0 1 14.901-5.56l-15.513 20.573c-6.95 9.174-13.789 18.404-21.017 27.356a5.56 5.56 0 0 0 0 8.285c13.289 17.626 26.466 35.307 40.033 53.433M28 124.5c1.168-5.56 1.89-11.621 3.503-17.292c9.619-34.195 48.818-48.43 75.785-27.245c15.791 12.4 19.739 29.97 18.961 49.764H37.286c-1.446 35.363 24.075 56.714 56.713 45.816a33.86 33.86 0 0 0 21.518-23.965c1.724-5.56 4.504-6.505 9.786-4.893a45.15 45.15 0 0 1-21.573 32.972a52.26 52.26 0 0 1-60.884-7.784a54.77 54.77 0 0 1-13.678-32.138c0-1.89-.723-3.781-1.112-5.56A861 861 0 0 1 28 124.5m9.397-2.391h80.456c-.501-25.632-16.681-43.814-38.254-43.98c-24.02-.334-41.201 17.458-42.258 43.869z\"/></g></svg>"
+      },
+      {
+        "name": "Spring Boot",
+        "icon": "logos:spring-boot",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"256\" height=\"256\" viewBox=\"0 0 256 256\"><path fill=\"#6db33f\" d=\"M38.944 35.879c50.58-48.999 131.454-47.682 180.453 3.161c5.532-7.376 10.274-15.542 13.699-23.972c16.07 48.999 25.817 90.095 22.128 121.97c-1.844 26.87-12.381 52.687-29.768 73.235c-45.31 53.741-125.922 60.59-179.663 15.28l-1.028-.915l-.055-.036q-.252-.176-.498-.367q-.735-.573-1.336-1.24l-.144-.164l-1.68-1.493c-1.64-1.405-3.279-2.81-4.733-4.4l-.536-.606c-49-50.58-47.419-131.454 3.16-180.453M57.91 207.376c-4.742-3.688-11.591-3.162-15.28 1.58c-3.242 4.17-3.226 9.969.049 13.815l.052.06l2.033 1.807l.2.136c4.604 3.028 10.8 2.402 14.333-1.878l.194-.241c3.688-4.742 2.898-11.591-1.58-15.28M231.78 28.239c-13.173 27.661-45.84 48.736-74.027 55.322c-26.607 6.322-49.79 1.054-74.289 10.537c-55.848 21.339-54.794 87.724-24.236 102.74l1.844 1.054s22.074-4.389 43.902-10.185l1.87-.5c8.718-2.35 17.295-4.91 24.302-7.492c36.354-13.435 76.397-46.628 89.568-85.09c-6.849 40.042-41.359 78.767-75.87 96.418c-18.44 9.483-32.665 11.59-62.96 22.128c-3.688 1.317-6.586 2.635-6.586 2.635l1.108-.15l.736-.095l.733-.092c6.69-.83 12.702-1.244 12.702-1.244c42.94-2.108 110.38 12.118 141.729-29.768c32.139-42.677 14.225-111.697-.527-156.218\"/><path fill=\"#fff\" d=\"M57.911 207.376c4.479 3.688 5.269 10.537 1.58 15.279c-3.687 4.742-10.537 5.269-15.279 1.58s-5.268-10.537-1.58-15.279s10.537-5.268 15.28-1.58M231.78 28.239c14.752 44.521 32.666 113.541.527 156.218c-31.35 41.886-98.789 27.66-141.729 29.768c0 0-6.012.415-12.702 1.244l-.733.092q-.919.117-1.844.245s2.898-1.318 6.586-2.635c30.295-10.537 44.52-12.645 62.96-22.128c34.511-17.65 69.021-56.376 75.87-96.418c-13.171 38.462-53.214 71.655-89.568 85.09c-25.026 9.22-70.074 18.177-70.074 18.177l-1.844-1.054c-30.558-15.016-31.612-81.401 24.236-102.74c24.5-9.483 47.682-4.215 74.29-10.537c28.187-6.586 60.853-27.66 74.025-55.322\"/></svg>"
+      },
+      {
+        "name": "Python",
+        "icon": "logos:python"
+      },
+      {
+        "name": "Java",
+        "icon": "logos:java"
+      },
+      {
+        "name": "PHP",
+        "icon": "logos:php"
+      },
+      {
+        "name": "SQL",
+        "icon": "logos:postgresql"
+      }
     ],
     "tools": [
-      { "name": "Git", "icon": "logos:git-icon" },
-      { "name": "GitHub", "icon": "logos:github-icon" },
-      { "name": "VS Code", "icon": "logos:visual-studio-code" },
-      { "name": "Figma", "icon": "logos:figma" },
-      { "name": "Vercel", "icon": "logos:vercel-icon" }
+      {
+        "name": "Git",
+        "icon": "logos:git-icon"
+      },
+      {
+        "name": "GitHub",
+        "icon": "logos:github-icon"
+      },
+      {
+        "name": "VS Code",
+        "icon": "logos:visual-studio-code"
+      },
+      {
+        "name": "Linux",
+        "icon": "logos:linux-tux"
+      },
+      {
+        "name": "Antigravity",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12.025 2q2.025 0 3.163 1.525T17.125 7q.65 1.575 1.25 3.5t1.275 3.875q.65 1.875 1.425 3.525t1.8 2.825q.2.225.175.525t-.225.525t-.475.25t-.55-.175q-1.975-1.55-3.25-3.463t-2.575-3.337q-.85-.95-1.812-1.5T12.025 13t-2.137.55t-1.813 1.5q-1.3 1.425-2.575 3.338T2.25 21.85q-.275.2-.55.175t-.475-.25T1 21.25t.175-.525Q2.2 19.55 2.975 17.9T4.4 14.375q.675-1.95 1.275-3.875T6.925 7q.8-1.95 1.938-3.475T12.025 2\"/></svg>"
+      },
+      {
+        "name": "Figma",
+        "icon": "logos:figma"
+      },
+      {
+        "name": "Vercel",
+        "icon": "logos:vercel-icon"
+      }
     ],
     "design": [
-      { "name": "UI/UX", "icon": "line-md:layout-content" },
-      { "name": "Responsive", "icon": "line-md:phone-twotone" },
-      { "name": "Prototyping", "icon": "line-md:edit-twotone" }
+      {
+        "name": "UI/UX",
+        "icon": "line-md:layout-content",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14.5 17.742v8.37c0 2.29 1.793 4.146 4.01 4.146c2.215 0 4.012-1.856 4.012-4.146v-8.37m10.978 0l-8.018 12.516m0-12.516L33.5 30.258\" stroke-width=\"1\"/><rect width=\"37\" height=\"37\" x=\"5.5\" y=\"5.5\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" rx=\"4\" ry=\"4\" stroke-width=\"1\"/></svg>"
+      },
+      {
+        "name": "Responsive",
+        "icon": "line-md:phone-twotone"
+      },
+      {
+        "name": "Prototyping",
+        "icon": "line-md:edit-twotone"
+      }
     ]
   },
   "socials": {

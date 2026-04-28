@@ -101,6 +101,10 @@
   .card {
     @apply bg-container p-8 rounded-3xl shadow-sm border border-[var(--color-border)] transition-all duration-400 hover:shadow-xl hover:translate-y-[-4px];
   }
+
+  .premium-transition {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 /* Theme Toggle Animation (Circle with Blur) */
