@@ -14,8 +14,9 @@
 
     <!-- Header/Image Area -->
     <div id="modal-header" class="relative h-64 md:h-80 bg-[var(--color-body)] overflow-hidden">
-      <div id="modal-gradient" class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
-      <div id="modal-placeholder" class="absolute inset-0 flex items-center justify-center text-title font-bold opacity-10 text-6xl">
+      <div id="modal-gradient" class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 z-10"></div>
+      <img id="modal-image" src="" alt="" class="absolute inset-0 w-full h-full object-cover z-0 hidden" />
+      <div id="modal-placeholder" class="absolute inset-0 flex items-center justify-center text-title font-bold opacity-10 text-6xl z-0">
         P
       </div>
     </div>
@@ -165,6 +166,15 @@
       const bounds = cardElement.getBoundingClientRect();
 
       document.getElementById('modal-title').textContent = projectData.title;
+      const modalImg = document.getElementById('modal-image') as HTMLImageElement;
+      if (projectData.image) {
+        modalImg.src = projectData.image;
+        modalImg.alt = projectData.title;
+        modalImg.classList.remove('hidden');
+      } else {
+        modalImg.classList.add('hidden');
+      }
+      
       document.getElementById('modal-project-icon-container').innerHTML = `<iconify-icon icon="${projectData.icon}" class="text-3xl"></iconify-icon>`;
       document.getElementById('modal-description').textContent = projectData.description;
       document.getElementById('modal-placeholder').textContent = projectData.title.charAt(0);

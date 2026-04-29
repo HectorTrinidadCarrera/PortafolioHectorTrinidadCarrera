@@ -91,7 +91,7 @@
       "id": 1,
       "title": "Modern Portfolio",
       "description": "Mi portafolio personal construido con Astro, siguiendo los mejores estándares de diseño y rendimiento.",
-      "image": "/images/projects/project-1.jpg",
+      "image": "/images/projects/image.png",
       "technologies": [
         "Astro",
         "Tailwind",
@@ -100,7 +100,7 @@
       "icon": "logos:astro-icon",
       "links": {
         "demo": "#",
-        "github": "#"
+        "github": "https://github.com/HectorTrinidadCarrera/PortafolioHectorTrinidadCarrera"
       },
       "category": "frontend"
     },
@@ -117,7 +117,7 @@
       "icon": "logos:shopify",
       "links": {
         "demo": "#",
-        "github": "#"
+        "github": ""
       },
       "category": "fullstack"
     },
@@ -137,7 +137,64 @@
         "github": "#"
       },
       "category": "frontend"
+    },
+   {
+      "id": 4,
+      "title": "Universidad Tecnologica de Tecamachalco",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Universidad.png",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express",
+        "SQL"
+      ],
+   "icon": "logos:react",
+      "links": {
+        "demo": "",
+        "github": "https://github.com/RaulZamoraPerez/UTTECAM"
+      },
+      "category": "frontend"
+    },
+      {
+      "id": 5,
+      "title": "Biblioteca UDEA",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/UDEA.png",
+      "technologies": [
+        "Next.js",
+        "Node.js",
+        "Express",
+        "SQL"
+      ],
+   "icon": "logos:nextjs-icon",
+      "links": {
+        "demo": "",
+        "github": "https://github.com/HectorTrinidadCarrera/ProyectoUDEA-Frontend-UTT"
+      },
+      "category": "frontend"
+    },
+     {
+      "id": 6,
+      "title": "Juego Motocle UTT",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Motocle.png",
+      "technologies": [
+        "Html",
+        "CSS",
+        "JavaScript"
+      ],
+    "icon": "logos:javascript",
+      "links": {
+        "demo": "/images/demo/JuegoMotocle.mp4",
+        "github": "https://github.com/RaulZamoraPerez/juego-UTTECAM"
+      },
+      "category": "frontend"
     }
+
+
+
+
   ],
   "skills": {
     "frontend": [

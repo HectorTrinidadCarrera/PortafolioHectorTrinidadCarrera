@@ -32,12 +32,19 @@ const { name, title, bio } = data.profile;
       <!-- Glow behind image -->
       <div class="absolute inset-0 glow-purple scale-150 animate-pulse"></div>
       
-      <div class="relative w-full max-w-[600px] aspect-[4/5] flex items-end animate-float profile-mask opacity-0">
-        <img 
-          src="/images/hector-profile.png" 
-          alt={name} 
-          class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
-        />
+      <!-- Entrance Animation Container (JS) -->
+      <div class="relative w-full max-w-[600px] aspect-[4/5] flex items-end profile-mask opacity-0">
+        <!-- Continuous Float Animation (CSS) -->
+        <div class="w-full h-full animate-float flex items-end">
+          <img 
+            src="/images/hector-profile.png" 
+            alt={name} 
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
+          />
+        </div>
       </div>
     </div>
 
