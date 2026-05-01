@@ -10,24 +10,24 @@
       "Digital Creative"
     ],
     "bio": "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.",
-    "email": "hector@example.com",
-    "phone": "+52 XXX XXX XXX",
-    "location": "Ciudad de México, México",
+    "email": "hectortrinidad110@gmail.com",
+    "phone": "+52 2491115283",
+    "location": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
     "available": true,
     "info": [
       {
         "label": "Email",
-        "value": "hector@example.com",
+        "value": "hectortrinidad110@gmail.com",
         "icon": "line-md:email-twotone"
       },
       {
         "label": "Teléfono",
-        "value": "+52 XXX XXX XXX",
+        "value": "+52 2491115283",
         "icon": "line-md:phone-call-loop"
       },
       {
         "label": "Ubicación",
-        "value": "CDMX, México",
+        "value": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
         "icon": "line-md:map-marker-twotone"
       }
     ]
@@ -56,14 +56,16 @@
         "degree": "Ingeniería en Sistemas",
         "years": "2019 - 2023",
         "description": "Formación integral en desarrollo de software, bases de datos y redes.",
-        "icon": "line-md:academic-cap-twotone"
+        "icon": "line-md:academic-cap-twotone",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg>"
       },
       {
         "institution": "Platzi / Udemy",
         "degree": "Especialización Frontend",
         "years": "2021",
         "description": "Certificaciones en React, Next.js y arquitecturas CSS modernas.",
-        "icon": "logos:react"
+        "icon": "logos:react",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg>"
       }
     ]
   },
@@ -108,7 +110,7 @@
       "id": 2,
       "title": "E-commerce App",
       "description": "Una tienda virtual con carrito de compras y pasarela de pagos integrada.",
-      "image": "/images/projects/project-2.jpg",
+      "image": "/images/projects/image.png",
       "technologies": [
         "React",
         "Node.js",
@@ -125,7 +127,7 @@
       "id": 3,
       "title": "AI Dashboard",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
-      "image": "/images/projects/project-3.jpg",
+      "image": "/images/projects/image.png",
       "technologies": [
         "Vue",
         "D3.js",
@@ -188,6 +190,57 @@
       "links": {
         "demo": "/images/demo/JuegoMotocle.mp4",
         "github": "https://github.com/RaulZamoraPerez/juego-UTTECAM"
+      },
+      "category": "frontend"
+    },
+     {
+      "id": 7,
+      "title": "Proyecto Escolar del metodo de Eule en java",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Java.png",
+      "technologies": [
+        "Java",
+        "Maven"
+      ],
+    "icon": "logos:java",
+      "links": {
+        "demo": "/images/demo/JuegoMotocle.mp4",
+        "github": "https://github.com/HectorTrinidadCarrera/Java-Application"
+      },
+      "category": "frontend"
+    },
+    {
+      "id": 8,
+      "title": "TrueklandWeb",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Truekland.png",
+      "technologies": [
+        "Next.js",
+        "Firebase",
+        "Tailwind"
+      ],
+    "icon": "logos:nextjs-icon",
+      "links": {
+        "demo": "/images/demo/TrueklandWeb.mp4",
+        "github": "https://github.com/lisandro-flores/trueklandweb"
+      },
+      "category": "frontend"
+    },
+
+     {
+      "id": 9,
+      "title": "Mia",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Mia.png",
+      "technologies": [
+        "Next.js",
+        "Firebase",
+        "Tailwind"
+      ],
+    "icon": "logos:nextjs-icon",
+      "links": {
+        "demo": "/images/demo/TrueklandWeb.mp4",
+        "github": "https://github.com/TodTete/Mia"
       },
       "category": "frontend"
     }
@@ -312,9 +365,9 @@
     ]
   },
   "socials": {
-    "github": "https://github.com/hectortrinidad",
-    "linkedin": "https://linkedin.com/in/hectortrinidad",
+    "github": "https://github.com/HectorTrinidadCarrera",
+    "linkedin": "https://linkedin.com/in/héctor-trinidad-carrera-890846337",
     "twitter": "https://twitter.com/hectortrinidad",
-    "email": "mailto:hector@example.com"
+    "email": "hectortrinidad110@gmail.com"
   }
 }

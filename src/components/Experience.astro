@@ -32,7 +32,9 @@ const { experience, education } = data.about;
           class="qualification-button relative z-10 flex-1 py-3.5 flex items-center justify-center gap-2 text-sm font-bold transition-colors duration-300 text-text-light hover:text-white" 
           data-target="education"
         >
-          <iconify-icon icon="line-md:academic-cap-twotone" class="text-lg"></iconify-icon> Educación
+          <span class="w-5 h-5 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full"><path fill="currentColor" d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z"/></svg>
+          </span> Educación
         </button>
       </div>
     </div>
@@ -52,7 +54,11 @@ const { experience, education } = data.about;
                   <div class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md border border-white/10 dark:border-white/5 p-6 rounded-3xl hover:border-primary/40 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                       <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                        <iconify-icon icon={item.icon}></iconify-icon>
+                        {item.svg ? (
+                          <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
+                        ) : (
+                          <iconify-icon icon={item.icon}></iconify-icon>
+                        )}
                       </div>
                       <div>
                         <h3 class="text-xl font-bold text-title group-hover:text-primary transition-colors">{item.role}</h3>
@@ -88,7 +94,11 @@ const { experience, education } = data.about;
                   <div class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md border border-white/10 dark:border-white/5 p-6 rounded-3xl hover:border-primary/40 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                       <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                        <iconify-icon icon={item.icon}></iconify-icon>
+                        {item.svg ? (
+                          <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
+                        ) : (
+                          <iconify-icon icon={item.icon}></iconify-icon>
+                        )}
                       </div>
                       <div>
                         <h3 class="text-xl font-bold text-title group-hover:text-primary transition-colors">{item.degree}</h3>

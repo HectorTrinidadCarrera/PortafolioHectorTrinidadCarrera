@@ -14,7 +14,7 @@ const { projects } = data;
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
       {projects.map((project, index) => (
-        <div class="project-trigger cursor-pointer" data-project={JSON.stringify(project)}>
+        <div class="project-trigger cursor-pointer h-full" data-project={JSON.stringify(project)}>
           <ProjectCard {...project} index={index} />
         </div>
       ))}
@@ -49,22 +49,22 @@ const { projects } = data;
 
       // Hover effect
       trigger.addEventListener('mouseenter', () => {
-        animate(card, { y: -12, scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }, { duration: 0.3 });
+        animate(card, { y: -8, scale: 1.01, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.3)" }, { duration: 0.2 });
       });
       
       trigger.addEventListener('mouseleave', () => {
-        animate(card, { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }, { duration: 0.3 });
+        animate(card, { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }, { duration: 0.2 });
       });
     });
 
     // Animate header and grid
     inView("#projects-header", () => {
-      animate("#projects-header h2", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8 });
-      animate("#projects-header p", { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.2 });
+      animate("#projects-header h2", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      animate("#projects-header p", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.1 });
     });
 
     inView("#projects-grid", () => {
-      animate(".project-card", { opacity: [0, 1], y: [40, 0], scale: [0.9, 1] }, { delay: stagger(0.15), duration: 0.6 });
+      animate(".project-card", { opacity: [0, 1], y: [30, 0], scale: [0.95, 1] }, { delay: stagger(0.1), duration: 0.5 });
     });
   };
 

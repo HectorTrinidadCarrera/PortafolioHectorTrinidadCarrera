@@ -14,7 +14,6 @@ interface Props {
 
 const { title, description, image, technologies, icon, links, index } = Astro.props;
 
-// Tech icon mapping
 const techIconMap: Record<string, string> = {
   "React": "logos:react",
   "Node.js": "logos:nodejs-icon",
@@ -25,14 +24,29 @@ const techIconMap: Record<string, string> = {
   "Vue": "logos:vue",
   "D3.js": "logos:d3",
   "Firebase": "logos:firebase",
+  "Python": "logos:python",
   "HTML": "logos:html-5",
   "CSS": "logos:css-3",
-  "Python": "logos:python",
+  "Express": "logos:express",
+  "SQL": "logos:mysql",
+  "MySQL": "logos:mysql",
+  "PostgreSQL": "logos:postgresql",
+  "Next.js": "logos:nextjs-icon",
+  "Java": "logos:java",
+  "Maven": "logos:maven",
+  "Vercel": "logos:vercel-icon",
+  "Vite": "logos:vitejs",
+  "Spring Boot": "logos:spring-boot",
+  "Html": "logos:html-5",
+  "TypeScript": "logos:typescript-icon",
+  "Docker": "logos:docker-icon",
+  "GitHub": "logos:github-icon",
+  "Figma": "logos:figma",
 };
 ---
 
 <div 
-  class="project-card group bg-container rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl premium-transition transform border border-[var(--color-border)] opacity-0 translate-y-10"
+  class="project-card group bg-container rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl premium-transition transform border border-[var(--color-border)] opacity-0 translate-y-10 flex flex-col h-full"
 >
   <!-- Card Header / Image Area -->
   <div class="relative h-64 bg-gradient-to-br from-primary/5 to-primary/20 overflow-hidden flex items-center justify-center">
@@ -69,22 +83,24 @@ const techIconMap: Record<string, string> = {
     </div>
   </div>
 
-  <div class="p-8">
+  <div class="p-8 flex flex-col flex-1">
     <div class="flex items-center gap-2 mb-4">
        <div class="w-1.5 h-6 bg-primary rounded-full"></div>
        <h3 class="text-2xl font-black text-title group-hover:text-primary transition-colors duration-300">{title}</h3>
     </div>
     
-    <p class="text-text-light mb-8 line-clamp-2 leading-relaxed text-sm">{description}</p>
-    
-    <!-- Tech Stack with Icons -->
-    <div class="flex flex-wrap gap-2 mb-10">
-      {technologies.map(tech => (
-        <span class="flex items-center gap-1.5 px-3 py-1 bg-body-variant/50 border border-[var(--color-border)] text-text-light text-[10px] uppercase tracking-tighter font-black rounded-lg group-hover:border-primary/30 transition-colors duration-300">
-          <iconify-icon icon={techIconMap[tech] || "line-md:hash-small"} class="text-xs"></iconify-icon>
-          {tech}
-        </span>
-      ))}
+    <div class="flex-1">
+      <p class="text-text-light mb-6 line-clamp-3 leading-relaxed text-sm">{description}</p>
+      
+      <!-- Tech Stack with Icons -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        {technologies.map(tech => (
+          <span class="flex items-center gap-1.5 px-3 py-1 bg-body-variant/50 border border-[var(--color-border)] text-text-light text-[10px] uppercase tracking-tighter font-black rounded-lg group-hover:border-primary/30 transition-colors duration-300">
+            <iconify-icon icon={techIconMap[tech] || "line-md:hash-small"} class="text-xs"></iconify-icon>
+            {tech}
+          </span>
+        ))}
+      </div>
     </div>
 
     <div class="flex items-center justify-between pt-4 border-t border-[var(--color-border)]/50">
