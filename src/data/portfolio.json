@@ -52,19 +52,20 @@
     ],
     "education": [
       {
-        "institution": "Universidad Tecnológica",
-        "degree": "Ingeniería en Sistemas",
-        "years": "2019 - 2023",
-        "description": "Formación integral en desarrollo de software, bases de datos y redes.",
+        "institution": "Cecyte Tecamachalco",
+        "degree": "Programacion",
+        "years": "2019 - 2022",
+        "description": "Durante mi periodo en Cecyte Tecamachalco, adquirí conocimientos fundamentales en programación y desarrollo de software.",
         "icon": "line-md:academic-cap-twotone",
+         "image": "/images/Logo/Cecyte.png",
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg>"
       },
       {
-        "institution": "Platzi / Udemy",
-        "degree": "Especialización Frontend",
-        "years": "2021",
-        "description": "Certificaciones en React, Next.js y arquitecturas CSS modernas.",
+        "institution": "Universidad Tecnológica de Tecamachalco",
+        "years": "2022 - 2026",
+        "description": "Durante mi periodo en la Universidad Tecnológica de Tecamachalco, adquirí conocimientos fundamentales en ingeniería en sistemas y desarrollo de software.",
         "icon": "logos:react",
+         "image": "/images/Logo/Uttecam.png",
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg>"
       }
     ]
@@ -244,9 +245,6 @@
       },
       "category": "frontend"
     }
-
-
-
 
   ],
   "skills": {

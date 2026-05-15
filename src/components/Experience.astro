@@ -53,8 +53,10 @@ const { experience, education } = data.about;
                 <div class={`w-full md:w-[calc(50%-2.5rem)] pl-10 md:pl-0 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                   <div class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md border border-white/10 dark:border-white/5 p-6 rounded-3xl hover:border-primary/40 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                      <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                        {item.svg ? (
+                      <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
+                        {item.image ? (
+                          <img src={item.image} alt={item.company || item.institution} class="w-full h-full object-cover" />
+                        ) : item.svg ? (
                           <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
                         ) : (
                           <iconify-icon icon={item.icon}></iconify-icon>
@@ -93,8 +95,10 @@ const { experience, education } = data.about;
                 <div class={`w-full md:w-[calc(50%-2.5rem)] pl-10 md:pl-0 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                   <div class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md border border-white/10 dark:border-white/5 p-6 rounded-3xl hover:border-primary/40 transition-all duration-500 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                      <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                        {item.svg ? (
+                      <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
+                        {item.image ? (
+                          <img src={item.image} alt={item.company || item.institution} class="w-full h-full object-cover" />
+                        ) : item.svg ? (
                           <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
                         ) : (
                           <iconify-icon icon={item.icon}></iconify-icon>
