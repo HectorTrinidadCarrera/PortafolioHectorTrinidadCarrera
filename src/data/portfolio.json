@@ -36,11 +36,12 @@
     "description": "Soy un desarrollador enfocado en los detalles y en la optimización de rendimiento. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos que resuelvan problemas reales.",
     "experience": [
       {
-        "company": "Freelance",
-        "role": "Fullstack Developer",
+        "company": "Digyto Soluctions ",
+        "role": "Desarrollador Frontend",
         "years": "2023 - Presente",
-        "description": "Desarrollo de aplicaciones web personalizadas para clientes locales.",
-        "icon": "line-md:laptop-twotone"
+        "description": "Desarrollo de aplicaciones web que fueron Digyconta y quiero flores ahi estuve encargadoo de frontend.",
+        "icon": "line-md:laptop-twotone",
+        "image": "/images/Logo/Digyto.jpg"
       },
       {
         "company": "Tech Studio",
@@ -244,8 +245,26 @@
         "github": "https://github.com/TodTete/Mia"
       },
       "category": "frontend"
-    }
+    },
 
+     {
+      "id": 10,
+      "title": "Dashboard-UTTECAM",
+      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "image": "/images/projects/Dashboard-uttecam.png",
+      "technologies": [
+        "React",
+        "Express",
+        "Tailwind",
+        "SQL"
+      ],
+    "icon": "logos:react",
+      "links": {
+        "demo": "/images/demo/",
+        "github": "https://github.com/TodTete/Mia"
+      },
+      "category": "frontend"
+    }
   ],
   "skills": {
     "frontend": [
