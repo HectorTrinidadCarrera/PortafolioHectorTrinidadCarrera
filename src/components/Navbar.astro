@@ -4,6 +4,7 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
   { name: 'Portfolio', href: '#projects' },
+  { name: 'Certifications', href: '#certifications' },
   { name: 'Contact', href: '#contact' },
 ];
 ---
@@ -143,9 +144,9 @@ const navLinks = [
       const sectionId = current.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        document.querySelector(`.nav__menu a[href*=${sectionId}]`)?.classList.add('active-link');
+        document.querySelector(`.nav__link[href*=${sectionId}]`)?.classList.add('active-link');
       } else {
-        document.querySelector(`.nav__menu a[href*=${sectionId}]`)?.classList.remove('active-link');
+        document.querySelector(`.nav__link[href*=${sectionId}]`)?.classList.remove('active-link');
       }
     });
   }

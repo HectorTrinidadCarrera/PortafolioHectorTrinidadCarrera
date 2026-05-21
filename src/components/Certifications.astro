@@ -1,0 +1,194 @@
+---
+import data from '../data/portfolio.json';
+const { certifications } = data;
+---
+
+<section class="section relative overflow-hidden" id="certifications">
+  <!-- Background Glow Effect -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20 dark:opacity-10">
+    <div class="absolute top-1/3 -right-20 w-80 h-80 bg-primary blur-[150px] rounded-full animate-pulse"></div>
+    <div class="absolute bottom-1/3 -left-20 w-80 h-80 bg-secondary blur-[150px] rounded-full animate-pulse" style="animation-delay: 3s;"></div>
+  </div>
+
+  <div class="container relative z-10">
+    <div id="certifications-header" class="text-center mb-12">
+      <h2 class="section-title mb-2 opacity-0">Certificaciones y Logros</h2>
+      <span class="section-subtitle opacity-0">Mis credenciales profesionales y académicas</span>
+    </div>
+
+    <!-- Pestañas de Filtrado -->
+    <div class="flex justify-center mb-16 opacity-0 translate-y-5" id="certifications-filters">
+      <div class="bg-body-variant/50 dark:bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 dark:border-white/5 flex gap-2 shadow-2xl shadow-black/10">
+        <button 
+          class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-white cursor-pointer" 
+          data-filter="all"
+        >
+          Todos
+        </button>
+        <button 
+          class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 text-text-light hover:text-white cursor-pointer" 
+          data-filter="academic"
+        >
+          Académicas
+        </button>
+        <button 
+          class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 text-text-light hover:text-white cursor-pointer" 
+          data-filter="course"
+        >
+          Cursos y Plataformas
+        </button>
+      </div>
+    </div>
+
+    <!-- Cuadrícula de Tarjetas -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="certifications-grid">
+      {certifications.map((cert) => (
+        <div 
+          class="cert-card group bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-8 rounded-[2.5rem] border border-white/10 dark:border-white/5 opacity-0 translate-y-10 premium-transition hover:border-primary/40 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 flex flex-col justify-between"
+          data-category={cert.category}
+        >
+          <!-- Contenido Superior -->
+          <div>
+            <!-- Encabezado de la Tarjeta / Icono e ID -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-3xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden p-3 shadow-inner">
+                {cert.image ? (
+                  <img src={cert.image} alt={cert.issuer} class="w-full h-full object-contain" />
+                ) : (
+                  <iconify-icon icon={cert.icon}></iconify-icon>
+                )}
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-body-variant/50 border border-[var(--color-border)] text-text-light text-[10px] uppercase tracking-wider font-black rounded-lg">
+                {cert.date}
+              </span>
+            </div>
+
+            <!-- Título y Emisor -->
+            <h3 class="text-xl font-black text-title group-hover:text-primary transition-colors duration-300 mb-2 leading-snug">
+              {cert.title}
+            </h3>
+            <span class="text-primary/95 font-bold block text-xs tracking-wider uppercase mb-4">
+              {cert.issuer}
+            </span>
+
+            <!-- ID de Credencial -->
+            {cert.credentialId && (
+              <div class="flex items-center gap-2 mb-6 text-[10px] text-text-light bg-white/5 dark:bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl w-fit">
+                <iconify-icon icon="line-md:hash-small" class="text-primary text-xs"></iconify-icon>
+                <span class="font-mono tracking-tight font-semibold">ID: {cert.credentialId}</span>
+              </div>
+            )}
+
+            <!-- Habilidades clave -->
+            <div class="flex flex-wrap gap-1.5 mb-8">
+              {cert.skills.map(skill => (
+                <span class="px-2.5 py-1 bg-primary/5 border border-primary/5 text-text text-[9px] uppercase tracking-tight font-black rounded-md group-hover:border-primary/20 transition-colors duration-300">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Pie de Tarjeta: Enlace -->
+          {cert.url && (
+            <div class="pt-4 border-t border-[var(--color-border)]/50">
+              <a 
+                href={cert.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center gap-2 font-black text-[11px] text-primary hover:gap-4 transition-all tracking-widest uppercase"
+              >
+                Ver Credencial <iconify-icon icon="line-md:arrow-right" class="text-lg"></iconify-icon>
+              </a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const initCertifications = () => {
+    // Animación de Cabecera
+    inView("#certifications-header", () => {
+      animate(
+        "#certifications-header .section-title",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.8 }
+      );
+      animate(
+        "#certifications-header .section-subtitle",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.8, delay: 0.2 }
+      );
+    });
+
+    // Animación de Filtros
+    inView("#certifications-filters", () => {
+      animate(
+        "#certifications-filters",
+        { opacity: [0, 1], y: [0] },
+        { duration: 0.8, delay: 0.3 }
+      );
+    });
+
+    // Animación de Entrada Escalada de Tarjetas
+    inView("#certifications-grid", () => {
+      animate(
+        ".cert-card",
+        { opacity: [0, 1], y: [40, 0] },
+        { delay: stagger(0.1), duration: 0.7, easing: [0.22, 1, 0.36, 1] }
+      );
+    });
+
+    // Lógica de Filtrado con Animaciones
+    const buttons = document.querySelectorAll('.cert-filter-btn');
+    const cards = document.querySelectorAll('.cert-card');
+
+    if (buttons.length && cards.length) {
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterValue = button.getAttribute('data-filter');
+
+          // Actualizar estilos activos de los botones
+          buttons.forEach(btn => {
+            btn.classList.remove('bg-primary', 'text-white');
+            btn.classList.add('text-text-light', 'hover:text-white');
+          });
+          button.classList.add('bg-primary', 'text-white');
+          button.classList.remove('text-text-light', 'hover:text-white');
+
+          // Filtrar con animaciones de entrada/salida
+          cards.forEach((card: any) => {
+            const category = card.getAttribute('data-category');
+            if (filterValue === 'all' || category === filterValue) {
+              card.style.display = 'flex';
+              animate(
+                card, 
+                { opacity: [0, 1], scale: [0.95, 1], y: [15, 0] }, 
+                { duration: 0.4, easing: "ease-out" }
+              );
+            } else {
+              animate(
+                card, 
+                { opacity: [1, 0], scale: [1, 0.95] }, 
+                { duration: 0.2 }
+              ).finished.then(() => {
+                card.style.display = 'none';
+              });
+            }
+          });
+        });
+      });
+    }
+  };
+
+  // Carga inicial
+  initCertifications();
+
+  // Reinicializar en navegación de Astro (View Transitions)
+  document.addEventListener('astro:page-load', initCertifications);
+</script>
