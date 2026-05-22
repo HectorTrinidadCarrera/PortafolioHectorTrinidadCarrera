@@ -3,6 +3,24 @@ import data from '../data/portfolio.json';
 import ProjectCard from './ProjectCard.astro';
 import ProjectModal from './ProjectModal.astro';
 const { projects } = data;
+
+const resolvePath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('#')) return path;
+  if (path.startsWith('/')) {
+    return import.meta.env.BASE_URL + path.slice(1);
+  }
+  return import.meta.env.BASE_URL + path;
+};
+
+const resolvedProjects = projects.map(project => ({
+  ...project,
+  image: resolvePath(project.image),
+  links: {
+    ...project.links,
+    demo: resolvePath(project.links.demo)
+  }
+}));
 ---
 
 <section class="py-32" id="projects">
@@ -13,7 +31,7 @@ const { projects } = data;
     </div>
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
-      {projects.map((project, index) => (
+      {resolvedProjects.map((project, index) => (
         <div class="project-trigger cursor-pointer h-full" data-project={JSON.stringify(project)}>
           <ProjectCard {...project} index={index} />
         </div>

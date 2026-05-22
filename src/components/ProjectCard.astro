@@ -43,6 +43,15 @@ const techIconMap: Record<string, string> = {
   "GitHub": "logos:github-icon",
   "Figma": "logos:figma",
 };
+
+const resolvePath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('#')) return path;
+  if (path.startsWith('/')) {
+    return import.meta.env.BASE_URL + path.slice(1);
+  }
+  return import.meta.env.BASE_URL + path;
+};
 ---
 
 <div 
@@ -53,7 +62,7 @@ const techIconMap: Record<string, string> = {
     <!-- Project Image -->
     {image && (
       <img 
-        src={image} 
+        src={resolvePath(image)} 
         alt={title}
         loading="lazy"
         decoding="async"
@@ -105,7 +114,7 @@ const techIconMap: Record<string, string> = {
 
     <div class="flex items-center justify-between pt-4 border-t border-[var(--color-border)]/50">
       <div class="flex items-center gap-6">
-        <a href={links.demo} class="flex items-center gap-2 font-black text-xs text-primary hover:gap-4 transition-all tracking-widest">
+        <a href={resolvePath(links.demo)} class="flex items-center gap-2 font-black text-xs text-primary hover:gap-4 transition-all tracking-widest">
           EXPLORAR <iconify-icon icon="line-md:arrow-right" class="text-lg"></iconify-icon>
         </a>
       </div>

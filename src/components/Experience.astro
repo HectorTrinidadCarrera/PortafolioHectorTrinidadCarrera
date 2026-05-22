@@ -1,6 +1,15 @@
 ---
 import data from '../data/portfolio.json';
 const { experience, education } = data.about;
+
+const resolvePath = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('#')) return path;
+  if (path.startsWith('/')) {
+    return import.meta.env.BASE_URL + path.slice(1);
+  }
+  return import.meta.env.BASE_URL + path;
+};
 ---
 
 <section class="section relative overflow-hidden" id="qualification">
@@ -55,7 +64,7 @@ const { experience, education } = data.about;
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                       <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
                         {item.image ? (
-                          <img src={item.image} alt={item.company || item.institution} class="w-full h-full object-cover" />
+                          <img src={resolvePath(item.image)} alt={item.company || item.institution} class="w-full h-full object-cover" />
                         ) : item.svg ? (
                           <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
                         ) : (
@@ -97,7 +106,7 @@ const { experience, education } = data.about;
                     <div class={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                       <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
                         {item.image ? (
-                          <img src={item.image} alt={item.company || item.institution} class="w-full h-full object-cover" />
+                          <img src={resolvePath(item.image)} alt={item.company || item.institution} class="w-full h-full object-cover" />
                         ) : item.svg ? (
                           <div class="w-8 h-8 flex items-center justify-center" set:html={item.svg} />
                         ) : (

@@ -11,7 +11,7 @@ const { description, experience } = data.about;
     <div class="flex justify-center" data-aos="fade-right">
       <div class="relative w-72 h-80 md:w-80 md:h-[400px] flex items-end profile-mask">
         <img 
-          src="/images/hector-profile.png" 
+          src={import.meta.env.BASE_URL + "images/hector-profile.png"} 
           alt={data.profile.name} 
           loading="lazy"
           decoding="async"
