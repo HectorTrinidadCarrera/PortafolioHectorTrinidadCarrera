@@ -6,8 +6,8 @@ const { services } = data;
 <section class="section relative overflow-hidden" id="services">
   <div class="container relative z-10">
     <div class="text-center mb-16">
-      <h2 class="section-title mb-2" data-aos="fade-up">Servicios</h2>
-      <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100"
+      <h2 class="section-title mb-2" data-aos="fade-up" data-i18n="services_title">Servicios</h2>
+      <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="services_subtitle"
         >Lo que ofrezco para tus proyectos</span
       >
     </div>
@@ -16,9 +16,10 @@ const { services } = data;
       {
         services.map((service, index) => (
           <div
-            class="bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-10 rounded-[2.5rem] border border-white/10 dark:border-white/5 flex flex-col items-center text-center gap-6 premium-transition hover:border-primary/40 hover:bg-primary/5 dark:hover:bg-primary/10 hover:-translate-y-2 hover:scale-[1.02] group shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-primary/20 will-change-transform"
+            class="glass-card p-10 flex flex-col items-center text-center gap-6 group hover:-translate-y-2"
             data-aos="fade-up"
             data-aos-delay={index * 150}
+            data-tilt
           >
             <div class="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-4xl text-primary premium-transition group-hover:bg-primary group-hover:text-white group-hover:-rotate-6 group-hover:scale-110 shadow-lg shadow-primary/5 will-change-transform">
               {service.svg ? (
@@ -38,7 +39,7 @@ const { services } = data;
             </div>
 
             <div class="pt-4 mt-auto">
-              <span class="text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 premium-transition">
+              <span class="text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 premium-transition" data-i18n="services_consult">
                 Consultar{" "}
                 <iconify-icon icon="line-md:arrow-right" class="text-lg" />
               </span>

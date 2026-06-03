@@ -1,4 +1,4 @@
-{
+﻿{
   "profile": {
     "name": "Hector Trinidad Carrera",
     "title": "Creative Developer",
@@ -400,6 +400,36 @@
   },
   "certifications": [
     {
+      "title": "Introduction to AI Agents",
+      "issuer": "DataCamp",
+      "date": "2026",
+      "credentialId": "48076028",
+      "icon": "simple-icons:datacamp",
+      "url": "/certificados/certificate_Agentes_IA.pdf",
+      "category": "course",
+      "skills": ["AI Agents", "Python", "Artificial Intelligence"]
+    },
+    {
+      "title": "Intermediate Git",
+      "issuer": "DataCamp",
+      "date": "2026",
+      "credentialId": "48087826",
+      "icon": "logos:git-icon",
+      "url": "/certificados/certificate_Intermediate Git.pdf",
+      "category": "course",
+      "skills": ["Git", "Version Control", "GitHub"]
+    },
+    {
+      "title": "Blockchain",
+      "issuer": "Universidad Tecnológica de Tecamachalco",
+      "date": "2023",
+      "icon": "logos:blockchain",
+      "image": "/images/Logo/Uttecam.png",
+      "url": "/certificados/_Certificado  Hector.png",
+      "category": "course",
+      "skills": ["Blockchain", "Solidity, Wallet"]
+    },
+    {
       "title": "Título Profesional - TSU en Tecnologías de la Información",
       "issuer": "Universidad Tecnológica de Tecamachalco",
       "date": "2026",
@@ -415,7 +445,7 @@
       "issuer": "Digyto Solutions (S.A. de C.V.) / UTTECAM",
       "date": "2026",
       "icon": "line-md:briefcase-twotone",
-      "image": "/images/Logo/Uttecam.png",
+      "image": "/images/Logo/Digyto.jpg",
       "url": "/certificados/Héctor Trinidad Carrera.pdf",
       "category": "academic",
       "skills": ["Desarrollo", "Gestión de Software", "Digyto"]

@@ -18,38 +18,36 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- Google Fonts: Poppins -->
+		<!-- Google Fonts: Inter & Space Grotesk -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 		
-    <!-- Iconify Framework -->
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    
-    <!-- AOS Library -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<!-- Phosphor Icons -->
+		<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+		<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css">
+		<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
+
+		<!-- Devicon -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+		<!-- Iconify Framework -->
+		<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+		
+		<!-- AOS Library -->
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 		<title>{title}</title>
 		
 		<script is:inline>
-			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('selected-theme')) {
-					return localStorage.getItem('selected-theme');
-				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
-			})();
-		
-			if (theme === 'dark') {
-				document.documentElement.classList.add('dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-			}
+			// Force dark mode
+			document.documentElement.classList.add('dark');
 		</script>
 	</head>
-	<body class="font-sans antialiased">
+	<body class="font-sans antialiased bg-[#080808] text-[#a0a0b8]">
+		<!-- ========== PARTICLE CANVAS ========== -->
+		<canvas id="particle-canvas"></canvas>
+
 		<slot />
 
 		<!-- AOS JS -->
@@ -60,6 +58,289 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 				offset: 100,
 				once: true,
 			});
+
+			// --- Core reference page scripts: Particles, i18n Translation & 3D card tilt ---
+
+			// 1. Interactive Canvas Background
+			function initParticles() {
+				const canvas = document.getElementById('particle-canvas');
+				if (!canvas) return;
+				const ctx = canvas.getContext('2d');
+				let width, height;
+				let particles = [];
+				let mouse = { x: null, y: null, radius: 150 };
+				const PARTICLE_COUNT = 60;
+				const CONNECTION_DIST = 120;
+
+				function resize() {
+					width = canvas.width = window.innerWidth;
+					height = canvas.height = window.innerHeight;
+				}
+
+				class Particle {
+					constructor() {
+						this.x = Math.random() * width;
+						this.y = Math.random() * height;
+						this.vx = (Math.random() - 0.5) * 0.4;
+						this.vy = (Math.random() - 0.5) * 0.4;
+						this.radius = Math.random() * 2 + 0.5;
+						this.opacity = Math.random() * 0.4 + 0.1;
+					}
+
+					update() {
+						this.x += this.vx;
+						this.y += this.vy;
+						if (this.x < 0 || this.x > width) this.vx *= -1;
+						if (this.y < 0 || this.y > height) this.vy *= -1;
+
+						if (mouse.x !== null) {
+							const dx = this.x - mouse.x;
+							const dy = this.y - mouse.y;
+							const dist = Math.sqrt(dx * dx + dy * dy);
+							if (dist < mouse.radius) {
+								const force = (mouse.radius - dist) / mouse.radius;
+								this.x += dx * force * 0.02;
+								this.y += dy * force * 0.02;
+							}
+						}
+					}
+
+					draw() {
+						ctx.beginPath();
+						ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+						ctx.fillStyle = `rgba(163, 117, 255, ${this.opacity})`;
+						ctx.fill();
+					}
+				}
+
+				function createParticles() {
+					particles = [];
+					const count = Math.min(PARTICLE_COUNT, Math.floor((width * height) / 20000));
+					for (let i = 0; i < count; i++) {
+						particles.push(new Particle());
+					}
+				}
+
+				function drawConnections() {
+					for (let i = 0; i < particles.length; i++) {
+						for (let j = i + 1; j < particles.length; j++) {
+							const dx = particles[i].x - particles[j].x;
+							const dy = particles[i].y - particles[j].y;
+							const dist = Math.sqrt(dx * dx + dy * dy);
+							if (dist < CONNECTION_DIST) {
+								const opacity = (1 - dist / CONNECTION_DIST) * 0.12;
+								ctx.beginPath();
+								ctx.moveTo(particles[i].x, particles[i].y);
+								ctx.lineTo(particles[j].x, particles[j].y);
+								ctx.strokeStyle = `rgba(163, 117, 255, ${opacity})`;
+								ctx.lineWidth = 0.5;
+								ctx.stroke();
+							}
+						}
+					}
+				}
+
+				function animate() {
+					ctx.clearRect(0, 0, width, height);
+					particles.forEach(p => {
+						p.update();
+						p.draw();
+					});
+					drawConnections();
+					requestAnimationFrame(animate);
+				}
+
+				resize();
+				createParticles();
+				animate();
+
+				window.addEventListener('resize', () => { resize(); createParticles(); });
+				window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+				window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+			}
+
+			// 2. 3D Card Hover (Tilt) Effect
+			function initTiltCards() {
+				const cards = document.querySelectorAll('[data-tilt]');
+				cards.forEach(card => {
+					card.addEventListener('mousemove', (e) => {
+						const rect = card.getBoundingClientRect();
+						const x = e.clientX - rect.left;
+						const y = e.clientY - rect.top;
+						const centerX = rect.width / 2;
+						const centerY = rect.height / 2;
+						const rotateX = ((y - centerY) / centerY) * -5;
+						const rotateY = ((x - centerX) / centerX) * 5;
+						card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+					});
+					card.addEventListener('mouseleave', () => {
+						card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+					});
+				});
+			}
+
+			// 3. Translation Dictionary & Engine
+			const translations = {
+				es: {
+					nav_about: "Sobre mí",
+					nav_skills: "Habilidades",
+					nav_languages: "Idiomas",
+					nav_projects: "Proyectos",
+					nav_resume: "Trayectoria",
+					nav_contact: "Contacto",
+					nav_services: "Servicios",
+					nav_certifications: "Certificaciones",
+					hero_greeting: "Hola, soy",
+					hero_cta_contact: "<i class=\"ph ph-paper-plane-tilt\"></i> Contactar",
+					hero_cta_projects: "<i class=\"ph ph-code\"></i> Ver proyectos",
+					hero_cta_cv: "Descargar CV",
+					hero_description: "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.",
+					about_title: "Sobre mí",
+					about_subtitle: "Mi presentación",
+					about_description: "Soy un desarrollador enfocado en los detalles y en la optimización de rendimiento. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos que resuelvan problemas reales.",
+					about_card_exp_title: "Experiencia",
+					about_card_exp_subtitle: "2+ Años",
+					about_card_proj_title: "Completado",
+					about_card_proj_subtitle: "15+ Proyectos",
+					about_card_support_title: "Soporte",
+					about_card_support_subtitle: "24/7 Online",
+					about_more_btn: "Saber más <i class=\"ph ph-arrow-right\"></i>",
+					skills_title: "Habilidades Técnicas",
+					skills_subtitle: "Mi stack tecnológico principal",
+					projects_title: "Proyectos",
+					projects_subtitle: "Mis trabajos recientes",
+					projects_explore: "EXPLORAR <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\"></iconify-icon>",
+					experience_title: "Trayectoria",
+					experience_subtitle: "Mi camino profesional y académico",
+					experience_tab: "<iconify-icon icon=\"line-md:briefcase-twotone\" class=\"text-lg\"></iconify-icon> Experiencia",
+					education_tab: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"w-5 h-5 inline\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg> Educación",
+					services_title: "Servicios",
+					services_subtitle: "Lo que ofrezco",
+					services_consult: "Consultar <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\" />",
+					certifications_title: "Certificaciones y Logros",
+					certifications_subtitle: "Mis credenciales profesionales y académicas",
+					cert_filter_all: "Todos",
+					cert_filter_academic: "Académicas",
+					cert_filter_courses: "Cursos y Plataformas",
+					cert_view_link: "Ver Credencial <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\"></iconify-icon>",
+					contact_title: "Contacto",
+					contact_subtitle: "Ponte en contacto",
+					contact_talk_title: "¡Hablemos!",
+					contact_talk_text: "Si tienes un proyecto en mente o solo quieres saludar, no dudes en contactarme.",
+					contact_name_placeholder: "Nombre",
+					contact_email_placeholder: "Correo electrónico",
+					contact_message_placeholder: "Mensaje",
+					contact_send: "Enviar Mensaje",
+					footer_text: "Todos los derechos reservados."
+				},
+				en: {
+					nav_about: "About me",
+					nav_skills: "Skills",
+					nav_languages: "Languages",
+					nav_projects: "Projects",
+					nav_resume: "Timeline",
+					nav_contact: "Contact",
+					nav_services: "Services",
+					nav_certifications: "Certifications",
+					hero_greeting: "Hi, I am",
+					hero_cta_contact: "<i class=\"ph ph-paper-plane-tilt\"></i> Contact me",
+					hero_cta_projects: "<i class=\"ph ph-code\"></i> View projects",
+					hero_cta_cv: "Download CV",
+					hero_description: "Passionate about creating unique and functional digital experiences. Specialized in modern frontend development and responsive design.",
+					about_title: "About me",
+					about_subtitle: "My introduction",
+					about_description: "I am a detail-oriented developer focused on performance optimization. I love learning new technologies and applying them to solve real-world problems.",
+					about_card_exp_title: "Experience",
+					about_card_exp_subtitle: "2+ Years",
+					about_card_proj_title: "Completed",
+					about_card_proj_subtitle: "15+ Projects",
+					about_card_support_title: "Support",
+					about_card_support_subtitle: "24/7 Online",
+					about_more_btn: "Know more <i class=\"ph ph-arrow-right\"></i>",
+					skills_title: "Technical Skills",
+					skills_subtitle: "My main tech stack",
+					projects_title: "Projects",
+					projects_subtitle: "My recent work",
+					projects_explore: "EXPLORE <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\"></iconify-icon>",
+					experience_title: "Timeline",
+					experience_subtitle: "My professional & academic journey",
+					experience_tab: "<iconify-icon icon=\"line-md:briefcase-twotone\" class=\"text-lg\"></iconify-icon> Experience",
+					education_tab: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"w-5 h-5 inline\"><path fill=\"currentColor\" d=\"M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9zm6.82 6L12 12.72L5.18 9L12 5.28zM17 16l-5 2.72L7 16v-3.73L12 15l5-2.73z\"/></svg> Education",
+					services_title: "Services",
+					services_subtitle: "What I offer",
+					services_consult: "Inquire <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\" />",
+					certifications_title: "Certifications and Achievements",
+					certifications_subtitle: "My professional & academic credentials",
+					cert_filter_all: "All",
+					cert_filter_academic: "Academic",
+					cert_filter_courses: "Courses & Platforms",
+					cert_view_link: "View Credential <iconify-icon icon=\"line-md:arrow-right\" class=\"text-lg\"></iconify-icon>",
+					contact_title: "Contact",
+					contact_subtitle: "Get in touch",
+					contact_talk_title: "Let's talk!",
+					contact_talk_text: "If you have a project in mind or just want to say hi, feel free to contact me.",
+					contact_name_placeholder: "Name",
+					contact_email_placeholder: "Email address",
+					contact_message_placeholder: "Message",
+					contact_send: "Send Message",
+					footer_text: "All rights reserved."
+				}
+			};
+
+
+
+
+			function applyLanguage(lang) {
+				const t = translations[lang];
+				if (!t) return;
+				document.documentElement.lang = lang;
+				document.querySelectorAll('[data-i18n]').forEach(el => {
+					const key = el.getAttribute('data-i18n');
+					if (t[key]) {
+						if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+							el.setAttribute('placeholder', t[key]);
+						} else {
+							el.innerHTML = t[key];
+						}
+					}
+				});
+				// Dispatch custom event to notify other components (e.g. Hero typed text)
+				window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
+			}
+
+			function initLanguage() {
+				let currentLang = localStorage.getItem('portfolio-lang') || 'es';
+				applyLanguage(currentLang);
+
+				const toggleBtn = document.getElementById('lang-toggle');
+				const label = document.getElementById('lang-label');
+				if (label) label.textContent = currentLang === 'es' ? 'EN' : 'ES';
+
+				if (toggleBtn) {
+					// Replace click listener safely
+					const newToggle = toggleBtn.cloneNode(true);
+					toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+					
+					newToggle.addEventListener('click', () => {
+						currentLang = currentLang === 'es' ? 'en' : 'es';
+						localStorage.setItem('portfolio-lang', currentLang);
+						if (label) label.textContent = currentLang === 'es' ? 'EN' : 'ES';
+						applyLanguage(currentLang);
+					});
+				}
+			}
+
+			function runAllScripts() {
+				initParticles();
+				initTiltCards();
+				initLanguage();
+			}
+
+			// Run on load
+			runAllScripts();
+
+			// Run on navigation
+			document.addEventListener('astro:page-load', runAllScripts);
 		</script>
 	</body>
 </html>

@@ -1,61 +1,84 @@
 @import "tailwindcss";
 
 @theme {
-  /* Common */
-  --color-primary: #6e57e0;
-  --color-primary-alt: #5a43cb;
-  --font-display: "Poppins", sans-serif;
+  /* Design System — Víctor Ruiz Esteban inspired portfolio */
+  --color-primary: #a375ff;
+  --color-primary-alt: #8150e6;
+  --color-primary-light: #c8abff;
+  --font-display: "Space Grotesk", "Poppins", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
-  /* Light Theme (Default) */
-  --color-title: #242329;
-  --color-text: #6d6a7c;
-  --color-text-light: #a19fad;
-  --color-body: #fbfbfe;
-  --color-container: #fff;
-  --color-border: #e2e8f0;
+  /* Theme (Dark Mode only) */
+  --color-title: #e8e8f0;
+  --color-text: #a0a0b8;
+  --color-text-light: #6a6a80;
+  --color-body: #080808;
+  --color-container: #121212;
+  --color-border: rgba(255, 255, 255, 0.06);
 }
 
 @layer base {
-  .dark {
-    --color-title: #ffffff;
-    --color-text: #a19fad;
-    --color-text-light: #706f7b;
-    --color-body: #0b0b0b;
-    --color-container: #151515;
-    --color-border: rgba(255, 255, 255, 0.05);
+  /* Force dark mode variables even if dark class is not on html */
+  :root {
+    --color-title: #e8e8f0;
+    --color-text: #a0a0b8;
+    --color-text-light: #6a6a80;
+    --color-body: #080808;
+    --color-container: #121212;
+    --color-border: rgba(255, 255, 255, 0.06);
+
+    /* Target specific extra variables */
+    --accent-glow: rgba(163, 117, 255, 0.15);
+    --border-color-hover: rgba(163, 117, 255, 0.3);
+    --shadow-glow: 0 0 30px rgba(163, 117, 255, 0.15);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary-alt) var(--color-container);
   }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+  html::-webkit-scrollbar-track {
+    background: var(--color-body);
+  }
+  html::-webkit-scrollbar-thumb {
+    background: var(--color-primary-alt);
+    border-radius: 4px;
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+
   body {
     @apply bg-[var(--color-body)] text-[var(--color-text)] font-sans antialiased transition-colors duration-300;
+    overflow-x: hidden;
   }
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
     @apply text-[var(--color-title)] font-semibold font-display transition-colors duration-300;
   }
 }
 
 /* Custom Glow Effects */
 .glow-purple {
-  background: radial-gradient(circle, rgba(110, 87, 224, 0.4) 0%, rgba(110, 87, 224, 0) 70%);
-  filter: blur(40px);
-  animation: pulse-glow 4s ease-in-out infinite;
-  opacity: 0.5;
-}
-
-.dark .glow-purple {
-  opacity: 0.8;
+  background: radial-gradient(circle, rgba(163, 117, 255, 0.3) 0%, rgba(163, 117, 255, 0) 70%);
+  filter: blur(45px);
+  animation: pulse-glow 6s ease-in-out infinite;
+  opacity: 0.7;
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
+  0%, 100% { opacity: 0.6; transform: scale(1); }
   50% { opacity: 0.8; transform: scale(1.1); }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-15px); }
 }
 
 .animate-float {
@@ -65,7 +88,7 @@
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -74,61 +97,72 @@
 }
 
 .animate-reveal {
-  animation: fade-in-up 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @layer components {
   .section {
-    @apply py-12 md:py-20;
+    @apply py-16 md:py-24 relative;
   }
 
   .section-title {
-    @apply text-4xl font-bold text-center mb-4;
+    @apply text-3xl md:text-4xl font-bold flex items-center justify-center gap-4 mb-4 font-display text-[var(--color-title)];
   }
   .section-subtitle {
-    @apply block text-sm text-center mb-10 text-[var(--color-text-light)];
+    @apply block text-sm text-center mb-12 text-[var(--color-text-light)] uppercase tracking-wider font-semibold;
   }
   
   .btn {
-    @apply inline-flex items-center gap-2 px-6 py-4 bg-[var(--color-primary)] text-white rounded-xl font-medium transition-all hover:bg-[var(--color-primary-alt)] hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-[#b088ff] to-[#8c5df0] text-white rounded-2xl font-semibold transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-white border border-[var(--color-border)] rounded-2xl font-semibold transition-all duration-300 hover:bg-white/5 hover:border-[var(--color-primary-light)]/40 hover:scale-[1.02] active:scale-[0.98];
   }
   
   .container {
     @apply max-w-5xl mx-auto px-6;
   }
 
-  /* Bedimcode specific card style */
+  /* Glassmorphism card style from target site */
+  .glass-card, .card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all var(--transition-base);
+  }
+
+  .glass-card:hover, .card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border-color-hover);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Bedimcode specific card style compatibility */
   .card {
-    @apply bg-container p-8 rounded-3xl shadow-sm border border-[var(--color-border)] transition-all duration-400 hover:shadow-xl hover:translate-y-[-4px];
+    @apply p-8;
   }
 
   .premium-transition {
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
-/* Theme Toggle Animation (Circle with Blur) */
-::view-transition-old(root) {
-  animation: none;
-  z-index: 1;
+/* Tilt effect style helper */
+[data-tilt] {
+  will-change: transform;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
 }
 
-::view-transition-new(root) {
-  z-index: 999;
-  animation: 1.2s cubic-bezier(0.4, 0, 0.2, 1) both circle-expand;
-}
-
-@keyframes circle-expand {
-  from {
-    clip-path: circle(0% at var(--x) var(--y));
-  }
-  to {
-    clip-path: circle(150% at var(--x) var(--y));
-  }
-}
-
-/* Deshabilitar animaciones predeterminadas de View Transitions */
-::view-transition-old(root),
-::view-transition-new(root) {
-  mix-blend-mode: normal;
-}
+/* Particle Canvas style */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}

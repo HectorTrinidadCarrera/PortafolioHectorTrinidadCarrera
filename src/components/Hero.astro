@@ -1,163 +1,181 @@
 ---
 import data from '../data/portfolio.json';
-const { name, title, bio } = data.profile;
+const { name } = data.profile;
 const { socials } = data;
 ---
 
-<section class="min-h-screen flex items-center relative overflow-hidden" id="home">
+<section class="min-h-screen flex items-center relative overflow-hidden pt-20" id="home">
   <!-- Top Left Glow -->
-  <div class="absolute -top-20 -left-20 w-96 h-96 glow-purple opacity-50"></div>
+  <div class="absolute -top-20 -left-20 w-96 h-96 glow-purple opacity-40"></div>
+  <!-- Bottom Right Glow -->
+  <div class="absolute bottom-10 right-10 w-80 h-80 glow-purple opacity-30"></div>
 
-  <div class="container grid grid-cols-1 lg:grid-cols-3 gap-10 items-center relative z-10 py-12">
+  <div class="container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
     
-    <!-- Left Content -->
-    <div class="order-2 lg:order-1 flex flex-col items-center lg:items-start" id="hero-left">
-      <div class="text-center lg:text-left">
-        <span class="text-primary font-medium tracking-wider text-lg opacity-0">Hola, soy</span>
-        <h1 class="text-6xl md:text-8xl font-black leading-none mt-2 opacity-0">
-          {name.split(' ')[0]} <br/> 
-          <span class="text-title">{name.split(' ').slice(1).join(' ')}</span>
-        </h1>
-        
-        <!-- Socials below name -->
-        <div class="flex gap-8 pt-8 justify-center lg:justify-start text-2xl text-text-light" id="hero-socials">
-          <a href={socials.linkedin} class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125" target="_blank" rel="noopener noreferrer"><iconify-icon icon="line-md:linkedin"></iconify-icon></a>
-          <a href={socials.github} class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125" target="_blank" rel="noopener noreferrer"><iconify-icon icon="line-md:github-loop"></iconify-icon></a>
-          <a href={socials.twitter} class="social-icon opacity-0 hover:text-primary transition-all hover:scale-125" target="_blank" rel="noopener noreferrer"><iconify-icon icon="line-md:twitter-x"></iconify-icon></a>
-        </div>
+    <!-- Left Content: Texts, CTAs, Socials (Col: 7) -->
+    <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1" id="hero-left">
+      <p class="hero-greeting text-primary font-medium tracking-widest text-lg uppercase opacity-0" data-i18n="hero_greeting">Hola, soy</p>
+      
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-display select-none mt-4 leading-tight opacity-0">
+        <span class="block text-white">Hector</span>
+        <span class="block bg-gradient-to-r from-[#b088ff] to-[#8c5df0] bg-clip-text text-transparent">Trinidad Carrera<span class="text-primary font-black">.</span></span>
+      </h1>
+      
+      <!-- Typing Subtitle -->
+      <div class="h-10 md:h-12 flex items-center justify-center lg:justify-start mt-4">
+        <p class="text-lg md:text-xl font-display font-semibold text-[var(--color-primary-light)]">
+          <span id="typing-text"></span><span class="cursor text-primary font-bold animate-pulse">|</span>
+        </p>
+      </div>
+
+      <!-- Description -->
+      <p class="text-sm md:text-base leading-relaxed text-text max-w-lg mt-4 opacity-0 transition-opacity" data-i18n="hero_description">
+        Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.
+      </p>
+
+      <!-- CTAs matching reference style and Phosphor Icons -->
+      <div class="hero-cta flex gap-4 pt-8 justify-center lg:justify-start flex-wrap opacity-0">
+        <a href="#contact" class="btn" data-i18n="hero_cta_contact">
+          <i class="ph ph-paper-plane-tilt"></i> Contactar
+        </a>
+        <a href="#projects" class="btn-outline" data-i18n="hero_cta_projects">
+          <i class="ph ph-code"></i> Ver proyectos
+        </a>
+        <a href="/certificados/Héctor Trinidad Carrera.pdf" download="Curriculum_HectorTrinidad.pdf" class="btn-outline border-primary/40 text-primary hover:bg-primary/5 hover:border-primary" style="color: var(--color-primary);">
+          <i class="ph ph-download-simple"></i> <span data-i18n="hero_cta_cv">Descargar CV</span>
+        </a>
+      </div>
+
+      <!-- Social Networks -->
+      <div class="flex gap-6 pt-10 items-center justify-center lg:justify-start" id="hero-socials">
+        <a href={socials.linkedin} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="ph ph-linkedin-logo text-xl"></i>
+        </a>
+        <a href={socials.github} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="ph ph-github-logo text-xl"></i>
+        </a>
+        <a href={`mailto:${socials.email}`} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" aria-label="Email">
+          <i class="ph ph-envelope-simple text-xl"></i>
+        </a>
       </div>
     </div>
 
-    <!-- Center Image with Glow -->
-    <div class="order-1 lg:order-2 flex justify-center relative" id="hero-image">
-      <!-- Glow behind image -->
-      <div class="absolute inset-0 glow-purple scale-150 animate-pulse"></div>
-      
-      <!-- Entrance Animation Container (JS) -->
-      <div class="relative w-full max-w-[600px] aspect-[4/5] flex items-end profile-mask opacity-0">
-        <!-- Continuous Float Animation (CSS) -->
-        <div class="w-full h-full animate-float flex items-end">
+    <!-- Right Content: Rotating Ring Profile Picture (Col: 5) -->
+    <div class="lg:col-span-5 flex justify-center order-1 lg:order-2" id="hero-image">
+      <div class="photo-container relative w-64 h-64 sm:w-80 sm:h-80 opacity-0">
+        <!-- Profile Image Placeholder -->
+        <div class="photo-placeholder overflow-hidden rounded-full w-full h-full border border-white/10 relative z-10 animate-float bg-[#121212]">
           <img 
             src="/images/hector-profile.png" 
             alt={name} 
             loading="eager"
             decoding="async"
             fetchpriority="high"
-            class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
+            class="w-full h-full object-cover"
           />
         </div>
-      </div>
-    </div>
-
-    <!-- Right Content -->
-    <div class="order-3 lg:order-3 text-center lg:text-left" id="hero-right">
-      <div class="space-y-2">
-        <span class="text-primary font-medium tracking-wider text-lg block opacity-0">Creative</span>
-        <div class="h-[120px] md:h-[180px] flex flex-col justify-start">
-          <h2 class="text-5xl md:text-7xl font-black leading-tight text-title transition-colors min-h-[2em] opacity-0">
-            <span id="typed-text"></span>
-            <span id="cursor" class="w-1 h-10 md:h-14 bg-primary inline-block ml-1 animate-pulse align-middle"></span>
-          </h2>
-        </div>
+        <!-- Pulse Glow -->
+        <div class="photo-glow absolute inset-0 rounded-full scale-105 bg-[radial-gradient(circle,_var(--color-primary)_0%,_transparent_70%)] opacity-30 animate-pulse z-0 pointer-events-none"></div>
+        <!-- Dashed Rotating Ring -->
+        <div class="photo-ring absolute -inset-3 rounded-full border border-dashed border-primary/30 animate-[spin_40s_linear_infinite] z-0 pointer-events-none"></div>
       </div>
     </div>
   </div>
 
-  <script define:vars={{ titles: data.profile.titles }}>
-    const textElement = document.getElementById('typed-text');
-    let titleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typeSpeed = 100;
-
-    function type() {
-      const currentTitle = titles[titleIndex];
-      
-      if (isDeleting) {
-        textElement.textContent = currentTitle.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 50;
-      } else {
-        textElement.textContent = currentTitle.substring(0, charIndex + 1);
-        charIndex++;
-        typeSpeed = 100;
-      }
-
-      if (!isDeleting && charIndex === currentTitle.length) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pause at end
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        titleIndex = (titleIndex + 1) % titles.length;
-        typeSpeed = 500; // Pause before next word
-      }
-
-      setTimeout(type, typeSpeed);
-    }
-
-    // Start animation
-    if (textElement) {
-      type();
-    }
-  </script>
-
-  <script>
-    import { animate, stagger } from "motion";
-
-    // Entrance animations
-    animate("#hero-left span", { opacity: [0, 1], x: [-50, 0] }, { duration: 0.8 });
-    animate("#hero-left h1", { opacity: [0, 1], x: [-50, 0] }, { duration: 0.8, delay: 0.2 });
-    
-    animate(".social-icon", 
-      { opacity: [0, 1], y: [20, 0] }, 
-      { delay: stagger(0.1, { start: 0.5 }), duration: 0.5 }
-    );
-
-    animate(".profile-mask", 
-      { opacity: [0, 1], scale: [0.8, 1], y: [50, 0] }, 
-      { duration: 1, easing: [0.22, 1, 0.36, 1] }
-    );
-
-    animate("#hero-right span", { opacity: [0, 1], x: [50, 0] }, { duration: 0.8 });
-    animate("#hero-right h2", { opacity: [0, 1], x: [50, 0] }, { duration: 0.8, delay: 0.2 });
-  </script>
-
-  <!-- Bottom Decorative elements -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-text-light opacity-30">
-    <iconify-icon icon="line-md:chevron-small-double-down" class="text-3xl"></iconify-icon>
-  </div>
+  <!-- Scroll Down indicator -->
+  <a href="#about" class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 hover:opacity-100 transition-opacity select-none z-10" aria-label="Scroll down">
+    <div class="scroll-mouse w-[26px] h-10 border border-white/40 rounded-full flex justify-center p-1.5">
+      <div class="scroll-wheel w-1 h-2 bg-primary rounded-full animate-bounce"></div>
+    </div>
+  </a>
 </section>
 
-<style>
-  @reference "../styles/global.css";
+<script>
+  // --- Client-side Typing script ---
+  const titles = {
+    es: ["Desarrollador Fullstack", "Diseñador UI/UX", "Creador Digital", "Solucionador de Problemas"],
+    en: ["Fullstack Developer", "UI/UX Designer", "Digital Creative", "Problem Solver"]
+  };
 
-  h1 {
-    font-size: clamp(3rem, 10vw, 5rem);
-  }
-  
-  h2 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
+  let currentLang = localStorage.getItem('portfolio-lang') || 'es';
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingTimeout: any;
+  const textElement = document.getElementById('typing-text');
+
+  function type() {
+    if (!textElement) return;
+    const phrases = titles[currentLang as 'es' | 'en'] || titles.es;
+    const currentPhrase = phrases[phraseIndex];
+
+    if (!isDeleting) {
+      textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typingTimeout = setTimeout(type, 2000); // Pause at end of phrase
+      } else {
+        typingTimeout = setTimeout(type, 100 + Math.random() * 50); // Speed typing
+      }
+    } else {
+      textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typingTimeout = setTimeout(type, 500); // Pause before typing next
+      } else {
+        typingTimeout = setTimeout(type, 50); // Speed deleting
+      }
+    }
   }
 
-  .profile-mask {
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  function initTypewriter() {
+    currentLang = localStorage.getItem('portfolio-lang') || 'es';
+    phraseIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+    if (textElement) textElement.textContent = '';
+    clearTimeout(typingTimeout);
+    type();
   }
 
-  .profile-mask img {
-    mask-image: linear-gradient(to bottom, black 80%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent);
+  // Listen to language change
+  window.addEventListener('languagechange', (e: any) => {
+    currentLang = e.detail.lang;
+    initTypewriter();
+  });
+
+  // Start typewriter on load
+  initTypewriter();
+</script>
+
+<script>
+  import { animate, stagger } from "motion";
+
+  function initHeroAnimations() {
+    // Entrance animations
+    animate("#hero-left .hero-greeting", { opacity: [0, 1], x: [-40, 0] }, { duration: 0.7 });
+    animate("#hero-left h1", { opacity: [0, 1], x: [-40, 0] }, { duration: 0.7, delay: 0.2 });
+    animate("#hero-left p:not(.hero-greeting)", { opacity: [0, 1], x: [-40, 0] }, { duration: 0.7, delay: 0.3 });
+    animate(".hero-cta", { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, delay: 0.4 });
+    
+    animate(".social-icon", 
+      { opacity: [0, 1], y: [15, 0] }, 
+      { delay: stagger(0.08, { start: 0.55 }), duration: 0.4 }
+    );
+
+    animate(".photo-container", 
+      { opacity: [0, 1], scale: [0.85, 1], y: [40, 0] }, 
+      { duration: 0.9, easing: [0.22, 1, 0.36, 1], delay: 0.1 }
+    );
   }
 
-  .profile-mask::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to top, var(--color-body), transparent);
-    z-index: 20;
-    pointer-events: none;
-  }
-</style>
+  // Run on initial load
+  initHeroAnimations();
+
+  // Re-run on View Transitions page load
+  document.addEventListener('astro:page-load', initHeroAnimations);
+</script>
+

@@ -4,42 +4,55 @@ const { description, experience } = data.about;
 ---
 
 <section class="section" id="about">
-  <h2 class="section-title" data-aos="fade-up">Sobre Mí</h2>
-  <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Mi introducción</span>
+  <h2 class="section-title" data-aos="fade-up" data-i18n="about_title">Sobre Mí</h2>
+  <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="about_subtitle">Mi presentación</span>
 
   <div class="container grid md:grid-cols-2 gap-10 items-center">
+    <!-- Left Column: Glowing circular card image -->
     <div class="flex justify-center" data-aos="fade-right">
-      <div class="relative w-72 h-80 md:w-80 md:h-[400px] flex items-end profile-mask">
-        <img 
-          src="/images/hector-profile.png" 
-          alt={data.profile.name} 
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-        />
+      <div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+        <div class="photo-container w-full h-full relative">
+          <!-- Glassmorphic round border -->
+          <div class="photo-placeholder overflow-hidden rounded-full w-full h-full border border-white/10 relative z-10 animate-float bg-[#121212]">
+            <img 
+              src="/images/hector-profile.png" 
+              alt={data.profile.name} 
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="photo-glow absolute inset-0 rounded-full scale-105 bg-[radial-gradient(circle,_var(--color-primary)_0%,_transparent_70%)] opacity-30 animate-pulse z-0"></div>
+        </div>
       </div>
     </div>
 
+    <!-- Right Column: Info details -->
     <div class="space-y-8" data-aos="fade-left">
-      <p class="text-text leading-relaxed">
+      <p class="text-text leading-relaxed text-sm md:text-base" data-i18n="about_description">
         {description}
       </p>
 
       <div class="grid grid-cols-3 gap-4">
-        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+        <!-- Experience Card -->
+        <div class="glass-card p-4 text-center flex flex-col items-center justify-center" data-tilt>
           <iconify-icon icon="line-md:calendar" class="text-2xl text-primary block mb-1"></iconify-icon>
-          <h3 class="text-sm font-bold text-title transition-colors">Experiencia</h3>
-          <span class="text-xs text-text-light">2+ Años</span>
+          <h3 class="text-xs font-bold text-white transition-colors" data-i18n="about_card_exp_title">Experiencia</h3>
+          <span class="text-[10px] text-text-light font-semibold mt-1" data-i18n="about_card_exp_subtitle">2+ Años</span>
         </div>
-        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+        
+        <!-- Completed Projects Card -->
+        <div class="glass-card p-4 text-center flex flex-col items-center justify-center" data-tilt>
           <iconify-icon icon="line-md:clipboard-check-twotone" class="text-2xl text-primary block mb-1"></iconify-icon>
-          <h3 class="text-sm font-bold text-title transition-colors">Completado</h3>
-          <span class="text-xs text-text-light">15+ Proyectos</span>
+          <h3 class="text-xs font-bold text-white transition-colors" data-i18n="about_card_proj_title">Completado</h3>
+          <span class="text-[10px] text-text-light font-semibold mt-1" data-i18n="about_card_proj_subtitle">15+ Proyectos</span>
         </div>
-        <div class="bg-container p-4 rounded-xl shadow-sm text-center border border-[var(--color-border)]">
+        
+        <!-- Support Card -->
+        <div class="glass-card p-4 text-center flex flex-col items-center justify-center" data-tilt>
           <iconify-icon icon="line-md:phone-call-loop" class="text-2xl text-primary block mb-1"></iconify-icon>
-          <h3 class="text-sm font-bold text-title transition-colors">Soporte</h3>
-          <span class="text-xs text-text-light">24/7 Online</span>
+          <h3 class="text-xs font-bold text-white transition-colors" data-i18n="about_card_support_title">Soporte</h3>
+          <span class="text-[10px] text-text-light font-semibold mt-1" data-i18n="about_card_support_subtitle">24/7 Online</span>
         </div>
       </div>
 
@@ -52,15 +65,15 @@ const { description, experience } = data.about;
             </div>
             <div>
               <p class="text-xs text-text-light font-bold uppercase tracking-wider">{item.label}</p>
-              <p class="text-title font-medium">{item.value}</p>
+              <p class="text-title font-medium text-sm">{item.value}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div class="pt-4">
-        <a href="#contact" class="btn">
-          Saber más <iconify-icon icon="line-md:arrow-right"></iconify-icon>
+      <div class="pt-4 flex justify-center md:justify-start">
+        <a href="#contact" class="btn" data-i18n="about_more_btn">
+          Saber más <i class="ph ph-arrow-right"></i>
         </a>
       </div>
     </div>

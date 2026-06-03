@@ -12,28 +12,31 @@ const { certifications } = data;
 
   <div class="container relative z-10">
     <div id="certifications-header" class="text-center mb-12">
-      <h2 class="section-title mb-2 opacity-0">Certificaciones y Logros</h2>
-      <span class="section-subtitle opacity-0">Mis credenciales profesionales y académicas</span>
+      <h2 class="section-title mb-2 opacity-0" data-i18n="certifications_title">Certificaciones y Logros</h2>
+      <span class="section-subtitle opacity-0" data-i18n="certifications_subtitle">Mis credenciales profesionales y académicas</span>
     </div>
 
     <!-- Pestañas de Filtrado -->
     <div class="flex justify-center mb-16 opacity-0 translate-y-5" id="certifications-filters">
-      <div class="bg-body-variant/50 dark:bg-white/5 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 dark:border-white/5 flex gap-2 shadow-2xl shadow-black/10">
+      <div class="glass-card p-1.5 flex gap-2 shadow-2xl shadow-black/10">
         <button 
           class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-white cursor-pointer" 
           data-filter="all"
+          data-i18n="cert_filter_all"
         >
           Todos
         </button>
         <button 
           class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 text-text-light hover:text-white cursor-pointer" 
           data-filter="academic"
+          data-i18n="cert_filter_academic"
         >
           Académicas
         </button>
         <button 
           class="cert-filter-btn px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 text-text-light hover:text-white cursor-pointer" 
           data-filter="course"
+          data-i18n="cert_filter_courses"
         >
           Cursos y Plataformas
         </button>
@@ -44,8 +47,9 @@ const { certifications } = data;
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="certifications-grid">
       {certifications.map((cert) => (
         <div 
-          class="cert-card group bg-white/5 dark:bg-white/[0.03] backdrop-blur-md p-8 rounded-[2.5rem] border border-white/10 dark:border-white/5 opacity-0 translate-y-10 premium-transition hover:border-primary/40 hover:bg-white/10 dark:hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-primary/5 flex flex-col justify-between"
+          class="cert-card group glass-card p-8 opacity-0 translate-y-10 flex flex-col justify-between"
           data-category={cert.category}
+          data-tilt
         >
           <!-- Contenido Superior -->
           <div>
@@ -58,22 +62,22 @@ const { certifications } = data;
                   <iconify-icon icon={cert.icon}></iconify-icon>
                 )}
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-body-variant/50 border border-[var(--color-border)] text-text-light text-[10px] uppercase tracking-wider font-black rounded-lg">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/5 text-text-light text-[10px] uppercase tracking-wider font-black rounded-lg">
                 {cert.date}
               </span>
             </div>
 
             <!-- Título y Emisor -->
-            <h3 class="text-xl font-black text-title group-hover:text-primary transition-colors duration-300 mb-2 leading-snug">
+            <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors duration-300 mb-2 leading-snug">
               {cert.title}
             </h3>
-            <span class="text-primary/95 font-bold block text-xs tracking-wider uppercase mb-4">
+            <span class="text-primary/90 font-bold block text-xs tracking-wider uppercase mb-4">
               {cert.issuer}
             </span>
 
             <!-- ID de Credencial -->
             {cert.credentialId && (
-              <div class="flex items-center gap-2 mb-6 text-[10px] text-text-light bg-white/5 dark:bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-xl w-fit">
+              <div class="flex items-center gap-2 mb-6 text-[10px] text-text-light bg-white/5 border border-white/5 px-3 py-1.5 rounded-xl w-fit">
                 <iconify-icon icon="line-md:hash-small" class="text-primary text-xs"></iconify-icon>
                 <span class="font-mono tracking-tight font-semibold">ID: {cert.credentialId}</span>
               </div>
@@ -82,7 +86,7 @@ const { certifications } = data;
             <!-- Habilidades clave -->
             <div class="flex flex-wrap gap-1.5 mb-8">
               {cert.skills.map(skill => (
-                <span class="px-2.5 py-1 bg-primary/5 border border-primary/5 text-text text-[9px] uppercase tracking-tight font-black rounded-md group-hover:border-primary/20 transition-colors duration-300">
+                <span class="px-2.5 py-1 bg-white/5 border border-white/5 text-text text-[9px] uppercase tracking-tight font-bold rounded-md group-hover:border-primary/20 transition-colors duration-300">
                   {skill}
                 </span>
               ))}
@@ -91,12 +95,13 @@ const { certifications } = data;
 
           <!-- Pie de Tarjeta: Enlace -->
           {cert.url && (
-            <div class="pt-4 border-t border-[var(--color-border)]/50">
+            <div class="pt-4 border-t border-white/5">
               <a 
                 href={cert.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="flex items-center gap-2 font-black text-[11px] text-primary hover:gap-4 transition-all tracking-widest uppercase"
+                class="flex items-center gap-2 font-bold text-[11px] text-primary hover:gap-4 transition-all tracking-widest uppercase"
+                data-i18n="cert_view_link"
               >
                 Ver Credencial <iconify-icon icon="line-md:arrow-right" class="text-lg"></iconify-icon>
               </a>
