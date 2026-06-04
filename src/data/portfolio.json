@@ -1,4 +1,4 @@
-﻿{
+{
   "profile": {
     "name": "Hector Trinidad Carrera",
     "title": "Creative Developer",
@@ -111,40 +111,6 @@
     },
     {
       "id": 2,
-      "title": "E-commerce App",
-      "description": "Una tienda virtual con carrito de compras y pasarela de pagos integrada.",
-      "image": "/images/projects/image.png",
-      "technologies": [
-        "React",
-        "Node.js",
-        "MongoDB"
-      ],
-      "icon": "logos:shopify",
-      "links": {
-        "demo": "#",
-        "github": ""
-      },
-      "category": "fullstack"
-    },
-    {
-      "id": 3,
-      "title": "AI Dashboard",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
-      "image": "/images/projects/image.png",
-      "technologies": [
-        "Vue",
-        "D3.js",
-        "Firebase"
-      ],
-      "icon": "logos:openai-icon",
-      "links": {
-        "demo": "#",
-        "github": "#"
-      },
-      "category": "frontend"
-    },
-   {
-      "id": 4,
       "title": "Universidad Tecnologica de Tecamachalco",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Universidad.png",
@@ -154,15 +120,15 @@
         "Express",
         "SQL"
       ],
-   "icon": "logos:react",
+      "icon": "logos:react",
       "links": {
         "demo": "",
         "github": "https://github.com/RaulZamoraPerez/UTTECAM"
       },
       "category": "frontend"
     },
-      {
-      "id": 5,
+    {
+      "id": 3,
       "title": "Biblioteca UDEA",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/UDEA.png",
@@ -172,15 +138,15 @@
         "Express",
         "SQL"
       ],
-   "icon": "logos:nextjs-icon",
+      "icon": "logos:nextjs-icon",
       "links": {
         "demo": "",
         "github": "https://github.com/HectorTrinidadCarrera/ProyectoUDEA-Frontend-UTT"
       },
       "category": "frontend"
     },
-     {
-      "id": 6,
+    {
+      "id": 4,
       "title": "Juego Motocle UTT",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Motocle.png",
@@ -189,15 +155,15 @@
         "CSS",
         "JavaScript"
       ],
-    "icon": "logos:javascript",
+      "icon": "logos:javascript",
       "links": {
         "demo": "/images/demo/JuegoMotocle.mp4",
         "github": "https://github.com/RaulZamoraPerez/juego-UTTECAM"
       },
       "category": "frontend"
     },
-     {
-      "id": 7,
+    {
+      "id": 5,
       "title": "Proyecto Escolar del metodo de Eule en java",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Java.png",
@@ -205,7 +171,7 @@
         "Java",
         "Maven"
       ],
-    "icon": "logos:java",
+      "icon": "logos:java",
       "links": {
         "demo": "/images/demo/JuegoMotocle.mp4",
         "github": "https://github.com/HectorTrinidadCarrera/Java-Application"
@@ -213,7 +179,7 @@
       "category": "frontend"
     },
     {
-      "id": 8,
+      "id": 6,
       "title": "TrueklandWeb",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Truekland.png",
@@ -222,16 +188,15 @@
         "Firebase",
         "Tailwind"
       ],
-    "icon": "logos:nextjs-icon",
+      "icon": "logos:nextjs-icon",
       "links": {
         "demo": "/images/demo/TrueklandWeb.mp4",
         "github": "https://github.com/lisandro-flores/trueklandweb"
       },
       "category": "frontend"
     },
-
-     {
-      "id": 9,
+    {
+      "id": 7,
       "title": "Mia",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Mia.png",
@@ -240,16 +205,15 @@
         "Firebase",
         "Tailwind"
       ],
-    "icon": "logos:nextjs-icon",
+      "icon": "logos:nextjs-icon",
       "links": {
         "demo": "/images/demo/TrueklandWeb.mp4",
         "github": "https://github.com/TodTete/Mia"
       },
       "category": "frontend"
     },
-
-     {
-      "id": 10,
+    {
+      "id": 8,
       "title": "Dashboard-UTTECAM",
       "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
       "image": "/images/projects/Dashboard-uttecam.png",
@@ -267,7 +231,7 @@
       "category": "frontend"
     },
       {
-      "id": 11,
+      "id": 9,
       "title": "Proeycto de Spring Boot",
       "description": "Proyecto del curso de spring boot de codigofacilito.",
       "image": "/images/projects/Crud de peliculas.png",

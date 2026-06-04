@@ -313,18 +313,23 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 				applyLanguage(currentLang);
 
 				const toggleBtn = document.getElementById('lang-toggle');
-				const label = document.getElementById('lang-label');
-				if (label) label.textContent = currentLang === 'es' ? 'EN' : 'ES';
-
 				if (toggleBtn) {
-					// Replace click listener safely
+					// Replace click listener safely to avoid duplicates
 					const newToggle = toggleBtn.cloneNode(true);
 					toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+					
+					// Set initial label on the active toggle button
+					const activeLabel = newToggle.querySelector('#lang-label');
+					if (activeLabel) activeLabel.textContent = currentLang === 'es' ? 'EN' : 'ES';
 					
 					newToggle.addEventListener('click', () => {
 						currentLang = currentLang === 'es' ? 'en' : 'es';
 						localStorage.setItem('portfolio-lang', currentLang);
-						if (label) label.textContent = currentLang === 'es' ? 'EN' : 'ES';
+						
+						// Query inside the active toggle button to update the label
+						const clickLabel = newToggle.querySelector('#lang-label');
+						if (clickLabel) clickLabel.textContent = currentLang === 'es' ? 'EN' : 'ES';
+						
 						applyLanguage(currentLang);
 					});
 				}
