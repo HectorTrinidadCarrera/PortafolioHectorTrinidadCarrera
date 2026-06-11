@@ -1,4 +1,4 @@
-{
+﻿{
   "profile": {
     "name": "Hector Trinidad Carrera",
     "title": "Creative Developer",
@@ -112,7 +112,7 @@
     {
       "id": 2,
       "title": "Universidad Tecnologica de Tecamachalco",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Pagina offical de la Universidad Tecnologica de Tecamachalco.",
       "image": "/images/projects/Universidad.png",
       "technologies": [
         "React",
@@ -130,7 +130,7 @@
     {
       "id": 3,
       "title": "Biblioteca UDEA",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Sistema de gestión de biblioteca para la UDEA.",
       "image": "/images/projects/UDEA.png",
       "technologies": [
         "Next.js",
@@ -148,7 +148,7 @@
     {
       "id": 4,
       "title": "Juego Motocle UTT",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Juego sencillo para estudiantes de la UTT sobre el juego de Motocle.",
       "image": "/images/projects/Motocle.png",
       "technologies": [
         "Html",
@@ -165,7 +165,7 @@
     {
       "id": 5,
       "title": "Proyecto Escolar del metodo de Eule en java",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Proyecto Escolar del metodo de Eule en java.",
       "image": "/images/projects/Java.png",
       "technologies": [
         "Java",
@@ -181,7 +181,7 @@
     {
       "id": 6,
       "title": "TrueklandWeb",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "TruekLand es una aplicación móvil para la comunidad universitaria que facilita el trueque de artículos no utilizados, como componentes de PC, libros, accesorios y ropa.",
       "image": "/images/projects/Truekland.png",
       "technologies": [
         "Next.js",
@@ -198,7 +198,7 @@
     {
       "id": 7,
       "title": "Mia",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Mia es una aplicación web progresiva (PWA) de vanguardia diseñada para empoderar a los usuarios en el control, monitoreo y gestión de su salud física y emocional. Utilizando Inteligencia Artificial avanzada (DeepSeek), Mia actúa como una asistente personal y analista clínica que te acompaña en tu día a día de manera empática y segura.",
       "image": "/images/projects/Mia.png",
       "technologies": [
         "Next.js",
@@ -215,7 +215,7 @@
     {
       "id": 8,
       "title": "Dashboard-UTTECAM",
-      "description": "Panel de administración inteligente con visualización de datos en tiempo real.",
+      "description": "Panel de administración para la UTTECAM,.",
       "image": "/images/projects/Dashboard-uttecam.png",
       "technologies": [
         "React",
