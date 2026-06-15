@@ -314,6 +314,10 @@
       {
         "name": "SQL",
         "icon": "logos:postgresql"
+      },
+      {
+        "name": "docker",
+        "icon": "logos:docker-icon"
       }
     ],
     "tools": [
