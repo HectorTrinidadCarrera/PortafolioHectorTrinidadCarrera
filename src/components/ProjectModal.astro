@@ -62,7 +62,7 @@
 
   #modal-content {
     border-radius: 2.5rem;
-    will-change: transform, top, left, width, height, opacity;
+    will-change: transform, opacity;
     pointer-events: auto !important;
   }
 
@@ -118,17 +118,12 @@
     state.isAnimating = true;
 
     if (state.activeCard) {
-      const bounds = state.activeCard.getBoundingClientRect();
       animate(modalBody, { opacity: 0, y: 10 }, { duration: 0.1 });
-      animate("#modal-header", { height: "256px" }, { duration: 0.25 });
       animate(modalContent, {
-        top: `${bounds.top}px`,
-        left: `${bounds.left}px`,
-        x: '0%',
-        y: '0%',
-        width: `${bounds.width}px`,
-        height: `${bounds.height}px`,
-        borderRadius: '2.5rem'
+        opacity: 0,
+        scale: 0.9,
+        x: '-50%',
+        y: '-50%'
       }, { 
         duration: 0.25,
         easing: [0.22, 1, 0.36, 1]
@@ -201,17 +196,17 @@
       modal.classList.remove('hidden');
       modal.classList.add('active');
       
-      modalContent.style.opacity = '1';
-      modalContent.style.transform = 'translate(0, 0)';
-      modalContent.style.position = 'fixed';
-      modalContent.style.top = `${bounds.top}px`;
-      modalContent.style.left = `${bounds.left}px`;
-      modalContent.style.width = `${bounds.width}px`;
-      modalContent.style.height = `${bounds.height}px`;
-
       const isMobile = window.innerWidth < 768;
       const targetWidth = isMobile ? window.innerWidth * 0.92 : Math.min(window.innerWidth * 0.9, 900);
       const targetHeight = isMobile ? window.innerHeight * 0.85 : Math.min(window.innerHeight * 0.9, 850);
+
+      modalContent.style.opacity = '0';
+      modalContent.style.transform = 'translate(-50%, -50%) scale(0.9)';
+      modalContent.style.position = 'fixed';
+      modalContent.style.top = '50%';
+      modalContent.style.left = '50%';
+      modalContent.style.width = `${targetWidth}px`;
+      modalContent.style.height = `${targetHeight}px`;
 
       window.modalState.isAnimating = true;
 
@@ -219,12 +214,10 @@
       
       // Animate modal expansion with a smoother, more fluid easing
       animate(modalContent, {
-        top: '50%',
-        left: '50%',
+        opacity: [0, 1],
+        scale: [0.9, 1],
         x: '-50%',
         y: '-50%',
-        width: `${targetWidth}px`,
-        height: `${targetHeight}px`,
         borderRadius: '2.5rem'
       }, { 
         duration: 0.45,
@@ -240,10 +233,6 @@
           easing: "ease-out"
         });
       }, 150);
-
-      const headerStartHeight = 256;
-      const headerEndHeight = isMobile ? 192 : 320;
-      animate("#modal-header", { height: [`${headerStartHeight}px`, `${headerEndHeight}px`] }, { duration: 0.45 });
     };
   };
 
