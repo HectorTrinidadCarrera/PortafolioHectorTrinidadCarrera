@@ -348,6 +348,14 @@
       {
         "name": "Vercel",
         "icon": "logos:vercel-icon"
+      },
+      {
+        "name": "Ubuntu",
+        "icon": "devicon:ubuntu"
+      },
+      {
+        "name": "Debian",
+        "icon": "devicon:debian"
       }
     ],
     "design": [
