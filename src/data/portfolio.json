@@ -1,4 +1,4 @@
-﻿{
+{
   "profile": {
     "name": "Hector Trinidad Carrera",
     "title": "Creative Developer",
@@ -36,20 +36,19 @@
     "description": "Soy un desarrollador enfocado en los detalles y en la optimización de rendimiento. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos que resuelvan problemas reales.",
     "experience": [
       {
+        "company": "Portal Uttecam",
+        "role": "Desarrollador",
+        "years": "2022 - 2026",
+        "description": "Sitio institucional · React TS · +20 módulos · Miles de usuarios",
+        "image": "/images/Logo/Uttecam.png"
+      },
+      {
         "company": "Digyto Soluctions ",
         "role": "Desarrollador Frontend",
-        "years": "2023 - Presente",
+        "years": "2026",
         "description": "Desarrollo de aplicaciones web que fueron Digyconta y quiero flores ahi estuve encargadoo de frontend.",
         "icon": "line-md:laptop-twotone",
         "image": "/images/Logo/Digyto.jpg"
-      },
-      {
-        "company": "Portal Uttecam",
-        "role": "Desarrollador",
-        "years": "2024 - 2025",
-        "description": "Sitio institucional · React TS · +20 módulos · Miles de usuarios",
-        "image": "/images/Logo/Uttecam.png"
-
       }
     ],
     "education": [
@@ -245,6 +244,22 @@
         "github": "https://github.com/HectorTrinidadCarrera/CursoDeSpringBoot"
       },
       "category": "frontend"
+    },
+    {
+      "id": 10,
+      "title": "TAZAAPP",
+      "description": "TAZAAPP es una aplicación móvil de vanguardia diseñada para empoderar a los usuarios en el control, monitoreo y gestión de su salud física y emocional. Utilizando Inteligencia Artificial avanzada (DeepSeek), TAZAPP actúa como una asistente personal y analista clínica que te acompaña en tu día a día de manera empática y segura.",
+      "image": "/images/projects/TazzaApp.png",
+      "technologies": [
+        "React Native",
+        "Tailwind"
+      ],
+    "icon": "logos:react",
+      "links": {
+        "demo": "/images/demo/",
+        "github": "https://github.com/HectorTrinidadCarrera/TAZAAPP"
+      },
+      "category": "frontend"
     }
   ],
   "skills": {
@@ -282,6 +297,10 @@
         "name": "Angular",
         "icon": "logos:angular-icon",
         "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M12 2L3.1 5.16l1.4 12.18L12 22l7.5-4.66l1.4-12.18L12 2zm0 2.2l6.18 2.2l-1.04 8.95L12 18.6l-5.14-3.25l-1.04-8.95L12 4.2zm0 2.8l-4.7 10.1h1.9l.9-2.2h3.8l.9 2.2h1.9L12 7zm0 2.5l1.4 3.3h-2.8L12 9.5z\"/></svg>"
+      },
+      {
+        "name": "React Native",
+        "icon": "logos:react"
       }
     ],
     "backend": [
