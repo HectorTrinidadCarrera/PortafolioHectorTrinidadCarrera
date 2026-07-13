@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PageLoader from '../components/PageLoader.astro';
 
 interface Props {
 	title: string;
@@ -48,6 +49,8 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 		</script>
 	</head>
 	<body class="font-sans antialiased bg-[#080808] text-[#a0a0b8]">
+		<PageLoader />
+		
 		<!-- ========== PARTICLE CANVAS ========== -->
 		<canvas id="particle-canvas"></canvas>
 

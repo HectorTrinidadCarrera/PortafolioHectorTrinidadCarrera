@@ -1,26 +1,35 @@
 ---
-import data from '../data/portfolio.json';
-import ProjectCard from './ProjectCard.astro';
-import ProjectModal from './ProjectModal.astro';
+import data from "../data/portfolio.json";
+import ProjectCard from "./ProjectCard.astro";
+import ProjectModal from "./ProjectModal.astro";
 const { projects } = data;
 ---
 
 <section class="section" id="projects">
   <div class="container">
     <div class="text-center mb-16" id="projects-header">
-      <h2 class="section-title mb-2 opacity-0" data-i18n="projects_title">Mis Proyectos</h2>
-      <span class="section-subtitle opacity-0" data-i18n="projects_subtitle">"Transformando ideas en soluciones digitales elegantes"</span>
+      <h2 class="section-title mb-2 opacity-0" data-i18n="projects_title">
+        Mis Proyectos
+      </h2>
+      <span class="section-subtitle opacity-0" data-i18n="projects_subtitle"
+        >"Transformando ideas en soluciones digitales elegantes"</span
+      >
     </div>
-    
+
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-      {projects.map((project, index) => (
-        <div class="project-trigger cursor-pointer h-full" data-project={JSON.stringify(project)}>
-          <ProjectCard {...project} index={index} />
-        </div>
-      ))}
+      {
+        projects.map((project, index) => (
+          <div
+            class="project-trigger cursor-pointer h-full"
+            data-project={JSON.stringify(project)}
+          >
+            <ProjectCard {...project} index={index} />
+          </div>
+        ))
+      }
     </div>
   </div>
-  
+
   <ProjectModal />
 </section>
 
@@ -28,43 +37,67 @@ const { projects } = data;
   import { animate, inView, stagger } from "motion";
 
   const initProjects = () => {
-    const triggers = document.querySelectorAll('.project-trigger');
-    triggers.forEach(trigger => {
-      const card = trigger.querySelector('.project-card');
-      const projectData = JSON.parse(trigger.getAttribute('data-project'));
-      const cardLinks = trigger.querySelectorAll('a');
+    const triggers = document.querySelectorAll(".project-trigger");
+    triggers.forEach((trigger) => {
+      const card = trigger.querySelector(".project-card");
+      const projectData = JSON.parse(trigger.getAttribute("data-project"));
+      const cardLinks = trigger.querySelectorAll("a");
 
       // Prevent card links from opening the modal
-      cardLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+      cardLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
           e.stopPropagation();
         });
       });
 
-      trigger.addEventListener('click', (e) => {
+      trigger.addEventListener("click", (e) => {
         if (window.openProjectModal) {
           window.openProjectModal(card, projectData);
         }
       });
 
       // Hover effect
-      trigger.addEventListener('mouseenter', () => {
-        animate(card, { y: -8, scale: 1.01, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.3)" }, { duration: 0.2 });
+      trigger.addEventListener("mouseenter", () => {
+        animate(
+          card,
+          {
+            y: -8,
+            scale: 1.01,
+            boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.3)",
+          },
+          { duration: 0.2 },
+        );
       });
-      
-      trigger.addEventListener('mouseleave', () => {
-        animate(card, { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }, { duration: 0.2 });
+
+      trigger.addEventListener("mouseleave", () => {
+        animate(
+          card,
+          { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
+          { duration: 0.2 },
+        );
       });
     });
 
     // Animate header and grid
     inView("#projects-header", () => {
-      animate("#projects-header h2", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
-      animate("#projects-header p", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.1 });
+      animate(
+        "#projects-header h2",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.6 },
+      );
+      animate(
+        "#projects-header p",
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.6, delay: 0.1 },
+      );
     });
 
     inView("#projects-grid", () => {
-      animate(".project-card", { opacity: [0, 1], y: [30, 0], scale: [0.95, 1] }, { delay: stagger(0.1), duration: 0.5 });
+      animate(
+        ".project-card",
+        { opacity: [0, 1], y: [30, 0], scale: [0.95, 1] },
+        { delay: stagger(0.1), duration: 0.5 },
+      );
     });
   };
 
@@ -72,5 +105,5 @@ const { projects } = data;
   initProjects();
 
   // Re-run on navigation
-  document.addEventListener('astro:page-load', initProjects);
+  document.addEventListener("astro:page-load", initProjects);
 </script>
