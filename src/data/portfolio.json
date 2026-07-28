@@ -260,6 +260,25 @@
         "github": "https://github.com/HectorTrinidadCarrera/TAZAAPP"
       },
       "category": "frontend"
+    },
+    {
+      "id": 11,
+      "title": "SaaS Contabilidad Fiscal — Digyto",
+      "description": "Lideré la arquitectura completa de una plataforma SaaS multi-tenant a gran escala. Implementé lógica distribuida con .NET 8 (Clean Architecture), automatización de procesos SAT, procesamiento en segundo plano con Hangfire e integración avanzada de AWS S3. Se agrega el reconocimiento como evidencia ya que el proyecto fue privado para la empresa Digyto.",
+      "image": "/images/Logo/Digyto.jpg",
+      "technologies": [
+        ".NET 8",
+        "Angular 18",
+        "SAT API",
+        "AWS S3",
+        "Hangfire"
+      ],
+      "icon": "logos:dotnet",
+      "links": {
+        "demo": "/certificados/Héctor Trinidad Carrera.pdf",
+        "github": ""
+      },
+      "category": "fullstack"
     }
   ],
   "skills": {
@@ -301,6 +320,10 @@
       {
         "name": "React Native",
         "icon": "logos:react"
+      },
+      {
+        "name": "Expo",
+        "icon": "logos:expo-icon"
       }
     ],
     "backend": [
@@ -337,6 +360,22 @@
       {
         "name": "docker",
         "icon": "logos:docker-icon"
+      },
+      {
+        "name": ".NET",
+        "icon": "logos:dotnet"
+      },
+      {
+        "name": "C#",
+        "icon": "logos:c-sharp"
+      },
+      {
+        "name": "ASP.NET Core",
+        "icon": "logos:dotnet"
+      },
+      {
+        "name": "AWS S3",
+        "icon": "logos:aws-s3"
       }
     ],
     "tools": [
@@ -347,6 +386,14 @@
       {
         "name": "GitHub",
         "icon": "logos:github-icon"
+      },
+      {
+        "name": "CI/CD",
+        "icon": "logos:github-actions"
+      },
+      {
+        "name": "DevOps",
+        "icon": "logos:kubernetes"
       },
       {
         "name": "VS Code",
