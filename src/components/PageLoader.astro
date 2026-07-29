@@ -63,31 +63,36 @@ import Skeleton from './Skeleton.astro';
     const loader = document.getElementById("global-page-loader");
     if (!loader) return;
     
-    // Revisar si ya cargó antes en esta sesión para no molestarlo siempre
+    // Revisar si ya cargó antes en esta sesión
     const hasVisited = sessionStorage.getItem("portfolio_loaded_v1");
     
     if (hasVisited) {
-      // Si ya lo vio, lo ocultamos de inmediato sin animación
+      // Si ya lo vio, ocultamos de inmediato sin animación
       loader.style.display = "none";
+      document.body.style.overflow = "";
       return;
     }
     
-    // Si es la primera vez, marcamos que ya lo vio y hacemos la animación
+    // Bloquear el scroll mientras carga (Estilo YouTube)
+    document.body.style.overflow = "hidden";
+    
+    // Marcar que ya lo vio
     sessionStorage.setItem("portfolio_loaded_v1", "true");
     
-    // Tiempo de carga falso de 1.2 segundos para mostrar el skeleton
+    // Tiempo de carga del skeleton
     setTimeout(() => {
       loader.classList.add("opacity-0");
-      loader.classList.add("pointer-events-none"); // evitar clics mientras se desvanece
+      loader.classList.add("pointer-events-none"); 
       
-      // Eliminar del DOM después de que termine la transición de opacidad (700ms)
+      // Desbloquear el scroll tan pronto como empiece a desvanecerse
+      document.body.style.overflow = "";
+      
+      // Eliminar del DOM después
       setTimeout(() => {
         loader.style.display = "none";
       }, 700);
     }, 1200);
   }
 
-  // Ejecutar el loader
-  // Usamos DOMContentLoaded para la primera carga, pero en Astro a veces se ejecuta antes el script en linea
   initLoader();
 </script>

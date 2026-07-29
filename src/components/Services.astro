@@ -3,23 +3,21 @@ import data from "../data/portfolio.json";
 const { services } = data;
 ---
 
-<section class="section relative overflow-hidden" id="services">
+<section class="section relative" id="services">
   <div class="container relative z-10">
-    <div class="text-center mb-16">
+    <div class="text-center mb-16" id="services-header">
       <h2 class="section-title mb-2" data-aos="fade-up" data-i18n="services_title">Servicios</h2>
       <span class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="services_subtitle"
         >Lo que ofrezco para tus proyectos</span
       >
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="services-stack-container" class="relative w-full flex flex-col items-center gap-[15vh] pb-[15vh] mt-10">
       {
         services.map((service, index) => (
           <div
-            class="glass-card p-10 flex flex-col items-center text-center gap-6 group hover:-translate-y-2"
-            data-aos="fade-up"
-            data-aos-delay={index * 150}
-            data-tilt
+            class="service-card glass-card p-10 flex flex-col items-center text-center gap-6 group hover:-translate-y-2 w-full max-w-lg sticky opacity-0 translate-y-8"
+            style={`top: calc(20vh + ${index * 3}vh); z-index: ${10 + index};`}
           >
             <div class="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-4xl text-primary premium-transition group-hover:bg-primary group-hover:text-white group-hover:-rotate-6 group-hover:scale-110 shadow-lg shadow-primary/5 will-change-transform">
               {service.svg ? (
@@ -39,7 +37,7 @@ const { services } = data;
             </div>
 
             <div class="pt-4 mt-auto">
-              <span class="text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 premium-transition" data-i18n="services_consult">
+              <span class="text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2 cursor-pointer group-hover:gap-3 premium-transition" data-i18n="services_consult" data-cursor-text="CONTACTAR">
                 Consultar{" "}
                 <iconify-icon icon="line-md:arrow-right" class="text-lg" />
               </span>
@@ -50,3 +48,39 @@ const { services } = data;
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  function initServicesAnim() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación de entrada para las tarjetas
+    const cards = gsap.utils.toArray(".service-card");
+    
+    cards.forEach((card: any) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%", // Cuando la parte superior de la tarjeta llega al 85% de la pantalla
+          toggleActions: "play none none reverse"
+        }
+      });
+    });
+  }
+
+  // Inicializar al cargar
+  initServicesAnim();
+
+  // Reinicializar en las transiciones de página de Astro
+  document.addEventListener('astro:page-load', () => {
+    initServicesAnim();
+  });
+</script>
+
+

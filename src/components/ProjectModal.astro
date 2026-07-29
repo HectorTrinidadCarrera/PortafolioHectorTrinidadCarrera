@@ -104,49 +104,6 @@
   </div>
 </div>
 
-<style>
-  #project-modal {
-    pointer-events: none;
-  }
-  #project-modal.active {
-    pointer-events: auto;
-  }
-
-  #modal-content {
-    border-radius: 2.5rem;
-    will-change: transform, opacity;
-    pointer-events: auto !important;
-  }
-
-  #modal-body {
-    max-height: calc(100% - 192px);
-  }
-  @media (min-width: 768px) {
-    #modal-body {
-      max-height: calc(100% - 320px);
-    }
-  }
-
-  #modal-body::-webkit-scrollbar {
-    width: 6px;
-  }
-  #modal-body::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  #modal-body::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 10px;
-  }
-
-  :global(body.modal-open) {
-    overflow: hidden;
-  }
-
-  #close-modal {
-    transform: translateZ(0);
-    pointer-events: auto !important;
-  }
-</style>
 
 <script>
   import { animate } from "motion";

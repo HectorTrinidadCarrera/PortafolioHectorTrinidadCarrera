@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import 'mouse-follower/dist/mouse-follower.min.css';
 import PageLoader from '../components/PageLoader.astro';
 
 interface Props {
@@ -352,6 +353,36 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 
 			// Run on navigation
 			document.addEventListener('astro:page-load', runAllScripts);
+		</script>
+		
+		<script>
+			import gsap from "gsap";
+			import MouseFollower from "mouse-follower";
+
+			function initMouseFollower() {
+				// Only initialize on desktop/fine pointers
+				if (window.matchMedia("(pointer: fine)").matches) {
+					MouseFollower.registerGSAP(gsap);
+					
+					// Destroy existing if any (for view transitions)
+					if ((window as any).mfCursor) {
+						(window as any).mfCursor.destroy();
+					}
+
+					const cursor = new MouseFollower({
+						speed: 0.5,
+						ease: 'power3.out',
+					});
+					
+					(window as any).mfCursor = cursor;
+				}
+			}
+
+			// Run on initial load
+			initMouseFollower();
+			
+			// Run on Astro page transitions
+			document.addEventListener('astro:page-load', initMouseFollower);
 		</script>
 	</body>
 </html>

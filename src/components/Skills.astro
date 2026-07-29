@@ -1,88 +1,181 @@
 ---
 import data from '../data/portfolio.json';
 const { skills } = data;
+
+// Función para duplicar arreglos varias veces y asegurar que llenen pantallas anchas sin romperse
+const duplicate = (arr: any[]) => [...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr];
+
+const frontend = duplicate(skills.frontend || []);
+const backend = duplicate(skills.backend || []);
+const tools = duplicate(skills.tools || []);
+const design = duplicate(skills.design || []);
+
+// Iconos de apoyo para los labels
+const catIcons = {
+  frontend: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m17.674 11.408l-1.905 5.715a.6.6 0 0 1-.398.386L3.693 20.98a.6.6 0 0 1-.74-.765L6.745 8.841a.6.6 0 0 1 .34-.365l5.387-2.218a.6.6 0 0 1 .653.13l4.404 4.406a.6.6 0 0 1 .145.614M3.296 20.602l6.364-6.364"/><path d="m17.792 11.056l2.828-2.829a2 2 0 0 0 0-2.828L18.5 3.277a2 2 0 0 0-2.829 0l-2.828 2.829m-1.062 6.01a1.5 1.5 0 1 0-2.121 2.122a1.5 1.5 0 0 0 2.121-2.122"/></g></svg>',
+  backend: '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" d="m388.632 393.82l107.191-137.88l-107.139-137.762l-25.26 19.644l91.864 118.122l-91.92 118.236zm-240.053-19.639L56.712 255.999l91.917-118.176l-25.258-19.646L16.177 255.993l107.137 137.826zM330.529 16h-32.97L178.441 496h32.971z"/></svg>',
+  tools: '<iconify-icon icon="line-md:cog-loop"></iconify-icon>',
+  design: '<iconify-icon icon="line-md:image-twotone"></iconify-icon>'
+};
 ---
 
 <section class="section relative overflow-hidden" id="skills">
-  <div class="container relative z-10">
-    <div id="skills-header" class="text-center mb-16">
-      <h2 class="section-title mb-2 opacity-0" data-i18n="skills_title">Habilidades Técnicas</h2>
-      <span class="section-subtitle opacity-0" data-i18n="skills_subtitle">Mi stack tecnológico principal</span>
-    </div>
-    
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="skills-grid">
-      {Object.entries(skills).map(([category, list], catIndex) => (
-        <div class="skill-category glass-card p-8 opacity-0 translate-y-10 group" data-tilt>
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden p-2">
-              {category === 'frontend' && (
-                <div class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m17.674 11.408l-1.905 5.715a.6.6 0 0 1-.398.386L3.693 20.98a.6.6 0 0 1-.74-.765L6.745 8.841a.6.6 0 0 1 .34-.365l5.387-2.218a.6.6 0 0 1 .653.13l4.404 4.406a.6.6 0 0 1 .145.614M3.296 20.602l6.364-6.364"/><path d="m17.792 11.056l2.828-2.829a2 2 0 0 0 0-2.828L18.5 3.277a2 2 0 0 0-2.829 0l-2.828 2.829m-1.062 6.01a1.5 1.5 0 1 0-2.121 2.122a1.5 1.5 0 0 0 2.121-2.122"/></g></svg>`} />
-              )}
-              {category === 'backend' && (
-                <div class="w-full h-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path fill="currentColor" d="m388.632 393.82l107.191-137.88l-107.139-137.762l-25.26 19.644l91.864 118.122l-91.92 118.236zm-240.053-19.639L56.712 255.999l91.917-118.176l-25.258-19.646L16.177 255.993l107.137 137.826zM330.529 16h-32.97L178.441 496h32.971z"/></svg>`} />
-              )}
-              {category === 'tools' && <iconify-icon icon="line-md:cog-loop" class="text-xl"></iconify-icon>}
-              {category === 'design' && <iconify-icon icon="line-md:image-twotone" class="text-xl"></iconify-icon>}
-            </div>
-            <h3 class="text-lg font-bold text-title tracking-tight">
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </h3>
-          </div>
+  <!-- Background Decoration -->
+  <div class="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary blur-[150px] rounded-full"></div>
+  </div>
 
-          <div class="space-y-4">
-            {list.map((skill, index) => (
-              <div class="flex items-center justify-between group/item">
-                <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover/item:bg-primary/20 transition-colors">
-                    {skill.svg ? (
-                      <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
-                    ) : (
-                      <iconify-icon icon={skill.icon} class="text-lg"></iconify-icon>
-                    )}
-                  </div>
-                  <span class="text-sm font-medium text-text group-hover/item:text-primary transition-colors">{skill.name}</span>
-                </div>
-                <iconify-icon icon="line-md:confirm-circle" class="text-primary/30 group-hover/item:text-primary transition-colors"></iconify-icon>
-              </div>
-            ))}
+  <div class="container relative z-10">
+    <div id="skills-header" class="text-center mb-12">
+      <h2 class="section-title mb-2 opacity-0 translate-y-4" data-aos="fade-up" data-i18n="skills_title">Habilidades Técnicas</h2>
+      <span class="section-subtitle opacity-0 translate-y-4" data-aos="fade-up" data-aos-delay="100" data-i18n="skills_subtitle">Mi stack tecnológico principal</span>
+    </div>
+  </div>
+
+  <!-- Infinite Marquees -->
+  <div class="relative w-full flex flex-col gap-6 py-4 overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+    
+    <!-- Row 1: Frontend -->
+    <div class="flex items-center w-max animate-marquee-left hover:[animation-play-state:paused]" style={`animation-duration: ${frontend.length * 3}s;`}>
+      {frontend.map((skill, index) => (
+        <>
+          {/* Add a label every 4 items to keep the category clear */}
+          {index % 4 === 0 && (
+            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-primary/20 border-primary/30 text-primary min-w-max shrink-0">
+              <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={catIcons.frontend} />
+              <span class="text-sm font-black tracking-widest uppercase">Frontend</span>
+            </div>
+          )}
+          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-primary/10">
+            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-primary text-primary group-hover:text-white transition-all duration-300">
+              {skill.svg ? (
+                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+              ) : (
+                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+              )}
+            </div>
+            <span class="text-sm font-bold text-text group-hover:text-primary transition-colors">{skill.name}</span>
           </div>
-        </div>
+        </>
       ))}
     </div>
+
+    <!-- Row 2: Backend -->
+    <div class="flex items-center w-max animate-marquee-right hover:[animation-play-state:paused]" style={`transform: translateX(-50%); animation-duration: ${backend.length * 3}s;`}>
+      {backend.map((skill, index) => (
+        <>
+          {index % 4 === 0 && (
+            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-secondary/20 border-secondary/30 text-secondary min-w-max shrink-0">
+              <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={catIcons.backend} />
+              <span class="text-sm font-black tracking-widest uppercase">Backend</span>
+            </div>
+          )}
+          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-secondary/10">
+            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-secondary text-secondary group-hover:text-white transition-all duration-300">
+              {skill.svg ? (
+                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+              ) : (
+                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+              )}
+            </div>
+            <span class="text-sm font-bold text-text group-hover:text-secondary transition-colors">{skill.name}</span>
+          </div>
+        </>
+      ))}
+    </div>
+
+    <!-- Row 3: Herramientas -->
+    <div class="flex items-center w-max animate-marquee-left hover:[animation-play-state:paused]" style={`animation-duration: ${tools.length * 3}s;`}>
+      {tools.map((skill, index) => (
+        <>
+          {index % 4 === 0 && (
+            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-blue-500/20 border-blue-500/30 text-blue-400 min-w-max shrink-0">
+              <div class="w-5 h-5 flex items-center justify-center text-lg" set:html={catIcons.tools} />
+              <span class="text-sm font-black tracking-widest uppercase">Herramientas</span>
+            </div>
+          )}
+          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-blue-500/10">
+            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-blue-500 text-blue-400 group-hover:text-white transition-all duration-300">
+              {skill.svg ? (
+                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+              ) : (
+                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+              )}
+            </div>
+            <span class="text-sm font-bold text-text group-hover:text-blue-400 transition-colors">{skill.name}</span>
+          </div>
+        </>
+      ))}
+    </div>
+
+    <!-- Row 4: Diseño -->
+    <div class="flex items-center w-max animate-marquee-right hover:[animation-play-state:paused]" style={`transform: translateX(-50%); animation-duration: ${design.length * 3}s;`}>
+      {design.map((skill, index) => (
+        <>
+          {index % 3 === 0 && (
+            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-pink-500/20 border-pink-500/30 text-pink-400 min-w-max shrink-0">
+              <div class="w-5 h-5 flex items-center justify-center text-lg" set:html={catIcons.design} />
+              <span class="text-sm font-black tracking-widest uppercase">Diseño</span>
+            </div>
+          )}
+          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-pink-500/10">
+            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-pink-500 text-pink-400 group-hover:text-white transition-all duration-300">
+              {skill.svg ? (
+                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+              ) : (
+                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+              )}
+            </div>
+            <span class="text-sm font-bold text-text group-hover:text-pink-400 transition-colors">{skill.name}</span>
+          </div>
+        </>
+      ))}
+    </div>
+    
   </div>
 </section>
 
 <script>
-  import { animate, inView, stagger } from "motion";
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
 
-  const initSkills = () => {
-    // Header Animation
-    inView("#skills-header", () => {
-      animate(
-        "#skills-header .section-title",
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.8 }
-      );
-      animate(
-        "#skills-header .section-subtitle",
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.8, delay: 0.2 }
-      );
+  function initSkills() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to("#skills-header .section-title, #skills-header .section-subtitle", {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: "#skills-header",
+        start: "top 80%"
+      }
     });
+  }
 
-    // Grid Stagger Animation
-    inView("#skills-grid", () => {
-      animate(
-        ".skill-category",
-        { opacity: [0, 1], y: [40, 0] },
-        { delay: stagger(0.12), duration: 0.7, easing: [0.22, 1, 0.36, 1] }
-      );
-    });
-  };
-
-  // Run on initial load
   initSkills();
-
-  // Re-run on navigation (for view transitions)
   document.addEventListener('astro:page-load', initSkills);
 </script>
+
+<style>
+  .animate-marquee-left {
+    animation-name: marquee-left;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .animate-marquee-right {
+    animation-name: marquee-right;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+</style>

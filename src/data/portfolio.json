@@ -300,6 +300,10 @@
         "icon": "logos:react"
       },
       {
+        "name": "Next.js",
+        "icon": "logos:nextjs-icon"
+      },
+      {
         "name": "Astro",
         "icon": "logos:astro-icon"
       },

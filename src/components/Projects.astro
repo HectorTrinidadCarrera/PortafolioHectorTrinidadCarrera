@@ -5,8 +5,8 @@ import ProjectModal from "./ProjectModal.astro";
 const { projects } = data;
 ---
 
-<section class="section" id="projects">
-  <div class="container">
+<section class="section overflow-hidden" id="projects">
+  <div class="container mx-auto">
     <div class="text-center mb-16" id="projects-header">
       <h2 class="section-title mb-2 opacity-0" data-i18n="projects_title">
         Mis Proyectos
@@ -16,17 +16,21 @@ const { projects } = data;
       >
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-      {
-        projects.map((project, index) => (
-          <div
-            class="project-trigger cursor-pointer h-full"
-            data-project={JSON.stringify(project)}
-          >
-            <ProjectCard {...project} index={index} />
-          </div>
-        ))
-      }
+    <div id="projects-pin-container" class="relative w-full pt-10 pb-10">
+      <div id="projects-track" class="grid grid-cols-1 md:flex md:flex-nowrap gap-8 md:w-max px-4 md:px-0">
+        {
+          projects.map((project, index) => (
+            <div
+              class="project-trigger cursor-pointer h-full w-full md:w-[450px] lg:w-[500px] flex-shrink-0"
+              data-project={JSON.stringify(project)}
+              data-cursor-text="VER"
+              data-cursor-stick
+            >
+              <ProjectCard {...project} index={index} />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 
@@ -34,13 +38,19 @@ const { projects } = data;
 </section>
 
 <script>
-  import { animate, inView, stagger } from "motion";
+  import { animate, stagger } from "motion";
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
 
   const initProjects = () => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const triggers = document.querySelectorAll(".project-trigger");
     triggers.forEach((trigger) => {
       const card = trigger.querySelector(".project-card");
-      const projectData = JSON.parse(trigger.getAttribute("data-project"));
+      if (!card) return;
+      
+      const projectData = JSON.parse(trigger.getAttribute("data-project") || "{}");
       const cardLinks = trigger.querySelectorAll("a");
 
       // Prevent card links from opening the modal
@@ -50,54 +60,88 @@ const { projects } = data;
         });
       });
 
-      trigger.addEventListener("click", (e) => {
-        if (window.openProjectModal) {
-          window.openProjectModal(card, projectData);
+      trigger.addEventListener("click", () => {
+        if ((window as any).openProjectModal) {
+          (window as any).openProjectModal(card, projectData);
         }
       });
 
       // Hover effect
       trigger.addEventListener("mouseenter", () => {
-        animate(
-          card,
-          {
-            y: -8,
-            scale: 1.01,
-            boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.3)",
-          },
-          { duration: 0.2 },
+        animate(card,
+          { y: -8, scale: 1.01, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.3)" },
+          { duration: 0.2 }
         );
       });
 
       trigger.addEventListener("mouseleave", () => {
-        animate(
-          card,
+        animate(card,
           { y: 0, scale: 1, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
-          { duration: 0.2 },
+          { duration: 0.2 }
         );
       });
     });
 
-    // Animate header and grid
-    inView("#projects-header", () => {
-      animate(
-        "#projects-header h2",
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.6 },
-      );
-      animate(
-        "#projects-header p",
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.6, delay: 0.1 },
-      );
+    // --- GSAP Horizontal Scroll for Desktop ---
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const track = document.getElementById("projects-track");
+      if (!track) return;
+      
+      // Calculate how far to scroll the track
+      // scrollWidth is total width, clientWidth is visible window width within the container
+      const getScrollAmount = () => -(track.scrollWidth - window.innerWidth + 100); 
+
+      // Fade in header before pinning
+      gsap.to("#projects-header h2", { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+      gsap.to("#projects-header p", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+
+      // Animate cards fading in
+      gsap.to(".project-card", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: "#projects-pin-container",
+          start: "top 70%"
+        }
+      });
+
+      // Horizontal Pinning
+      gsap.to(track, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#projects-pin-container",
+          start: "center center",
+          end: () => `+=${track.scrollWidth}`, // Scroll distance
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        }
+      });
     });
 
-    inView("#projects-grid", () => {
-      animate(
-        ".project-card",
-        { opacity: [0, 1], y: [30, 0], scale: [0.95, 1] },
-        { delay: stagger(0.1), duration: 0.5 },
-      );
+    // Mobile fallback (Vertical Grid)
+    mm.add("(max-width: 767px)", () => {
+      // Just fade in
+      gsap.to("#projects-header h2", { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+      gsap.to("#projects-header p", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+      
+      gsap.to(".project-card", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: "#projects-pin-container",
+          start: "top 80%"
+        }
+      });
     });
   };
 
@@ -105,5 +149,9 @@ const { projects } = data;
   initProjects();
 
   // Re-run on navigation
-  document.addEventListener("astro:page-load", initProjects);
+  document.addEventListener("astro:page-load", () => {
+    // Re-initialize GSAP on page change to avoid duplicated triggers
+    ScrollTrigger.getAll().forEach(t => t.kill());
+    initProjects();
+  });
 </script>
