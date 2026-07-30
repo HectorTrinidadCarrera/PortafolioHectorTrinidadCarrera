@@ -2,14 +2,6 @@
 import data from '../data/portfolio.json';
 const { skills } = data;
 
-// Función para duplicar arreglos varias veces y asegurar que llenen pantallas anchas sin romperse
-const duplicate = (arr: any[]) => [...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr];
-
-const frontend = duplicate(skills.frontend || []);
-const backend = duplicate(skills.backend || []);
-const tools = duplicate(skills.tools || []);
-const design = duplicate(skills.design || []);
-
 // Iconos de apoyo para los labels
 const catIcons = {
   frontend: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m17.674 11.408l-1.905 5.715a.6.6 0 0 1-.398.386L3.693 20.98a.6.6 0 0 1-.74-.765L6.745 8.841a.6.6 0 0 1 .34-.365l5.387-2.218a.6.6 0 0 1 .653.13l4.404 4.406a.6.6 0 0 1 .145.614M3.296 20.602l6.364-6.364"/><path d="m17.792 11.056l2.828-2.829a2 2 0 0 0 0-2.828L18.5 3.277a2 2 0 0 0-2.829 0l-2.828 2.829m-1.062 6.01a1.5 1.5 0 1 0-2.121 2.122a1.5 1.5 0 0 0 2.121-2.122"/></g></svg>',
@@ -17,6 +9,80 @@ const catIcons = {
   tools: '<iconify-icon icon="line-md:cog-loop"></iconify-icon>',
   design: '<iconify-icon icon="line-md:image-twotone"></iconify-icon>'
 };
+
+const processSkills = (arr: any[], categoryName: string, theme: string, icon: string, id: string) => {
+  if (!arr) return [];
+  return arr.map(item => ({
+    ...item,
+    categoryName,
+    theme,
+    catIcon: icon,
+    categoryId: id
+  }));
+};
+
+const frontendRaw = processSkills(skills.frontend, 'Frontend', 'primary', catIcons.frontend, 'frontend');
+const backendRaw = processSkills(skills.backend, 'Backend', 'secondary', catIcons.backend, 'backend');
+const toolsRaw = processSkills(skills.tools, 'Herramientas', 'blue', catIcons.tools, 'tools');
+const designRaw = processSkills(skills.design, 'Diseño', 'pink', catIcons.design, 'design');
+
+const allSkillsRaw = [...frontendRaw, ...backendRaw, ...toolsRaw, ...designRaw];
+
+const duplicate = (arr: any[]) => [...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr];
+
+const desktopRow1 = duplicate(frontendRaw);
+const desktopRow2 = duplicate(backendRaw);
+const desktopRow3 = duplicate(toolsRaw);
+const desktopRow4 = duplicate(designRaw);
+
+const themeClasses: Record<string, any> = {
+  primary: {
+    label: "bg-primary/20 border-primary/30 text-primary",
+    cardHover: "hover:bg-primary/10",
+    iconBgHover: "group-hover:bg-primary text-primary group-hover:text-white",
+    textHover: "group-hover:text-primary",
+    tabActive: "bg-primary text-white",
+    tabInactive: "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+  },
+  secondary: {
+    label: "bg-secondary/20 border-secondary/30 text-secondary",
+    cardHover: "hover:bg-secondary/10",
+    iconBgHover: "group-hover:bg-secondary text-secondary group-hover:text-white",
+    textHover: "group-hover:text-secondary",
+    tabActive: "bg-secondary text-white",
+    tabInactive: "bg-secondary/10 text-secondary border-secondary/30 hover:bg-secondary/20"
+  },
+  blue: {
+    label: "bg-blue-500/20 border-blue-500/30 text-blue-400",
+    cardHover: "hover:bg-blue-500/10",
+    iconBgHover: "group-hover:bg-blue-500 text-blue-400 group-hover:text-white",
+    textHover: "group-hover:text-blue-400",
+    tabActive: "bg-blue-500 text-white",
+    tabInactive: "bg-blue-500/10 text-blue-400 border-blue-500/30 hover:bg-blue-500/20"
+  },
+  pink: {
+    label: "bg-pink-500/20 border-pink-500/30 text-pink-400",
+    cardHover: "hover:bg-pink-500/10",
+    iconBgHover: "group-hover:bg-pink-500 text-pink-400 group-hover:text-white",
+    textHover: "group-hover:text-pink-400",
+    tabActive: "bg-pink-500 text-white",
+    tabInactive: "bg-pink-500/10 text-pink-400 border-pink-500/30 hover:bg-pink-500/20"
+  }
+};
+
+const rows = [
+  { items: desktopRow1, dir: 'left', classes: 'hidden md:flex', speed: 3 },
+  { items: desktopRow2, dir: 'right', classes: 'hidden md:flex', speed: 3 },
+  { items: desktopRow3, dir: 'left', classes: 'hidden md:flex', speed: 3 },
+  { items: desktopRow4, dir: 'right', classes: 'hidden md:flex', speed: 3 }
+];
+
+const categories = [
+  { id: 'frontend', name: 'Frontend', theme: 'primary', icon: catIcons.frontend },
+  { id: 'backend', name: 'Backend', theme: 'secondary', icon: catIcons.backend },
+  { id: 'tools', name: 'Herramientas', theme: 'blue', icon: catIcons.tools },
+  { id: 'design', name: 'Diseño', theme: 'pink', icon: catIcons.design },
+];
 ---
 
 <section class="section relative overflow-hidden" id="skills">
@@ -32,106 +98,93 @@ const catIcons = {
     </div>
   </div>
 
-  <!-- Infinite Marquees -->
-  <div class="relative w-full flex flex-col gap-6 py-4 overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
-    
-    <!-- Row 1: Frontend -->
-    <div class="flex items-center w-max animate-marquee-left hover:[animation-play-state:paused]" style={`animation-duration: ${frontend.length * 3}s;`}>
-      {frontend.map((skill, index) => (
-        <>
-          {/* Add a label every 4 items to keep the category clear */}
-          {index % 4 === 0 && (
-            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-primary/20 border-primary/30 text-primary min-w-max shrink-0">
-              <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={catIcons.frontend} />
-              <span class="text-sm font-black tracking-widest uppercase">Frontend</span>
-            </div>
-          )}
-          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-primary/10">
-            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-primary text-primary group-hover:text-white transition-all duration-300">
-              {skill.svg ? (
-                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
-              ) : (
-                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
-              )}
-            </div>
-            <span class="text-sm font-bold text-text group-hover:text-primary transition-colors">{skill.name}</span>
-          </div>
-        </>
-      ))}
+  <!-- Mobile Swipe Hint -->
+  <div class="flex md:hidden justify-end px-6 mb-4 opacity-70">
+    <span class="text-xs font-semibold tracking-widest uppercase flex items-center gap-2 text-primary">
+      Desliza para ver más
+      <iconify-icon icon="line-md:arrow-right" class="text-lg animate-pulse"></iconify-icon>
+    </span>
+  </div>
+
+  <!-- Mobile View: Tabs + Swipeable Container -->
+  <div class="flex flex-col md:hidden w-full gap-6">
+    <!-- Tabs -->
+    <div class="flex overflow-x-auto snap-x gap-3 px-6 pb-2 w-full hide-scrollbar">
+      {categories.map((cat, index) => {
+        const tc = themeClasses[cat.theme];
+        return (
+          <button 
+            data-skill-tab={cat.id}
+            class={`skill-tab px-5 py-2.5 flex items-center gap-2 rounded-xl min-w-max shrink-0 snap-start border transition-all duration-300 ${index === 0 ? tc.tabActive : tc.tabInactive}`}
+          >
+            <div class="w-4 h-4 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={cat.icon} />
+            <span class="text-xs font-black tracking-widest uppercase">{cat.name}</span>
+          </button>
+        );
+      })}
     </div>
 
-    <!-- Row 2: Backend -->
-    <div class="flex items-center w-max animate-marquee-right hover:[animation-play-state:paused]" style={`transform: translateX(-50%); animation-duration: ${backend.length * 3}s;`}>
-      {backend.map((skill, index) => (
-        <>
-          {index % 4 === 0 && (
-            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-secondary/20 border-secondary/30 text-secondary min-w-max shrink-0">
-              <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={catIcons.backend} />
-              <span class="text-sm font-black tracking-widest uppercase">Backend</span>
-            </div>
-          )}
-          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-secondary/10">
-            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-secondary text-secondary group-hover:text-white transition-all duration-300">
+    <!-- Swipeable Container -->
+    <div id="skills-mobile-container" class="flex gap-4 px-6 w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
+      {allSkillsRaw.map((skill) => {
+        const tc = themeClasses[skill.theme];
+        // Start visible only for frontend
+        const isVisible = skill.categoryId === 'frontend';
+        
+        return (
+          <div 
+            data-skill-card={skill.categoryId}
+            class={`skill-mobile-card ${isVisible ? 'flex' : 'hidden'} glass-card flex-col items-center justify-center gap-4 p-6 rounded-2xl min-w-[140px] w-[140px] h-[140px] shrink-0 snap-center transition-all duration-300 border border-white/5 bg-black/20`}
+          >
+            <div class={`w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 ${tc.textHover}`}>
               {skill.svg ? (
-                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+                <div class="w-7 h-7 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
               ) : (
-                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+                <iconify-icon icon={skill.icon} class="text-3xl"></iconify-icon>
               )}
             </div>
-            <span class="text-sm font-bold text-text group-hover:text-secondary transition-colors">{skill.name}</span>
+            <span class={`text-sm font-bold text-center text-text ${tc.textHover}`}>{skill.name}</span>
           </div>
-        </>
-      ))}
+        );
+      })}
     </div>
+  </div>
 
-    <!-- Row 3: Herramientas -->
-    <div class="flex items-center w-max animate-marquee-left hover:[animation-play-state:paused]" style={`animation-duration: ${tools.length * 3}s;`}>
-      {tools.map((skill, index) => (
-        <>
-          {index % 4 === 0 && (
-            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-blue-500/20 border-blue-500/30 text-blue-400 min-w-max shrink-0">
-              <div class="w-5 h-5 flex items-center justify-center text-lg" set:html={catIcons.tools} />
-              <span class="text-sm font-black tracking-widest uppercase">Herramientas</span>
-            </div>
-          )}
-          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-blue-500/10">
-            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-blue-500 text-blue-400 group-hover:text-white transition-all duration-300">
-              {skill.svg ? (
-                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
-              ) : (
-                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
-              )}
-            </div>
-            <span class="text-sm font-bold text-text group-hover:text-blue-400 transition-colors">{skill.name}</span>
-          </div>
-        </>
-      ))}
-    </div>
+  <!-- Desktop View: Infinite Marquees -->
+  <div class="relative hidden md:flex w-full flex-col gap-6 py-4 overflow-hidden" style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+    {rows.map(row => (
+      <div 
+        class={`flex items-center w-max animate-marquee-${row.dir} hover:[animation-play-state:paused]`} 
+        style={`animation-duration: ${row.items.length * row.speed}s; ${row.dir === 'right' ? 'transform: translateX(-50%);' : ''}`}
+      >
+        {row.items.map((skill, index) => {
+          const tc = themeClasses[skill.theme];
+          const originalLength = row.items.length / 8;
+          const showLabel = index % originalLength === 0;
 
-    <!-- Row 4: Diseño -->
-    <div class="flex items-center w-max animate-marquee-right hover:[animation-play-state:paused]" style={`transform: translateX(-50%); animation-duration: ${design.length * 3}s;`}>
-      {design.map((skill, index) => (
-        <>
-          {index % 3 === 0 && (
-            <div class="glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl bg-pink-500/20 border-pink-500/30 text-pink-400 min-w-max shrink-0">
-              <div class="w-5 h-5 flex items-center justify-center text-lg" set:html={catIcons.design} />
-              <span class="text-sm font-black tracking-widest uppercase">Diseño</span>
-            </div>
-          )}
-          <div class="glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors hover:bg-pink-500/10">
-            <div class="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg group-hover:bg-pink-500 text-pink-400 group-hover:text-white transition-all duration-300">
-              {skill.svg ? (
-                <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
-              ) : (
-                <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+          return (
+            <>
+              {showLabel && (
+                <div class={`glass-card px-8 py-3 mx-3 flex items-center gap-3 rounded-xl ${tc.label} min-w-max shrink-0`}>
+                  <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={skill.catIcon} />
+                  <span class="text-sm font-black tracking-widest uppercase">{skill.categoryName}</span>
+                </div>
               )}
-            </div>
-            <span class="text-sm font-bold text-text group-hover:text-pink-400 transition-colors">{skill.name}</span>
-          </div>
-        </>
-      ))}
-    </div>
-    
+              <div class={`glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors ${tc.cardHover}`}>
+                <div class={`w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg transition-all duration-300 ${tc.iconBgHover}`}>
+                  {skill.svg ? (
+                    <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+                  ) : (
+                    <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
+                  )}
+                </div>
+                <span class={`text-sm font-bold text-text transition-colors ${tc.textHover}`}>{skill.name}</span>
+              </div>
+            </>
+          );
+        })}
+      </div>
+    ))}
   </div>
 </section>
 
@@ -152,6 +205,70 @@ const catIcons = {
         start: "top 80%"
       }
     });
+
+    // Mobile Tabs Logic
+    const tabs = document.querySelectorAll('.skill-tab');
+    const cards = document.querySelectorAll('.skill-mobile-card');
+    const container = document.getElementById('skills-mobile-container');
+
+    const themeClasses = {
+      frontend: { active: 'bg-primary text-white', inactive: 'bg-primary/10 text-primary border-primary/30 hover:bg-primary/20' },
+      backend: { active: 'bg-secondary text-white', inactive: 'bg-secondary/10 text-secondary border-secondary/30 hover:bg-secondary/20' },
+      tools: { active: 'bg-blue-500 text-white', inactive: 'bg-blue-500/10 text-blue-400 border-blue-500/30 hover:bg-blue-500/20' },
+      design: { active: 'bg-pink-500 text-white', inactive: 'bg-pink-500/10 text-pink-400 border-pink-500/30 hover:bg-pink-500/20' }
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-skill-tab');
+        
+        // Update Tabs Styles
+        tabs.forEach(t => {
+          const tId = t.getAttribute('data-skill-tab') as string;
+          const themes = (themeClasses as any)[tId];
+          
+          // Remove all active/inactive classes first
+          t.classList.remove(...themes.active.split(' '), ...themes.inactive.split(' '));
+          
+          if (t === tab) {
+            t.classList.add(...themes.active.split(' '));
+          } else {
+            t.classList.add(...themes.inactive.split(' '));
+          }
+        });
+
+        // Add a small fade-out animation to cards
+        gsap.to(cards, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.2,
+          onComplete: () => {
+            // Update Cards Visibility
+            cards.forEach(card => {
+              if (card.getAttribute('data-skill-card') === targetId) {
+                card.classList.remove('hidden');
+                card.classList.add('flex');
+              } else {
+                card.classList.add('hidden');
+                card.classList.remove('flex');
+              }
+            });
+            
+            // Reset scroll position
+            if (container) container.scrollLeft = 0;
+
+            // Fade in new cards
+            gsap.to(cards, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.3,
+              stagger: 0.05,
+              clearProps: "all"
+            });
+          }
+        });
+      });
+    });
   }
 
   initSkills();
@@ -159,6 +276,13 @@ const catIcons = {
 </script>
 
 <style>
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
   .animate-marquee-left {
     animation-name: marquee-left;
     animation-timing-function: linear;
