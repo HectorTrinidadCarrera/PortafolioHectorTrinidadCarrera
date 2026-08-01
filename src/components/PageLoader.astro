@@ -59,17 +59,19 @@ import Skeleton from './Skeleton.astro';
 </div>
 
 <script>
-  function initLoader() {
+  async function initLoader() {
     const loader = document.getElementById("global-page-loader");
     if (!loader) return;
     
     // Bloquear el scroll mientras carga (Estilo YouTube)
     document.body.style.overflow = "hidden";
     
-    // Eliminar el sessionStorage para que SIEMPRE se muestre la pantalla de carga
-    // y cubra el tiempo en que los componentes y animaciones se inicializan.
+    // Esperar a que las fuentes personalizadas estén listas para evitar FOUT y saltos de layout
+    if (document.fonts) {
+      await document.fonts.ready;
+    }
     
-    // Tiempo de carga del skeleton
+    // Tiempo mínimo de carga para que la animación del esqueleto sea fluida
     setTimeout(() => {
       loader.classList.add("opacity-0");
       loader.classList.add("pointer-events-none"); 
@@ -77,11 +79,14 @@ import Skeleton from './Skeleton.astro';
       // Desbloquear el scroll tan pronto como empiece a desvanecerse
       document.body.style.overflow = "";
       
-      // Eliminar del DOM después
+      // Disparar evento para que los componentes (como el Hero) inicien sus animaciones en este momento exacto
+      window.dispatchEvent(new Event('app:ready'));
+      
+      // Eliminar del DOM después de que termine la transición CSS (700ms)
       setTimeout(() => {
         loader.style.display = "none";
       }, 700);
-    }, 1200);
+    }, 800);
   }
 
   initLoader();

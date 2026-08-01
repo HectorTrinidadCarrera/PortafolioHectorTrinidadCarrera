@@ -199,11 +199,17 @@ const { socials } = data;
     });
   }
 
-  // Run on initial load
-  initHeroAnimations();
+  // Escuchar el evento del Onboarding (PageLoader) para empezar las animaciones justo cuando se descubre la pantalla
+  window.addEventListener('app:ready', initHeroAnimations);
 
-  // Re-run on View Transitions page load
-  document.addEventListener('astro:page-load', initHeroAnimations);
+  // Fallback para View Transitions (navegación interna)
+  document.addEventListener('astro:page-load', () => {
+    // Si el loader ya no está bloqueando la vista (ej. navegación sin recarga completa), iniciamos inmediatamente
+    const loader = document.getElementById("global-page-loader");
+    if (!loader || loader.style.display === "none" || loader.classList.contains("opacity-0")) {
+      initHeroAnimations();
+    }
+  });
 </script>
 
 <style>
