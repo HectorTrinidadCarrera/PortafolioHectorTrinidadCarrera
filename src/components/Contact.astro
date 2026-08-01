@@ -9,32 +9,44 @@ const { socials } = data;
     <h2 class="section-title" data-i18n="contact_title">Contacto</h2>
     <span class="section-subtitle" data-i18n="contact_subtitle">Ponte en contacto conmigo</span>
     
-    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start max-w-5xl mx-auto">
-      <div>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-5xl mx-auto">
+      <div class="w-full flex flex-col items-center md:items-start text-center md:text-left">
         <h3 class="text-3xl font-bold mb-4 text-[var(--color-title)] font-display" data-i18n="contact_talk_title">¡Hablemos!</h3>
         <p class="text-base text-[var(--color-text)] mb-8 leading-relaxed" data-i18n="contact_talk_text">
           Si tienes un proyecto en mente o solo quieres saludar, no dudes en contactarme.
         </p>
 
-        <div class="space-y-4">
+        <div class="flex flex-col gap-6 mt-4">
           <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
-            <i class="ph ph-linkedin-logo text-2xl"></i>
-            <span>LinkedIn</span>
+            <i class="ph ph-linkedin-logo text-3xl"></i>
+            <span class="text-lg">LinkedIn</span>
             <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
           </a>
           <a href={socials.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
-            <i class="ph ph-github-logo text-2xl"></i>
-            <span>GitHub</span>
+            <i class="ph ph-github-logo text-3xl"></i>
+            <span class="text-lg">GitHub</span>
             <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
           </a>
           <a href={"mailto:" + socials.email} class="flex items-center gap-3 text-primary font-bold hover:translate-x-2 transition-transform group">
-            <i class="ph ph-envelope-simple text-2xl"></i>
-            <span>Email</span>
+            <i class="ph ph-envelope-simple text-3xl"></i>
+            <span class="text-lg">Email</span>
             <iconify-icon icon="line-md:arrow-right-up" class="text-xl opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
           </a>
         </div>
       </div>
 
+      <div class="flex justify-center md:justify-end" data-tilt>
+        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[var(--color-container)]">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+          <img 
+            src="/images/HectorTrinidadCarrera_XD.jpeg" 
+            alt="Hector Trinidad Carrera" 
+            class="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-500"
+          />
+        </div>
+      </div>
+
+      <!-- 
       <form action="#" class="space-y-6 glass-card p-8 shadow-xl" data-tilt>
         <div class="relative">
           <label class="absolute -top-3 left-4 px-2 bg-[var(--color-body)] text-xs font-bold text-[var(--color-text-light)] transition-colors" data-i18n="contact_name_placeholder">Nombre</label>
@@ -55,6 +67,7 @@ const { socials } = data;
           <span data-i18n="contact_send">Enviar Mensaje</span>
         </ShimmerButton>
       </form>
+      -->
     </div>
   </div>
 </section>
