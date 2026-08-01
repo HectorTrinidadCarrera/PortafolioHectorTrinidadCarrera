@@ -1,5 +1,7 @@
 ---
 import data from '../data/portfolio.json';
+import { RippleButton } from './ui/ripple-button';
+import { ShimmerButton } from './ui/shimmer-button';
 const { description, experience } = data.about;
 ---
 
@@ -85,9 +87,10 @@ const { description, experience } = data.about;
       </div>
 
       <div class="pt-4 flex justify-center md:justify-start">
-        <a href="#contact" class="btn" data-i18n="about_more_btn">
+               <ShimmerButton client:load href="#contact" className="shadow-md shadow-sky-700/20 hover:shadow-lg hover:shadow-sky-700/40 font-semibold" shimmerColor="#ffffff" background="oklch(39.8% 0.195 277.366)">
+
           Saber más <i class="ph ph-arrow-right"></i>
-        </a>
+        </ShimmerButton>
       </div>
     </div>
   </div>

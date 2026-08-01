@@ -400,3 +400,30 @@ body.modal-open {
   transform: translateZ(0);
   pointer-events: auto !important;
 }
+
+/* Magic UI Ripple Button */
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(15); opacity: 0; }
+}
+.animate-ripple {
+  animation: ripple 0.6s linear;
+}
+
+/* Magic UI Shimmer Button */
+@keyframes spin-around {
+  0% { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+.animate-spin-around {
+  animation: spin-around var(--speed) infinite linear;
+}
+
+@keyframes slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+.animate-slide {
+  animation: slide var(--speed) infinite linear alternate;
+}

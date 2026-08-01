@@ -110,19 +110,26 @@ const { projects } = data;
         }
       });
 
-      // Horizontal Pinning
-      gsap.to(track, {
-        x: getScrollAmount,
-        ease: "none",
+      // Horizontal Pinning with a pause at the end
+      let tl = gsap.timeline({
         scrollTrigger: {
           trigger: "#projects-pin-container",
           start: "center center",
-          end: () => `+=${track.scrollWidth}`, // Scroll distance
+          end: () => `+=${track.scrollWidth * 1.5}`, // Increased scroll distance
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
         }
       });
+
+      tl.to(track, {
+        x: getScrollAmount,
+        ease: "none",
+        duration: 1
+      });
+      
+      // Pause at the end (15% of the scroll distance is just holding the last card)
+      tl.to({}, { duration: 0.15 });
     });
 
     // Mobile fallback (Vertical Grid)

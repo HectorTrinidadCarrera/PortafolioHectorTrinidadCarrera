@@ -1,54 +1,30 @@
 ---
-// Redesigned Navbar matching virues134-source reference
+import MagicDock from "./MagicDock";
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
+<header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="header">
   <nav class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center relative">
     <!-- Brand Logo -->
     <a href="#home" class="nav-logo relative z-50 font-display text-xl font-bold flex items-center tracking-tight text-white select-none">
       <span class="logo-bracket text-primary font-bold mr-1">&lt;</span>HT<span class="logo-bracket text-primary font-bold ml-1">/&gt;</span>
     </a>
 
-    <!-- Menu Links -->
-    <div class="flex items-center gap-6">
-      <ul class="nav-links flex gap-8" id="nav-links">
-        <li><a href="#about" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_about">Sobre mí</a></li>
-        <li><a href="#skills" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_skills">Habilidades</a></li>
-        <li><a href="#qualification" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_resume">Trayectoria</a></li>
-        <li><a href="#projects" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_projects">Proyectos</a></li>
-        <li><a href="#certifications" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_certifications">Certificaciones</a></li>
-        <li><a href="#contact" class="nav-link font-medium text-text hover:text-primary transition-colors text-sm" data-i18n="nav_contact">Contacto</a></li>
-      </ul>
-      
-      <!-- Right Side Actions: Lang Toggle & Hamburger -->
-      <div class="flex items-center gap-4 relative z-50">
-        <!-- Language Switcher -->
-        <button id="lang-toggle" class="lang-toggle flex items-center justify-center font-bold px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all text-xs cursor-pointer select-none text-white" aria-label="Cambiar idioma">
-          <span class="lang-label" id="lang-label">EN</span>
-        </button>
-
-        <!-- Hamburger (Mobile) -->
-        <button id="hamburger" class="hamburger flex flex-col justify-between w-6 h-5 cursor-pointer md:hidden relative z-50" aria-label="Menú" aria-expanded="false">
-          <span class="hamburger-line w-full h-[2px] bg-white rounded-md transition-all duration-300 origin-left"></span>
-          <span class="hamburger-line w-full h-[2px] bg-white rounded-md transition-all duration-300"></span>
-          <span class="hamburger-line w-full h-[2px] bg-white rounded-md transition-all duration-300 origin-left"></span>
-        </button>
-      </div>
+    <!-- Right Side Actions: Lang Toggle -->
+    <div class="flex items-center gap-4 relative z-50">
+      <!-- Language Switcher -->
+      <button id="lang-toggle" class="lang-toggle flex items-center justify-center font-bold px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all text-xs cursor-pointer select-none text-white" aria-label="Cambiar idioma">
+        <span class="lang-label" id="lang-label">EN</span>
+      </button>
     </div>
   </nav>
 </header>
 
-<!-- Backdrop Overlay for Mobile Menu -->
-<div id="menu-backdrop" class="menu-backdrop"></div>
-
+<!-- Magic Dock for Navigation -->
+<MagicDock client:load />
 
 <script>
   function initNavbarBehavior() {
     const header = document.getElementById('header');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    const links = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
 
     // 1. Scroll effect on Header
     function handleScroll() {
@@ -60,63 +36,6 @@
     }
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-
-    // 2. Mobile Menu toggle with Backdrop
-    const backdrop = document.getElementById('menu-backdrop');
-    if (hamburger && navLinks && backdrop) {
-      // Remove previous listener to avoid double triggers on hot-reloading
-      const newHamburger = hamburger.cloneNode(true);
-      hamburger.parentNode?.replaceChild(newHamburger, hamburger);
-
-      function openMenu() {
-        newHamburger.classList.add('active');
-        navLinks.classList.add('active');
-        backdrop?.classList.add('active');
-        document.body.classList.add('menu-open'); // prevent scrolling when menu is open
-      }
-
-      function closeMenu() {
-        newHamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        backdrop?.classList.remove('active');
-        document.body.classList.remove('menu-open'); // restore scrolling
-      }
-
-      newHamburger.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      // Close menu when clicking on a link
-      links.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      // Close menu when clicking on the backdrop
-      backdrop.addEventListener('click', closeMenu);
-    }
-
-    // 3. Scroll Active Link Highlight
-    function highlightActiveLink() {
-      const scrollY = window.pageYOffset;
-
-      sections.forEach((current: any) => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 80;
-        const sectionId = current.getAttribute('id');
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          document.querySelector(`.nav-link[href*=${sectionId}]`)?.classList.add('active-link');
-        } else {
-          document.querySelector(`.nav-link[href*=${sectionId}]`)?.classList.remove('active-link');
-        }
-      });
-    }
-    window.addEventListener('scroll', highlightActiveLink);
-    highlightActiveLink();
   }
 
   // Init behavior on first page load

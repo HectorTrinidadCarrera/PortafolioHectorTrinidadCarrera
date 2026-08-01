@@ -1,5 +1,6 @@
 ---
 import data from '../data/portfolio.json';
+import { ShimmerButton } from './ui/shimmer-button';
 const { socials } = data;
 ---
 
@@ -50,7 +51,9 @@ const { socials } = data;
           <textarea data-i18n="contact_message_placeholder" placeholder="Tu mensaje" class="w-full px-4 py-4 rounded-xl border border-white/10 bg-transparent outline-none focus:border-primary transition-colors font-sans h-32 resize-none text-title text-sm"></textarea>
         </div>
 
-        <button type="submit" class="w-full btn py-4" data-i18n="contact_send">Enviar Mensaje</button>
+        <ShimmerButton client:load type="submit" className="w-full py-4 shadow-md shadow-sky-700/20 hover:shadow-lg hover:shadow-sky-700/40 font-bold" shimmerColor="#ffffff" background="#0369a1">
+          <span data-i18n="contact_send">Enviar Mensaje</span>
+        </ShimmerButton>
       </form>
     </div>
   </div>

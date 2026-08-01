@@ -63,21 +63,11 @@ import Skeleton from './Skeleton.astro';
     const loader = document.getElementById("global-page-loader");
     if (!loader) return;
     
-    // Revisar si ya cargó antes en esta sesión
-    const hasVisited = sessionStorage.getItem("portfolio_loaded_v1");
-    
-    if (hasVisited) {
-      // Si ya lo vio, ocultamos de inmediato sin animación
-      loader.style.display = "none";
-      document.body.style.overflow = "";
-      return;
-    }
-    
     // Bloquear el scroll mientras carga (Estilo YouTube)
     document.body.style.overflow = "hidden";
     
-    // Marcar que ya lo vio
-    sessionStorage.setItem("portfolio_loaded_v1", "true");
+    // Eliminar el sessionStorage para que SIEMPRE se muestre la pantalla de carga
+    // y cubra el tiempo en que los componentes y animaciones se inicializan.
     
     // Tiempo de carga del skeleton
     setTimeout(() => {

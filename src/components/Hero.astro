@@ -1,5 +1,8 @@
 ---
 import data from '../data/portfolio.json';
+import RetroGrid from './ui/retro-grid';
+import { RippleButton } from './ui/ripple-button';
+import { ShimmerButton } from './ui/shimmer-button';
 const { name } = data.profile;
 const { socials } = data;
 ---
@@ -16,6 +19,8 @@ const { socials } = data;
     </video>
     <!-- Dark overlay for text readability -->
     <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-body)]/40 via-[var(--color-body)]/80 to-[var(--color-body)]"></div>
+    <!-- Retro Grid -->
+    <RetroGrid client:load />
   </div>
 
   <div class="container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
@@ -43,15 +48,15 @@ const { socials } = data;
 
       <!-- CTAs matching reference style and Phosphor Icons -->
       <div class="hero-cta flex gap-4 pt-8 justify-center lg:justify-start flex-wrap opacity-0">
-        <a href="#contact" class="btn" data-i18n="hero_cta_contact">
-          <i class="ph ph-paper-plane-tilt"></i> Contactar
-        </a>
-        <a href="#projects" class="btn-outline" data-i18n="hero_cta_projects">
-          <i class="ph ph-code"></i> Ver proyectos
-        </a>
-        <a href="/cv/Currículum Vitae Cv_HectorTrinidadCarrera.pdf" download="Currículum Vitae Cv_HectorTrinidadCarrera.pdf" class="btn-outline border-primary/40 text-primary hover:bg-primary/5 hover:border-primary" style="color: var(--color-primary);">
-          <i class="ph ph-download-simple"></i> <span data-i18n="hero_cta_cv">Descargar CV</span>
-        </a>
+        <ShimmerButton client:load href="#contact" className="shadow-md shadow-sky-700/20 hover:shadow-lg hover:shadow-sky-700/40 font-semibold" shimmerColor="#ffffff" background="oklch(39.8% 0.195 277.366)">
+          <i className="ph ph-paper-plane-tilt"></i> <span data-i18n="hero_cta_contact">Contactar</span>
+        </ShimmerButton>
+        <RippleButton client:load href="#projects" className="btn-outline shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
+          <i className="ph ph-code"></i> <span data-i18n="hero_cta_projects">Ver proyectos</span>
+        </RippleButton>
+        <RippleButton client:load href="/cv/Currículum Vitae Cv_HectorTrinidadCarrera.pdf" download="Currículum Vitae Cv_HectorTrinidadCarrera.pdf" className="btn-outline border-primary/40 text-primary hover:bg-primary/5 hover:border-primary shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
+          <i className="ph ph-download-simple"></i> <span data-i18n="hero_cta_cv">Descargar CV</span>
+        </RippleButton>
       </div>
 
       <!-- Social Networks -->

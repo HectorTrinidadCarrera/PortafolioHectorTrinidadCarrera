@@ -118,18 +118,25 @@ const { certifications } = data;
       mm.add("(min-width: 1024px)", () => {
         const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
         
-        gsap.to(track, {
-          x: getScrollAmount,
-          ease: "none",
+        let tl = gsap.timeline({
           scrollTrigger: {
             trigger: container,
             start: "center center",
-            end: () => `+=${track.scrollWidth}`, // La distancia de scroll es el ancho de la pista
+            end: () => `+=${track.scrollWidth * 1.5}`, 
             pin: true,
-            scrub: 1, // Suaviza el scroll
+            scrub: 1, 
             invalidateOnRefresh: true,
           }
         });
+
+        tl.to(track, {
+          x: getScrollAmount,
+          ease: "none",
+          duration: 1
+        });
+
+        // Pause at the end
+        tl.to({}, { duration: 0.15 });
       });
     }
   }
