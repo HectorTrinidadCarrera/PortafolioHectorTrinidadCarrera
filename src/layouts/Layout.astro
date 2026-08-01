@@ -45,11 +45,18 @@ const { title, description = "Portfolio de Hector Trinidad - Creative Developer"
 		<title>{title}</title>
 		
 		<script is:inline>
-			// Force dark mode
-			document.documentElement.classList.add('dark');
+			// Detect theme preference
+			const getThemePreference = () => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('portfolio-theme')) {
+					return localStorage.getItem('portfolio-theme');
+				}
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			};
+			const isDark = getThemePreference() === 'dark';
+			document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
 		</script>
 	</head>
-	<body class="font-sans antialiased bg-[#080808] text-[#a0a0b8]">
+	<body>
 		<PageLoader />
 		
 		<!-- ========== PARTICLE CANVAS ========== -->

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Design System — Víctor Ruiz Esteban inspired portfolio */
   --color-primary: #a375ff;
@@ -7,25 +9,17 @@
   --color-primary-light: #c8abff;
   --font-display: "Space Grotesk", "Poppins", sans-serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-
-  /* Theme (Dark Mode only) */
-  --color-title: #e8e8f0;
-  --color-text: #a0a0b8;
-  --color-text-light: #6a6a80;
-  --color-body: #080808;
-  --color-container: #121212;
-  --color-border: rgba(255, 255, 255, 0.06);
 }
 
 @layer base {
-  /* Force dark mode variables even if dark class is not on html */
+  /* Light Mode (Default) */
   :root {
-    --color-title: #e8e8f0;
-    --color-text: #a0a0b8;
-    --color-text-light: #6a6a80;
-    --color-body: #080808;
-    --color-container: #121212;
-    --color-border: rgba(255, 255, 255, 0.06);
+    --color-title: #1a1a24;
+    --color-text: #4a4a5a;
+    --color-text-light: #7a7a8a;
+    --color-body: #f8f8fc;
+    --color-container: #ffffff;
+    --color-border: rgba(0, 0, 0, 0.08);
 
     /* Target specific extra variables */
     --accent-glow: rgba(163, 117, 255, 0.15);
@@ -34,10 +28,90 @@
     --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Dark Mode */
+  .dark {
+    --color-title: #e8e8f0;
+    --color-text: #a0a0b8;
+    --color-text-light: #6a6a80;
+    --color-body: #080808;
+    --color-container: #121212;
+    --color-border: rgba(255, 255, 255, 0.06);
+  }
+
+  /* View Transitions API Animations (circle-blur-top-left) */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+  ::view-transition-new(root) {
+    z-index: 2;
+  }
+  .dark::view-transition-old(root) {
+    z-index: 2;
+  }
+  .dark::view-transition-new(root) {
+    z-index: 1;
+  }
+
+  @keyframes circle-blur-top-left {
+    0% {
+      clip-path: circle(0% at 0% 0%);
+      filter: blur(20px);
+    }
+    100% {
+      clip-path: circle(150% at 0% 0%);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes circle-blur-top-left-reverse {
+    0% {
+      clip-path: circle(150% at 0% 0%);
+      filter: blur(0px);
+    }
+    100% {
+      clip-path: circle(0% at 0% 0%);
+      filter: blur(20px);
+    }
+  }
+
+  /* Going to LIGHT: new state expands */
+  html:not(.dark)::view-transition-new(root) {
+    animation: circle-blur-top-left 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  }
+  html:not(.dark)::view-transition-old(root) {
+    animation: none !important;
+  }
+
+  /* Going to DARK: old state shrinks */
+  .dark::view-transition-old(root) {
+    animation: circle-blur-top-left-reverse 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  }
+  .dark::view-transition-new(root) {
+    animation: none !important;
+  }
+
+  html.is-changing-theme *,
+  html.is-changing-theme *::before,
+  html.is-changing-theme *::after {
+    transition: none !important;
+  }
+
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--color-primary-alt) var(--color-container);
+  }
+
+  /* Fix for black icons in dark mode */
+  .dark iconify-icon[icon="logos:nextjs-icon"],
+  .dark iconify-icon[icon="logos:express"],
+  .dark iconify-icon[icon="logos:github-icon"] {
+    filter: invert(1) brightness(1.5);
   }
 
   html::-webkit-scrollbar {
@@ -55,11 +129,11 @@
   }
 
   body {
-    @apply bg-[var(--color-body)] text-[var(--color-text)] font-sans antialiased transition-colors duration-300;
+    @apply bg-[var(--color-body)] text-[var(--color-text)] font-sans antialiased;
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply text-[var(--color-title)] font-semibold font-display transition-colors duration-300;
+    @apply text-[var(--color-title)] font-semibold font-display;
   }
 }
 
@@ -179,8 +253,13 @@ header {
 
 header.scrolled {
   padding: 4px 0;
-  background: rgba(8, 8, 8, 0.75);
+  background: rgba(255, 255, 255, 0.75);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.dark header.scrolled {
+  background: rgba(8, 8, 8, 0.75);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -267,20 +346,26 @@ header.scrolled::before {
     right: 0;
     width: 75%;
     max-width: 300px;
-    background: rgba(8, 8, 8, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2.25rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 40;
     padding: 2rem;
     transform: translate3d(100%, 0, 0);
     -webkit-transform: translate3d(100%, 0, 0);
+  }
+
+  .dark .nav-links {
+    background: rgba(8, 8, 8, 0.85);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   }
 
   .nav-links.active {

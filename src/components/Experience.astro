@@ -33,7 +33,7 @@ const trajectory = [
           {trajectory.map((item, index) => (
             <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between md:odd:flex-row-reverse group" data-aos="fade-up" data-aos-delay={index * 100}>
               <!-- Dot -->
-              <div class="traj-dot absolute left-[0.625rem] md:left-1/2 -translate-x-1/2 top-2 md:top-auto w-4 h-4 bg-[#080808] rounded-full z-10 border-2 border-primary/30 transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_20px_rgba(163,117,255,0.6)] group-hover:border-primary/20"></div>
+              <div class="traj-dot absolute left-[0.625rem] md:left-1/2 -translate-x-1/2 top-2 md:top-auto w-4 h-4 bg-[var(--color-body)] rounded-full z-10 border-2 border-primary/30 transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_20px_rgba(163,117,255,0.6)] group-hover:border-primary/20"></div>
               
               <div class={`w-full md:w-[calc(50%-2.5rem)] pl-10 md:pl-0 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <div class="glass-card p-6 group-hover:-translate-y-1" data-tilt>

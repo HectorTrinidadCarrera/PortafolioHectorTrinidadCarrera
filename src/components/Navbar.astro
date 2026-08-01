@@ -1,18 +1,20 @@
 ---
 import MagicDock from "./MagicDock";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="header">
   <nav class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center relative">
     <!-- Brand Logo -->
-    <a href="#home" class="nav-logo relative z-50 font-display text-xl font-bold flex items-center tracking-tight text-white select-none">
+    <a href="#home" class="nav-logo relative z-50 font-display text-xl font-bold flex items-center tracking-tight text-[var(--color-title)] select-none">
       <span class="logo-bracket text-primary font-bold mr-1">&lt;</span>HT<span class="logo-bracket text-primary font-bold ml-1">/&gt;</span>
     </a>
 
-    <!-- Right Side Actions: Lang Toggle -->
-    <div class="flex items-center gap-4 relative z-50">
+    <!-- Right Side Actions: Theme & Lang Toggle -->
+    <div class="flex items-center gap-2 sm:gap-4 relative z-50">
+      <ThemeToggle />
       <!-- Language Switcher -->
-      <button id="lang-toggle" class="lang-toggle flex items-center justify-center font-bold px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all text-xs cursor-pointer select-none text-white" aria-label="Cambiar idioma">
+      <button id="lang-toggle" class="lang-toggle flex items-center justify-center font-bold px-3 w-9 h-9 sm:w-auto sm:h-9 rounded-xl border border-[var(--color-border)] bg-[var(--color-container)] hover:border-primary/40 hover:bg-primary/5 transition-all text-xs cursor-pointer select-none text-[var(--color-text)]" aria-label="Cambiar idioma">
         <span class="lang-label" id="lang-label">EN</span>
       </button>
     </div>

@@ -1,0 +1,51 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  class="flex items-center justify-center font-bold w-9 h-9 rounded-xl border border-[var(--color-border)] bg-[var(--color-container)] hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer select-none text-[var(--color-text)]"
+  aria-label="Toggle theme"
+>
+  <i class="ph ph-sun hidden dark:block text-lg"></i>
+  <i class="ph ph-moon block dark:hidden text-lg"></i>
+</button>
+
+<script is:inline>
+  function toggleTheme(event) {
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    // If View Transitions are not supported, fallback to simple toggle
+    if (!document.startViewTransition) {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('portfolio-theme', !isDark ? 'dark' : 'light');
+      return;
+    }
+
+    // CSS handles the circle-blur-top-left animation in global.css
+    document.documentElement.classList.add('is-changing-theme');
+    const transition = document.startViewTransition(() => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('portfolio-theme', !isDark ? 'dark' : 'light');
+    });
+
+    transition.finished.finally(() => {
+      document.documentElement.classList.remove('is-changing-theme');
+    });
+  }
+
+  // Bind the event listener once the DOM is loaded
+  function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+      // Remove existing listeners by cloning (useful for Astro page transitions)
+      const newToggle = toggleBtn.cloneNode(true);
+      toggleBtn.parentNode.replaceChild(newToggle, toggleBtn);
+      
+      newToggle.addEventListener('click', toggleTheme);
+    }
+  }
+
+  // Initialize on load and on Astro view transitions
+  initThemeToggle();
+  document.addEventListener('astro:page-load', initThemeToggle);
+</script>

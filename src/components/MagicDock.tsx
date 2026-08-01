@@ -36,14 +36,14 @@ export default function MagicDock() {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
-      <Dock direction="middle" className="bg-[#080808]/90 border-white/10 p-2">
+      <Dock direction="middle" className="bg-white/90 dark:bg-[#080808]/90 border-black/10 dark:border-white/10 p-2">
         {items.map((item) => (
           <DockIcon key={item.href}>
             <a 
               href={item.href} 
               aria-label={item.label} 
               className={`w-full h-full flex items-center justify-center rounded-full transition-colors ${
-                active === item.href ? "text-primary" : "text-white/70 hover:text-white"
+                active === item.href ? "text-primary" : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
               }`}
             >
               <i className={`ph ${item.icon} text-2xl`} />

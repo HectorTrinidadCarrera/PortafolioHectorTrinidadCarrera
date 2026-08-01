@@ -3,6 +3,7 @@ import data from '../data/portfolio.json';
 import RetroGrid from './ui/retro-grid';
 import { RippleButton } from './ui/ripple-button';
 import { ShimmerButton } from './ui/shimmer-button';
+import { SparklesText } from './ui/sparkles-text';
 const { name } = data.profile;
 const { socials } = data;
 ---
@@ -18,7 +19,7 @@ const { socials } = data;
       <source src="/images/animation/Water waves.mp4" type="video/mp4">
     </video>
     <!-- Dark overlay for text readability -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-body)]/40 via-[var(--color-body)]/80 to-[var(--color-body)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/90 to-white dark:from-[#080808]/40 dark:via-[#080808]/80 dark:to-[#080808]"></div>
     <!-- Retro Grid -->
     <RetroGrid client:load />
   </div>
@@ -27,47 +28,47 @@ const { socials } = data;
     
     <!-- Left Content: Texts, CTAs, Socials (Col: 7) -->
     <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1" id="hero-left">
-      <p class="hero-greeting text-primary font-medium tracking-widest text-lg uppercase opacity-0" data-i18n="hero_greeting">Hola, soy</p>
+      <p class="hero-greeting text-[#7c3aed] dark:text-primary font-medium tracking-widest text-lg uppercase opacity-0" data-i18n="hero_greeting">Hola, soy</p>
       
       <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-display select-none mt-4 leading-tight opacity-0">
-        <span class="block text-white">Hector</span>
-        <span class="block bg-gradient-to-r from-[#b088ff] to-[#8c5df0] bg-clip-text text-transparent">Trinidad Carrera<span class="text-primary font-black">.</span></span>
+        <SparklesText client:load className="block text-[var(--color-title)]">Hector</SparklesText>
+        <span class="block bg-gradient-to-r from-[#7c3aed] to-[#4c1d95] dark:from-[#b088ff] dark:to-[#8c5df0] bg-clip-text text-transparent">Trinidad Carrera<span class="text-[#7c3aed] dark:text-primary font-black">.</span></span>
       </h1>
       
       <!-- Typing Subtitle -->
       <div class="h-10 md:h-12 flex items-center justify-center lg:justify-start mt-4">
-        <p class="text-lg md:text-xl font-display font-semibold text-[var(--color-primary-light)]">
-          <span id="typing-text"></span><span class="cursor text-primary font-bold animate-pulse">|</span>
+        <p class="text-lg md:text-xl font-display font-semibold text-[#6d28d9] dark:text-[var(--color-primary-light)]">
+          <span id="typing-text"></span><span class="cursor text-[#7c3aed] dark:text-primary font-bold animate-pulse">|</span>
         </p>
       </div>
 
       <!-- Description -->
-      <p class="text-sm md:text-base leading-relaxed text-text max-w-lg mt-4 opacity-0 transition-opacity" data-i18n="hero_description">
+      <p class="text-sm md:text-base leading-relaxed text-[var(--color-text)] max-w-lg mt-4 opacity-0 transition-opacity" data-i18n="hero_description">
         Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.
       </p>
 
       <!-- CTAs matching reference style and Phosphor Icons -->
       <div class="hero-cta flex gap-4 pt-8 justify-center lg:justify-start flex-wrap opacity-0">
-        <ShimmerButton client:load href="#contact" className="shadow-md shadow-sky-700/20 hover:shadow-lg hover:shadow-sky-700/40 font-semibold" shimmerColor="#ffffff" background="oklch(39.8% 0.195 277.366)">
+        <ShimmerButton client:load href="#contact" className="shadow-md shadow-sky-700/20 hover:shadow-lg hover:shadow-sky-700/40 font-semibold" shimmerColor="#ffffff" background="#0369a1">
           <i className="ph ph-paper-plane-tilt"></i> <span data-i18n="hero_cta_contact">Contactar</span>
         </ShimmerButton>
-        <RippleButton client:load href="#projects" className="btn-outline shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
+        <RippleButton client:load href="#projects" className="btn-outline shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 text-[var(--color-title)]" rippleColor="#a375ff">
           <i className="ph ph-code"></i> <span data-i18n="hero_cta_projects">Ver proyectos</span>
         </RippleButton>
-        <RippleButton client:load href="/cv/Currículum Vitae Cv_HectorTrinidadCarrera.pdf" download="Currículum Vitae Cv_HectorTrinidadCarrera.pdf" className="btn-outline border-primary/40 text-primary hover:bg-primary/5 hover:border-primary shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
+        <RippleButton client:load href="/cv/Currículum Vitae Cv_HectorTrinidadCarrera.pdf" download="Currículum Vitae Cv_HectorTrinidadCarrera.pdf" className="btn-outline border-[var(--color-primary)]/40 text-primary hover:bg-primary/5 hover:border-primary shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
           <i className="ph ph-download-simple"></i> <span data-i18n="hero_cta_cv">Descargar CV</span>
         </RippleButton>
       </div>
 
       <!-- Social Networks -->
       <div class="flex gap-6 pt-10 items-center justify-center lg:justify-start" id="hero-socials">
-        <a href={socials.linkedin} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href={socials.linkedin} class="social-icon w-10 h-10 rounded-full border border-black/10 dark:border-white/10 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="ph ph-linkedin-logo text-xl"></i>
         </a>
-        <a href={socials.github} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a href={socials.github} class="social-icon w-10 h-10 rounded-full border border-black/10 dark:border-white/10 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="ph ph-github-logo text-xl"></i>
         </a>
-        <a href={`mailto:${socials.email}`} class="social-icon w-10 h-10 rounded-full border border-white/10 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" aria-label="Email">
+        <a href={`mailto:${socials.email}`} class="social-icon w-10 h-10 rounded-full border border-black/10 dark:border-white/10 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300 hover:scale-110 opacity-0" aria-label="Email">
           <i class="ph ph-envelope-simple text-xl"></i>
         </a>
       </div>
@@ -77,7 +78,7 @@ const { socials } = data;
     <div class="lg:col-span-5 flex justify-center order-1 lg:order-2" id="hero-image">
       <div class="photo-container relative w-72 h-72 sm:w-96 sm:h-96 opacity-0 will-change-transform">
         <!-- Profile Image Placeholder -->
-        <div class="morph-blob overflow-hidden w-full h-full relative z-10 bg-[#121212] shadow-2xl shadow-primary/30 transition-all duration-500 hover:shadow-primary/50 cursor-pointer">
+        <div class="morph-blob overflow-hidden w-full h-full relative z-10 bg-[var(--color-container)] shadow-2xl shadow-primary/30 transition-all duration-500 hover:shadow-primary/50 cursor-pointer">
           <img 
             src="/images/HectorTrinidadCarrera_XD.jpeg" 
             alt={name} 

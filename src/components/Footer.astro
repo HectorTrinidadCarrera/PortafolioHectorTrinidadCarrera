@@ -3,31 +3,31 @@ import data from '../data/portfolio.json';
 const { name } = data.profile;
 ---
 
-<footer class="bg-[#0c0c0c] border-t border-white/5 py-12">
+<footer class="bg-[var(--color-body)] border-t border-black/10 dark:border-white/5 py-12">
   <div class="max-w-5xl mx-auto px-6 text-center">
-    <h1 class="text-2xl font-bold mb-6 font-display text-white">
+    <h1 class="text-2xl font-bold mb-6 font-display text-[var(--color-title)]">
       Hector<span class="text-primary font-black">.</span>
     </h1>
     
-    <ul class="flex justify-center gap-8 mb-8 text-text font-semibold text-xs md:text-sm">
+    <ul class="flex justify-center gap-8 mb-8 text-[var(--color-text)] font-semibold text-xs md:text-sm">
       <li><a href="#about" class="hover:text-primary transition-colors duration-300" data-i18n="nav_about">Sobre mí</a></li>
       <li><a href="#projects" class="hover:text-primary transition-colors duration-300" data-i18n="nav_projects">Proyectos</a></li>
       <li><a href="#skills" class="hover:text-primary transition-colors duration-300" data-i18n="nav_skills">Habilidades</a></li>
     </ul>
 
     <div class="flex justify-center gap-4 mb-8">
-      <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/5 bg-white/5 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300" aria-label="LinkedIn">
+      <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="LinkedIn">
         <i class="ph ph-linkedin-logo text-lg"></i>
       </a>
-      <a href={data.socials.github} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/5 bg-white/5 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300" aria-label="GitHub">
+      <a href={data.socials.github} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="GitHub">
         <i class="ph ph-github-logo text-lg"></i>
       </a>
-      <a href={`mailto:${data.socials.email}`} class="w-10 h-10 rounded-full border border-white/5 bg-white/5 hover:border-primary/50 flex items-center justify-center text-text hover:text-primary transition-all duration-300" aria-label="Email">
+      <a href={`mailto:${data.socials.email}`} class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="Email">
         <i class="ph ph-envelope-simple text-lg"></i>
       </a>
     </div>
 
-    <p class="text-xs text-text-light">
+    <p class="text-xs text-[var(--color-text-light)]">
       &#169; {new Date().getFullYear()} {name}. <span data-i18n="footer_text">Todos los derechos reservados.</span>
     </p>
   </div>

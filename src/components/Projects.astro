@@ -115,9 +115,9 @@ const { projects } = data;
         scrollTrigger: {
           trigger: "#projects-pin-container",
           start: "center center",
-          end: () => `+=${track.scrollWidth * 1.5}`, // Increased scroll distance
+          end: () => `+=${track.scrollWidth * 2.5}`, // Increased scroll distance to slow down the exit speed
           pin: true,
-          scrub: 1,
+          scrub: 1.5,
           invalidateOnRefresh: true,
         }
       });
@@ -128,8 +128,8 @@ const { projects } = data;
         duration: 1
       });
       
-      // Pause at the end (15% of the scroll distance is just holding the last card)
-      tl.to({}, { duration: 0.15 });
+      // Pause at the end
+      tl.to({}, { duration: 0.3 });
     });
 
     // Mobile fallback (Vertical Grid)
