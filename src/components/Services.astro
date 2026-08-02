@@ -16,7 +16,7 @@ const { services } = data;
       {
         services.map((service, index) => (
           <div
-            class="service-card glass-card p-10 flex flex-col items-center text-center gap-6 group hover:-translate-y-2 w-full max-w-lg sticky opacity-0 translate-y-8"
+            class="service-card glass-card !bg-[#080808]/95 p-10 flex flex-col items-center text-center gap-6 group hover:-translate-y-2 w-full max-w-lg sticky opacity-0 translate-y-8"
             style={`top: calc(20vh + ${index * 3}vh); z-index: ${10 + index};`}
           >
             <div class="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-4xl text-primary premium-transition group-hover:bg-primary group-hover:text-white group-hover:-rotate-6 group-hover:scale-110 shadow-lg shadow-primary/5 will-change-transform">
