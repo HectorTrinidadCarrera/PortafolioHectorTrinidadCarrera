@@ -125,7 +125,7 @@ const categories = [
     </div>
 
     <!-- Swipeable Container -->
-    <div id="skills-mobile-container" class="flex gap-4 px-6 w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
+    <div id="skills-mobile-container" class="grid grid-rows-2 grid-flow-col gap-4 px-6 w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8">
       {allSkillsRaw.map((skill) => {
         const tc = themeClasses[skill.theme];
         // Start visible only for frontend
