@@ -1,14 +1,22 @@
 ---
-import MagicDock from "./MagicDock";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="header">
-  <nav class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center relative">
+  <nav class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center relative">
     <!-- Brand Logo -->
     <a href="#home" class="nav-logo relative z-50 font-display text-xl font-bold flex items-center tracking-tight text-[var(--color-title)] select-none">
       <span class="logo-bracket text-primary font-bold mr-1">&lt;</span>HT<span class="logo-bracket text-primary font-bold ml-1">/&gt;</span>
     </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+      <a href="#home" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-house"></i> Inicio</a>
+      <a href="#about" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-user"></i> Sobre mí</a>
+      <a href="#skills" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-lightning"></i> Habilidades</a>
+      <a href="#projects" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-briefcase"></i> Proyectos</a>
+      <a href="#contact" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-envelope-simple"></i> Contacto</a>
+    </div>
 
     <!-- Right Side Actions: Theme & Lang Toggle -->
     <div class="flex items-center gap-2 sm:gap-4 relative z-50">
@@ -17,27 +25,103 @@ import ThemeToggle from "./ThemeToggle.astro";
       <button id="lang-toggle" class="lang-toggle flex items-center justify-center font-bold px-3 w-9 h-9 sm:w-auto sm:h-9 rounded-xl border border-[var(--color-border)] bg-[var(--color-container)] hover:border-primary/40 hover:bg-primary/5 transition-all text-xs cursor-pointer select-none text-[var(--color-text)]" aria-label="Cambiar idioma">
         <span class="lang-label" id="lang-label">EN</span>
       </button>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl border border-[var(--color-border)] bg-[var(--color-container)] hover:border-primary/40 text-[var(--color-text)] transition-colors" aria-label="Abrir menú">
+        <i class="ph ph-list text-xl"></i>
+      </button>
     </div>
   </nav>
 </header>
 
-<!-- Magic Dock for Navigation -->
-<MagicDock client:load />
+<!-- Mobile Backdrop -->
+<div id="mobile-backdrop" class="fixed inset-0 bg-black/20 dark:bg-black/50 backdrop-blur-sm z-40 hidden md:hidden transition-opacity opacity-0"></div>
+
+<!-- Mobile Menu Drawer (Solo a la derecha) -->
+<div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-[280px] bg-white dark:bg-[#080808] border-l border-black/5 dark:border-white/5 shadow-2xl z-50 translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-8 gap-6">
+  <button id="close-menu-btn" class="absolute top-5 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-container)] border border-[var(--color-border)] text-[var(--color-text)] hover:text-primary transition-colors" aria-label="Cerrar menú">
+    <i class="ph ph-x text-xl"></i>
+  </button>
+  <a href="#home" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-house text-primary text-xl"></i> Inicio</a>
+  <a href="#about" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-user text-primary text-xl"></i> Sobre mí</a>
+  <a href="#skills" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-lightning text-primary text-xl"></i> Habilidades</a>
+  <a href="#qualification" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-graduation-cap text-primary text-xl"></i> Trayectoria</a>
+  <a href="#projects" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-briefcase text-primary text-xl"></i> Proyectos</a>
+  <a href="#certifications" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-certificate text-primary text-xl"></i> Certificados</a>
+  <a href="#contact" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-envelope-simple text-primary text-xl"></i> Contacto</a>
+</div>
 
 <script>
   function initNavbarBehavior() {
     const header = document.getElementById('header');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     // 1. Scroll effect on Header
     function handleScroll() {
       if (window.scrollY >= 50) {
         header?.classList.add('scrolled');
+        header?.classList.add('bg-white/90', 'dark:bg-[#080808]/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-black/5', 'dark:border-white/5');
       } else {
         header?.classList.remove('scrolled');
+        header?.classList.remove('bg-white/90', 'dark:bg-[#080808]/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-black/5', 'dark:border-white/5');
       }
+      
+      // Update active link
+      const scrollY = window.scrollY;
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach((current: any) => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 150;
+        const sectionId = current.getAttribute("id");
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLinks.forEach((link) => {
+            link.classList.remove('text-primary');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('text-primary');
+            }
+          });
+        }
+      });
     }
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
+
+    // 2. Mobile Menu Toggle
+    function openMenu() {
+      mobileBackdrop?.classList.remove('hidden');
+      // Pequeño delay para que la transición de opacidad funcione
+      setTimeout(() => {
+        mobileBackdrop?.classList.remove('opacity-0');
+        mobileMenu?.classList.remove('translate-x-full');
+      }, 10);
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.add('translate-x-full');
+      mobileBackdrop?.classList.add('opacity-0');
+      // Esperar a que termine la transición antes de ocultar
+      setTimeout(() => {
+        mobileBackdrop?.classList.add('hidden');
+      }, 300);
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn?.addEventListener('click', openMenu);
+    closeMenuBtn?.addEventListener('click', closeMenu);
+    mobileBackdrop?.addEventListener('click', closeMenu);
+
+    // Close menu when clicking a link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   }
 
   // Init behavior on first page load

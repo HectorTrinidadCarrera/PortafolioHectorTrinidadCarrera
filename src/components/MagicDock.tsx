@@ -17,21 +17,25 @@ export default function MagicDock() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const sections = document.querySelectorAll("section[id]");
-      sections.forEach((current: any) => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 100;
-        const sectionId = current.getAttribute("id");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive("#" + entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px", // Detecta cuando la sección cruza la mitad de la pantalla
+      }
+    );
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          setActive("#" + sectionId);
-        }
-      });
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
