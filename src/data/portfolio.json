@@ -376,10 +376,6 @@
       {
         "name": "ASP.NET Core",
         "icon": "logos:dotnet"
-      },
-      {
-        "name": "AWS S3",
-        "icon": "logos:aws-s3"
       }
     ],
     "tools": [
@@ -394,10 +390,6 @@
       {
         "name": "CI/CD",
         "icon": "logos:github-actions"
-      },
-      {
-        "name": "DevOps",
-        "icon": "logos:kubernetes"
       },
       {
         "name": "VS Code",
