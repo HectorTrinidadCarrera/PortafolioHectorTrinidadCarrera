@@ -13,7 +13,7 @@ interface SparklesTextProps {
 
 const generateSparkle = (color: string) => {
   return {
-    id: String(Math.random() + Date.now()),
+    id: `${Date.now()}-${Math.random()}`,
     createdAt: Date.now(),
     color,
     size: Math.random() * 10 + 10,
@@ -91,7 +91,7 @@ export const SparklesText = ({
     }, 400);
 
     return () => clearInterval(interval);
-  }, [colors, sparklesCount]);
+  }, [colors.first, colors.second, sparklesCount]);
 
   if (!isClient) return <span className={cn("relative inline-block", className)}>{children}</span>;
 

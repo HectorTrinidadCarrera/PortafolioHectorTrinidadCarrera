@@ -43,6 +43,7 @@ export default function MagicCard({
 
   return (
     <div
+      suppressHydrationWarning
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={cn(

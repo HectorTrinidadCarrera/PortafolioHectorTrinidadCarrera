@@ -95,7 +95,7 @@ const { projects } = data;
 
       // Fade in header before pinning
       gsap.to("#projects-header h2", { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
-      gsap.to("#projects-header p", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+      gsap.to("#projects-header span", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
 
       // Animate cards fading in
       gsap.to(".project-card", {
@@ -136,7 +136,7 @@ const { projects } = data;
     mm.add("(max-width: 767px)", () => {
       // Just fade in
       gsap.to("#projects-header h2", { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
-      gsap.to("#projects-header p", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
+      gsap.to("#projects-header span", { opacity: 1, y: 0, duration: 0.6, delay: 0.1, scrollTrigger: { trigger: "#projects-header", start: "top 80%" } });
       
       gsap.to(".project-card", {
         opacity: 1,

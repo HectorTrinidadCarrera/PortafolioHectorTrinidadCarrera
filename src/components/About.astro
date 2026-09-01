@@ -119,10 +119,34 @@ const { description, experience } = data.about;
       }
     }, 2000);
 
-    // Wait for the browser to fully register the <dotlottie-player> web component
     customElements.whenDefined('dotlottie-player').then(() => {
       isComponentLoaded = true;
       clearTimeout(fallbackTimer); // Cancel the fallback since it loaded successfully
+
+      let isReady = false;
+      let shouldPlay = false;
+
+      const attemptPlay = () => {
+        if (isReady && shouldPlay && !hasPlayed) {
+          hasPlayed = true;
+          try {
+            (lottiePlayer as any).play();
+          } catch (e) {
+            console.warn("Lottie play failed", e);
+            showFallback();
+          }
+        }
+      };
+
+      lottiePlayer.addEventListener('ready', () => {
+        isReady = true;
+        attemptPlay();
+      });
+
+      lottiePlayer.addEventListener('load', () => {
+        isReady = true;
+        attemptPlay();
+      });
 
       // Only listen to the actual "complete" event from the player instance
       lottiePlayer.addEventListener('complete', () => {
@@ -132,14 +156,9 @@ const { description, experience } = data.about;
       // Setup Scroll Observer
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !hasPlayed) {
-            hasPlayed = true; 
-            try {
-              (lottiePlayer as any).play();
-            } catch(e) {
-              console.warn("Lottie play failed", e);
-              showFallback();
-            }
+          if (entry.isIntersecting && !shouldPlay) {
+            shouldPlay = true; 
+            attemptPlay();
           }
         });
       }, { threshold: 0.2 }); 
