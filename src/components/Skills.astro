@@ -136,9 +136,9 @@ const categories = [
             data-skill-card={skill.categoryId}
             class={`skill-mobile-card ${isVisible ? 'flex' : 'hidden'} glass-card flex-col items-center justify-center gap-4 p-6 rounded-2xl min-w-[140px] w-[140px] h-[140px] shrink-0 snap-center transition-all duration-300 border border-black/10 dark:border-white/5 bg-[var(--color-container)]`}
           >
-            <div class={`w-12 h-12 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/5 ${tc.textHover}`}>
+            <div class={`w-12 h-12 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 ${tc.textHover}`}>
               {skill.svg ? (
-                <div class="w-7 h-7 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+                <div class="w-7 h-7 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full" set:html={skill.svg} />
               ) : (
                 <iconify-icon icon={skill.icon} class="text-3xl"></iconify-icon>
               )}
@@ -171,9 +171,9 @@ const categories = [
                 </div>
               )}
               <div class={`glass-card px-6 py-3 mx-3 flex items-center gap-4 rounded-xl min-w-[200px] shrink-0 group cursor-default transition-colors ${tc.cardHover}`}>
-                <div class={`w-8 h-8 flex items-center justify-center bg-black/5 dark:bg-white/5 rounded-lg transition-all duration-300 ${tc.iconBgHover}`}>
+                <div class={`w-8 h-8 flex items-center justify-center bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-lg transition-all duration-300 ${tc.iconBgHover}`}>
                   {skill.svg ? (
-                    <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:fill-current [&>svg]:stroke-current" set:html={skill.svg} />
+                    <div class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full" set:html={skill.svg} />
                   ) : (
                     <iconify-icon icon={skill.icon} class="text-xl"></iconify-icon>
                   )}

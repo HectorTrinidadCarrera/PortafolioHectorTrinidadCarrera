@@ -211,11 +211,63 @@
         projectData.title.charAt(0);
       document.getElementById("modal-demo").href = projectData.links.demo;
       document.getElementById("modal-github").href = projectData.links.github;
-      document.getElementById("modal-tech").innerHTML = projectData.technologies
+      const modalTechMap: Record<string, string> = {
+        React: "logos:react",
+        "React Native": "logos:react",
+        "Next.js": "logos:nextjs-icon",
+        Astro: "logos:astro-icon",
+        Tailwind: "logos:tailwindcss-icon",
+        JavaScript: "logos:javascript",
+        TypeScript: "logos:typescript-icon",
+        HTML: "logos:html-5",
+        Html: "logos:html-5",
+        CSS: "logos:css-3",
+        Bootstrap: "logos:bootstrap",
+        Angular: "logos:angular-icon",
+        "Angular 18": "logos:angular-icon",
+        Vue: "logos:vue",
+        "D3.js": "logos:d3",
+        Expo: "logos:expo-icon",
+        Vite: "logos:vitejs",
+        "Node.js": "logos:nodejs-icon",
+        Express: "logos:express",
+        Java: "logos:java",
+        Maven: "logos:maven",
+        "Spring Boot": "logos:spring-icon",
+        Python: "logos:python",
+        PHP: "logos:php",
+        ".NET": "logos:dotnet",
+        ".NET 8": "logos:dotnet",
+        "C#": "logos:c-sharp",
+        "ASP.NET Core": "logos:dotnet",
+        SQL: "logos:postgresql",
+        MySQL: "logos:mysql",
+        PostgreSQL: "logos:postgresql",
+        MongoDB: "logos:mongodb-icon",
+        Firebase: "logos:firebase",
+        "AWS S3": "logos:aws-s3",
+        AWS: "logos:aws",
+        Hangfire: "logos:fire",
+        "SAT API": "carbon:api",
+        Docker: "logos:docker-icon",
+        docker: "logos:docker-icon",
+        GitHub: "logos:github-icon",
+        Git: "logos:git-icon",
+        "CI/CD": "logos:github-actions",
+        "VS Code": "logos:visual-studio-code",
+        Linux: "logos:linux-tux",
+        Ubuntu: "logos:ubuntu",
+        Debian: "logos:debian",
+        Figma: "logos:figma",
+        Vercel: "logos:vercel-icon",
+      };
+
+      document.getElementById("modal-tech").innerHTML = (projectData.technologies || [])
         .map(
           (tech) => `
-        <span class="px-3 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[var(--color-text-light)] text-[11px] md:text-xs font-black rounded-lg uppercase tracking-widest transition-colors hover:bg-black/10 dark:hover:bg-white/10">
-          ${tech}
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[var(--color-text-light)] text-[11px] md:text-xs font-bold rounded-lg uppercase tracking-wider transition-colors hover:bg-black/10 dark:hover:bg-white/10">
+          <iconify-icon icon="${modalTechMap[tech] || 'line-md:hash-small'}" class="text-sm shrink-0"></iconify-icon>
+          <span>${tech}</span>
         </span>
       `,
         )
