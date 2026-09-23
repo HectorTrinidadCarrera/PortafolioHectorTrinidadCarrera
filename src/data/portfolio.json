@@ -275,7 +275,7 @@
       ],
       "icon": "logos:dotnet",
       "links": {
-        "demo": "/certificados/Héctor Trinidad Carrera.pdf",
+        "demo": "https://digyto.ai/finance",
         "github": ""
       },
       "category": "fullstack"
