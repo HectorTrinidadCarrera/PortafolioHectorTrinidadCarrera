@@ -521,10 +521,8 @@
       "title": "Título Profesional - TSU en Tecnologías de la Información",
       "issuer": "Universidad Tecnológica de Tecamachalco",
       "date": "2026",
-      "credentialId": "74A9D2A6-4FF4-4BD9-B388-870321FD67D0",
       "icon": "line-md:academic-cap-twotone",
       "image": "/images/Logo/Uttecam.png",
-      "url": "/certificados/74A9D2A6-4FF4-4BD9-B388-870321FD67D0.pdf",
       "category": "academic",
       "skills": ["Desarrollo Multiplataforma", "Bases de Datos", "Ingeniería de Software", "UTTECAM"]
     },
