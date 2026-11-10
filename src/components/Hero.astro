@@ -44,7 +44,7 @@ const { socials } = data;
 
       <!-- Description -->
       <p class="text-sm md:text-base leading-relaxed text-[var(--color-text)] max-w-lg mt-4 opacity-0 transition-opacity" data-i18n="hero_description">
-        Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.
+        {data.profile.bio}
       </p>
 
       <!-- CTAs matching reference style and Phosphor Icons -->
@@ -55,7 +55,7 @@ const { socials } = data;
         <RippleButton client:load href="#projects" className="btn-outline shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 text-[var(--color-title)]" rippleColor="#a375ff">
           <i class="ph ph-code"></i> <span data-i18n="hero_cta_projects">Ver proyectos</span>
         </RippleButton>
-        <RippleButton client:load href="/cv/CV_Hector Trinidad Carrera.pdf" download="CV_Hector Trinidad Carrera.pdf" className="btn-outline border-[var(--color-primary)]/40 text-primary hover:bg-primary/5 hover:border-primary shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
+        <RippleButton client:load href="/cv/Hector Trinidad Carrera_Cv.pdf" download="CV_Hector Trinidad Carrera.pdf" className="btn-outline border-[var(--color-primary)]/40 text-primary hover:bg-primary/5 hover:border-primary shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20" rippleColor="#a375ff">
           <i class="ph ph-download-simple"></i> <span data-i18n="hero_cta_cv">Descargar CV</span>
         </RippleButton>
       </div>
@@ -103,8 +103,8 @@ const { socials } = data;
 <script>
   // --- Client-side Typing script ---
   const titles = {
-    es: ["Desarrollador Fullstack", "Diseñador UI/UX", "Creador Digital", "Solucionador de Problemas"],
-    en: ["Fullstack Developer", "UI/UX Designer", "Digital Creative", "Problem Solver"]
+    es: ["Backend Developer · Java", "Desarrollador Fullstack", "Spring Boot & APIs REST", "Arquitecto Frontend", "Solucionador de Problemas"],
+    en: ["Backend Developer · Java", "Fullstack Developer", "Spring Boot & APIs REST", "Frontend Architect", "Problem Solver"]
   };
 
   let currentLang = localStorage.getItem('portfolio-lang') || 'es';

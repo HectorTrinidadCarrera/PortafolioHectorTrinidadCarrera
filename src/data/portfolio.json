@@ -1,15 +1,15 @@
 {
   "profile": {
     "name": "Hector Trinidad Carrera",
-    "title": "Creative Developer",
+    "title": "Software Engineer & Backend Developer",
     "titles": [
+      "Backend Developer · Java",
       "Fullstack Developer",
-      "UI/UX Designer",
+      "Spring Boot & APIs REST",
       "Frontend Architect",
-      "Problem Solver",
-      "Digital Creative"
+      "Problem Solver"
     ],
-    "bio": "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend moderno y diseño responsivo.",
+    "bio": "Ingeniero en Desarrollo de Software especializado en Java, Spring Boot y APIs REST. Con experiencia fullstack en React, Next.js y Angular.",
     "email": "hectortrinidad110@gmail.com",
     "phone": "+52 2491115283",
     "location": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
@@ -33,7 +33,7 @@
     ]
   },
   "about": {
-    "description": "Soy un desarrollador enfocado en los detalles y en la optimización de rendimiento. Me encanta aprender nuevas tecnologías y aplicarlas en proyectos que resuelvan problemas reales.",
+    "description": "Ingeniero en Desarrollo y Gestión de Software con experiencia en Frontend, Web y Backend. Especializado en Java, Spring Boot y APIs REST. Domino tecnologías frontend como React, Next.js y Angular, y cuento con experiencia en arquitectura de software, bases de datos y despliegue con Docker. Busco crecer en desarrollo backend con Java.",
     "experience": [
       {
         "company": "Portal Uttecam",
@@ -112,7 +112,7 @@
       "id": 2,
       "title": "Universidad Tecnologica de Tecamachalco",
       "description": "Pagina offical de la Universidad Tecnologica de Tecamachalco.",
-      "image": "/images/projects/Universidad.png",
+      "image": "/images/projects/UTTECAM.png",
       "technologies": [
         "React",
         "Node.js",
@@ -398,6 +398,10 @@
     ],
     "tools": [
       {
+        "name": "Azure",
+        "icon": "logos:microsoft-azure"
+      },
+      {
         "name": "Git",
         "icon": "logos:git-icon"
       },
@@ -408,6 +412,14 @@
       {
         "name": "CI/CD",
         "icon": "logos:github-actions"
+      },
+      {
+        "name": "DevOps",
+        "icon": "mdi:infinity"
+      },
+      {
+        "name": "Jenkins",
+        "icon": "logos:jenkins"
       },
       {
         "name": "VS Code",
@@ -455,6 +467,26 @@
     ]
   },
   "certifications": [
+    {
+      "title": "Aptitudes aplicadas de Microsoft: Introducción a las tareas de administración de Azure",
+      "issuer": "Microsoft",
+      "date": "2026",
+      "credentialId": "E52DB906F128B04D",
+      "icon": "logos:microsoft-azure",
+      "url": "https://learn.microsoft.com/api/credentials/share/es-es/HctorTrinidadCarrera-2656/E52DB906F128B04D?sharingId=45566206EEF305D5",
+      "category": "course",
+      "skills": ["Azure", "Cloud Computing", "Microsoft", "Administración de Azure"]
+    },
+    {
+      "title": "Aptitudes aplicadas de Microsoft: generación de informes con agentes de investigación de IA",
+      "issuer": "Microsoft",
+      "date": "2026",
+      "credentialId": "25240553E1DCDB8C",
+      "icon": "simple-icons:microsoft",
+      "url": "https://learn.microsoft.com/api/credentials/share/es-es/HctorTrinidadCarrera-2656/25240553E1DCDB8C?sharingId=45566206EEF305D5",
+      "category": "course",
+      "skills": ["AI Agents", "Microsoft Copilot", "Azure", "Inteligencia Artificial"]
+    },
     {
       "title": "Introduction to AI Agents",
       "issuer": "DataCamp",
@@ -534,7 +566,34 @@
       "icon": "logos:spring-icon",
       "url": "/certificados/Certificado - Curso de Spring Framework y Spring Boot.pdf",
       "category": "course",
-      "skills": ["Spring Boot", "Java", "Backend Development"]
+      "skills": ["Spring Boot", "Spring Framework", "Java", "Backend Development"]
+    },
+    {
+      "title": "Curso de Introducción a DevOps: Bases y Conceptos",
+      "issuer": "Código Facilito",
+      "date": "2026",
+      "icon": "logos:jenkins",
+      "url": "/certificados/Certificado - Curso de Introducción a DevOps_ Bases y Conceptos.pdf",
+      "category": "course",
+      "skills": ["DevOps", "CI/CD", "Docker", "Automatización"]
+    },
+    {
+      "title": "Curso de Java Profesional",
+      "issuer": "Código Facilito",
+      "date": "2026",
+      "icon": "logos:java",
+      "url": "/certificados/Certificado - Curso de Java Profesional.pdf",
+      "category": "course",
+      "skills": ["Java", "POO", "Backend Development", "Java Profesional"]
+    },
+    {
+      "title": "Curso Profesional de Docker",
+      "issuer": "Código Facilito",
+      "date": "2026",
+      "icon": "logos:docker-icon",
+      "url": "/certificados/Certificado - Curso Profesional de Docker.pdf",
+      "category": "course",
+      "skills": ["Docker", "Contenedores", "DevOps", "Infraestructura"]
     },
     {
       "title": "Administrador de Bases de Datos",
