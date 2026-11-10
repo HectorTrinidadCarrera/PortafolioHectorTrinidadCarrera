@@ -380,6 +380,11 @@
         "icon": "logos:postgresql"
       },
       {
+        "name": "Oracle SQL",
+        "icon": "simple-icons:oracle",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"#EA1B22\" d=\"M16.42 3.195h-8.84A7.58 7.58 0 0 0 0 10.775v2.45a7.58 7.58 0 0 0 7.58 7.58h8.84a7.58 7.58 0 0 0 7.58-7.58v-2.45a7.58 7.58 0 0 0-7.58-7.58zm3.927 10.03c0 2.169-1.758 3.927-3.927 3.927h-8.84c-2.169 0-3.927-1.758-3.927-3.927v-2.45c0-2.169 1.758-3.927 3.927-3.927h8.84c2.169 0 3.927 1.758 3.927 3.927z\"/></svg>"
+      },
+      {
         "name": "Docker",
         "icon": "logos:docker-icon"
       },
@@ -486,6 +491,17 @@
       "url": "https://learn.microsoft.com/api/credentials/share/es-es/HctorTrinidadCarrera-2656/25240553E1DCDB8C?sharingId=45566206EEF305D5",
       "category": "course",
       "skills": ["AI Agents", "Microsoft Copilot", "Azure", "Inteligencia Artificial"]
+    },
+    {
+      "title": "Introduction to Oracle SQL",
+      "issuer": "DataCamp",
+      "date": "2026",
+      "credentialId": "50111641",
+      "icon": "simple-icons:oracle",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"#EA1B22\" d=\"M16.42 3.195h-8.84A7.58 7.58 0 0 0 0 10.775v2.45a7.58 7.58 0 0 0 7.58 7.58h8.84a7.58 7.58 0 0 0 7.58-7.58v-2.45a7.58 7.58 0 0 0-7.58-7.58zm3.927 10.03c0 2.169-1.758 3.927-3.927 3.927h-8.84c-2.169 0-3.927-1.758-3.927-3.927v-2.45c0-2.169 1.758-3.927 3.927-3.927h8.84c2.169 0 3.927 1.758 3.927 3.927z\"/></svg>",
+      "url": "/certificados/certificate_Oracle.pdf",
+      "category": "course",
+      "skills": ["Oracle SQL", "Bases de Datos", "SQL", "DataCamp"]
     },
     {
       "title": "Introduction to AI Agents",

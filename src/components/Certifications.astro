@@ -38,6 +38,8 @@ const { certifications } = data;
               <div class="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-3xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 overflow-hidden">
                 {cert.image ? (
                   <img src={cert.image} alt={cert.issuer} class="w-full h-full object-cover" />
+                ) : cert.svg ? (
+                  <div class="w-8 h-8 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={cert.svg} />
                 ) : (
                   <iconify-icon icon={cert.icon}></iconify-icon>
                 )}
