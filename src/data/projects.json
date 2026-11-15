@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Portfolio",
+    "description": "Mi portafolio personal construido con Astro, siguiendo los mejores estándares de diseño y rendimiento.",
+    "image": "/images/projects/image.png",
+    "technologies": [
+      "Astro",
+      "Tailwind",
+      "JavaScript"
+    ],
+    "icon": "logos:astro-icon",
+    "links": {
+      "demo": "#",
+      "github": "https://github.com/HectorTrinidadCarrera/PortafolioHectorTrinidadCarrera"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 2,
+    "title": "Universidad Tecnologica de Tecamachalco",
+    "description": "Pagina offical de la Universidad Tecnologica de Tecamachalco.",
+    "image": "/images/projects/UTTECAM.png",
+    "technologies": [
+      "React",
+      "Node.js",
+      "Express",
+      "SQL"
+    ],
+    "icon": "logos:react",
+    "links": {
+      "demo": "https://uttecam.edu.mx/",
+      "github": "https://github.com/RaulZamoraPerez/UTTECAM"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 3,
+    "title": "Biblioteca UDEA",
+    "description": "Sistema de gestión de biblioteca para la UDEA.",
+    "image": "/images/projects/UDEA.png",
+    "technologies": [
+      "Next.js",
+      "Node.js",
+      "Express",
+      "SQL"
+    ],
+    "icon": "logos:nextjs-icon",
+    "links": {
+      "demo": "",
+      "github": "https://github.com/HectorTrinidadCarrera/ProyectoUDEA-Frontend-UTT"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 4,
+    "title": "Juego Motocle UTT",
+    "description": "Juego sencillo para estudiantes de la UTT sobre el juego de Motocle.",
+    "image": "/images/projects/Motocle.png",
+    "technologies": [
+      "Html",
+      "CSS",
+      "JavaScript"
+    ],
+    "icon": "logos:javascript",
+    "links": {
+      "demo": "/images/demo/JuegoMotocle.mp4",
+      "github": "https://github.com/RaulZamoraPerez/juego-UTTECAM"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 5,
+    "title": "Proyecto Escolar del metodo de Eule en java",
+    "description": "Proyecto Escolar del metodo de Eule en java.",
+    "image": "/images/projects/Java.png",
+    "technologies": [
+      "Java",
+      "Maven"
+    ],
+    "icon": "logos:java",
+    "links": {
+      "demo": "/images/demo/JuegoMotocle.mp4",
+      "github": "https://github.com/HectorTrinidadCarrera/Java-Application"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 6,
+    "title": "TrueklandWeb",
+    "description": "TruekLand es una aplicación móvil para la comunidad universitaria que facilita el trueque de artículos no utilizados, como componentes de PC, libros, accesorios y ropa.",
+    "image": "/images/projects/Truekland.png",
+    "technologies": [
+      "Next.js",
+      "Firebase",
+      "Tailwind"
+    ],
+    "icon": "logos:nextjs-icon",
+    "links": {
+      "demo": "/images/demo/TrueklandWeb.mp4",
+      "github": "https://github.com/lisandro-flores/trueklandweb"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 7,
+    "title": "Mia",
+    "description": "Mia es una aplicación web progresiva (PWA) de vanguardia diseñada para empoderar a los usuarios en el control, monitoreo y gestión de su salud física y emocional. Utilizando Inteligencia Artificial avanzada (DeepSeek), Mia actúa como una asistente personal y analista clínica que te acompaña en tu día a día de manera empática y segura.",
+    "image": "/images/projects/Mia.png",
+    "technologies": [
+      "Next.js",
+      "Firebase",
+      "Tailwind"
+    ],
+    "icon": "logos:nextjs-icon",
+    "links": {
+      "demo": "/images/demo/TrueklandWeb.mp4",
+      "github": "https://github.com/TodTete/Mia"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 8,
+    "title": "Dashboard-UTTECAM",
+    "description": "Panel de administración para la UTTECAM,.",
+    "image": "/images/projects/Dashboard-uttecam.png",
+    "technologies": [
+      "React",
+      "Express",
+      "Tailwind",
+      "SQL"
+    ],
+    "icon": "logos:react",
+    "links": {
+      "demo": "/images/demo/",
+      "github": "https://github.com/TodTete/Mia"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 9,
+    "title": "Proeycto de Spring Boot",
+    "description": "Proyecto del curso de spring boot de codigofacilito.",
+    "image": "/images/projects/Crud de peliculas.png",
+    "technologies": [
+      "Spring Boot",
+      "SQL"
+    ],
+    "icon": "logos:spring-icon",
+    "links": {
+      "demo": "/images/demo/",
+      "github": "https://github.com/HectorTrinidadCarrera/CursoDeSpringBoot"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 10,
+    "title": "TAZAAPP",
+    "description": "TAZAAPP es una aplicación móvil de vanguardia diseñada para empoderar a los usuarios en el control, monitoreo y gestión de su salud física y emocional. Utilizando Inteligencia Artificial avanzada (DeepSeek), TAZAPP actúa como una asistente personal y analista clínica que te acompaña en tu día a día de manera empática y segura.",
+    "image": "/images/projects/TazzaApp.png",
+    "technologies": [
+      "React Native",
+      "Tailwind"
+    ],
+    "icon": "logos:react",
+    "links": {
+      "demo": "/images/demo/",
+      "github": "https://github.com/HectorTrinidadCarrera/TAZAAPP"
+    },
+    "category": "frontend"
+  },
+  {
+    "id": 11,
+    "title": "SaaS Contabilidad Fiscal — Digyto",
+    "description": "Lideré la arquitectura completa de una plataforma SaaS multi-tenant a gran escala. Implementé lógica distribuida con .NET 8 (Clean Architecture), automatización de procesos SAT, procesamiento en segundo plano con Hangfire e integración avanzada de AWS S3. Se agrega el reconocimiento como evidencia ya que el proyecto fue privado para la empresa Digyto.",
+    "image": "/images/projects/Digyto_Finance.png",
+    "technologies": [
+      ".NET 8",
+      "Angular 18",
+      "SAT API",
+      "AWS S3",
+      "Hangfire"
+    ],
+    "icon": "logos:dotnet",
+    "links": {
+      "demo": "https://digyto.ai/finance",
+      "github": ""
+    },
+    "category": "fullstack"
+  },
+  {
+    "id": 12,
+    "title": "Sistema de Gestión con Spring Boot & MySQL",
+    "description": "Aplicación web robusta con Spring Boot, arquitectura MVC, persistencia en MySQL y frontend responsivo con Bootstrap y Tailwind.",
+    "image": "/images/projects/CRUDSPRING.png",
+    "technologies": [
+      "Java",
+      "Maven",
+      "Spring Boot",
+      "MySQL",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Tailwind"
+    ],
+    "icon": "logos:spring-icon",
+    "links": {
+      "github": "https://github.com/HectorTrinidadCarrera/ProyectoSpringBoot"
+    },
+    "category": "backend"
+  },
+  {
+    "id": 13,
+    "title": "Quiero Flores ",
+    "description": "E-commerce moderno enfocado en floristería y detalles de regalo, diseñado bajo arquitectura Mobile-First. Desarrollado con Angular 21 (Standalone Components & Signals), Tailwind CSS v4, animaciones interactivas con Lottie y consumo de API REST para catálogo dinámico, categorías, carrito .",
+    "image": "/images/projects/QuieroFlores.png",
+    "technologies": [
+      "Angular 21",
+      "TypeScript",
+      "Tailwind CSS",
+      "REST API"
+    ],
+    "icon": "logos:angular-icon",
+    "links": {
+      "demo": "https://quieroflores.mx/marketplace",
+      "github": ""
+    },
+    "category": "frontend"
+  }
+]

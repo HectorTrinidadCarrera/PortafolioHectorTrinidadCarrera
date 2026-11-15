@@ -1,11 +1,10 @@
 ---
-import data from '../data/portfolio.json';
+import { profile } from '../data';
 import RetroGrid from './ui/retro-grid';
 import { RippleButton } from './ui/ripple-button';
 import { ShimmerButton } from './ui/shimmer-button';
 import { SparklesText } from './ui/sparkles-text';
-const { name } = data.profile;
-const { socials } = data;
+const { name, bio, socials } = profile;
 ---
 
 <section class="min-h-screen flex items-center relative overflow-hidden pt-20" id="home">
@@ -44,7 +43,7 @@ const { socials } = data;
 
       <!-- Description -->
       <p class="text-sm md:text-base leading-relaxed text-[var(--color-text)] max-w-lg mt-4 opacity-0 transition-opacity" data-i18n="hero_description">
-        {data.profile.bio}
+        {bio}
       </p>
 
       <!-- CTAs matching reference style and Phosphor Icons -->

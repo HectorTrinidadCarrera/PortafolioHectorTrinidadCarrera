@@ -1,0 +1,168 @@
+{
+  "frontend": [
+    {
+      "name": "HTML",
+      "icon": "logos:html-5"
+    },
+    {
+      "name": "CSS",
+      "icon": "logos:css-3"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "logos:javascript"
+    },
+    {
+      "name": "React",
+      "icon": "logos:react"
+    },
+    {
+      "name": "Next.js",
+      "icon": "logos:nextjs-icon"
+    },
+    {
+      "name": "Astro",
+      "icon": "logos:astro-icon"
+    },
+    {
+      "name": "Tailwind",
+      "icon": "logos:tailwindcss-icon"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "logos:typescript-icon"
+    },
+    {
+      "name": "Angular",
+      "icon": "logos:angular-icon"
+    },
+    {
+      "name": "React Native",
+      "icon": "logos:react"
+    },
+    {
+      "name": "Expo",
+      "icon": "logos:expo-icon"
+    }
+  ],
+  "backend": [
+    {
+      "name": "Node.js",
+      "icon": "logos:nodejs-icon"
+    },
+    {
+      "name": "Express",
+      "icon": "logos:express"
+    },
+    {
+      "name": "Spring Boot",
+      "icon": "logos:spring-icon"
+    },
+    {
+      "name": "Python",
+      "icon": "logos:python"
+    },
+    {
+      "name": "Java",
+      "icon": "logos:java"
+    },
+    {
+      "name": "PHP",
+      "icon": "logos:php"
+    },
+    {
+      "name": "SQL",
+      "icon": "logos:postgresql"
+    },
+    {
+      "name": "Oracle SQL",
+      "icon": "simple-icons:oracle",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"#EA1B22\" d=\"M16.42 3.195h-8.84A7.58 7.58 0 0 0 0 10.775v2.45a7.58 7.58 0 0 0 7.58 7.58h8.84a7.58 7.58 0 0 0 7.58-7.58v-2.45a7.58 7.58 0 0 0-7.58-7.58zm3.927 10.03c0 2.169-1.758 3.927-3.927 3.927h-8.84c-2.169 0-3.927-1.758-3.927-3.927v-2.45c0-2.169 1.758-3.927 3.927-3.927h8.84c2.169 0 3.927 1.758 3.927 3.927z\"/></svg>"
+    },
+    {
+      "name": "Docker",
+      "icon": "logos:docker-icon"
+    },
+    {
+      "name": ".NET",
+      "icon": "logos:dotnet"
+    },
+    {
+      "name": "C#",
+      "icon": "logos:c-sharp"
+    },
+    {
+      "name": "ASP.NET Core",
+      "icon": "logos:dotnet"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Azure",
+      "icon": "logos:microsoft-azure"
+    },
+    {
+      "name": "Git",
+      "icon": "logos:git-icon"
+    },
+    {
+      "name": "GitHub",
+      "icon": "logos:github-icon"
+    },
+    {
+      "name": "CI/CD",
+      "icon": "logos:github-actions"
+    },
+    {
+      "name": "DevOps",
+      "icon": "mdi:infinity"
+    },
+    {
+      "name": "Jenkins",
+      "icon": "logos:jenkins"
+    },
+    {
+      "name": "VS Code",
+      "icon": "logos:visual-studio-code"
+    },
+    {
+      "name": "Linux",
+      "icon": "logos:linux-tux"
+    },
+    {
+      "name": "Antigravity",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12.025 2q2.025 0 3.163 1.525T17.125 7q.65 1.575 1.25 3.5t1.275 3.875q.65 1.875 1.425 3.525t1.8 2.825q.2.225.175.525t-.225.525t-.475.25t-.55-.175q-1.975-1.55-3.25-3.463t-2.575-3.337q-.85-.95-1.812-1.5T12.025 13t-2.137.55t-1.813 1.5q-1.3 1.425-2.575 3.338T2.25 21.85q-.275.2-.55.175t-.475-.25T1 21.25t.175-.525Q2.2 19.55 2.975 17.9T4.4 14.375q.675-1.95 1.275-3.875T6.925 7q.8-1.95 1.938-3.475T12.025 2\"/></svg>"
+    },
+    {
+      "name": "Figma",
+      "icon": "logos:figma"
+    },
+    {
+      "name": "Vercel",
+      "icon": "logos:vercel-icon"
+    },
+    {
+      "name": "Ubuntu",
+      "icon": "logos:ubuntu"
+    },
+    {
+      "name": "Debian",
+      "icon": "logos:debian"
+    }
+  ],
+  "design": [
+    {
+      "name": "UI/UX",
+      "icon": "line-md:layout-content",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14.5 17.742v8.37c0 2.29 1.793 4.146 4.01 4.146c2.215 0 4.012-1.856 4.012-4.146v-8.37m10.978 0l-8.018 12.516m0-12.516L33.5 30.258\" stroke-width=\"1\"/><rect width=\"37\" height=\"37\" x=\"5.5\" y=\"5.5\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" rx=\"4\" ry=\"4\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "name": "Responsive",
+      "icon": "line-md:phone-twotone"
+    },
+    {
+      "name": "Prototyping",
+      "icon": "line-md:edit-twotone"
+    }
+  ]
+}

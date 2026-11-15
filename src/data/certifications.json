@@ -1,0 +1,219 @@
+[
+  {
+    "title": "Aptitudes aplicadas de Microsoft: Introducción a las tareas de administración de Azure",
+    "issuer": "Microsoft",
+    "date": "2026",
+    "credentialId": "E52DB906F128B04D",
+    "icon": "logos:microsoft-azure",
+    "url": "https://learn.microsoft.com/api/credentials/share/es-es/HctorTrinidadCarrera-2656/E52DB906F128B04D?sharingId=45566206EEF305D5",
+    "category": "course",
+    "skills": ["Azure", "Cloud Computing", "Microsoft", "Administración de Azure"]
+  },
+  {
+    "title": "Aptitudes aplicadas de Microsoft: generación de informes con agentes de investigación de IA",
+    "issuer": "Microsoft",
+    "date": "2026",
+    "credentialId": "25240553E1DCDB8C",
+    "icon": "simple-icons:microsoft",
+    "url": "https://learn.microsoft.com/api/credentials/share/es-es/HctorTrinidadCarrera-2656/25240553E1DCDB8C?sharingId=45566206EEF305D5",
+    "category": "course",
+    "skills": ["AI Agents", "Microsoft Copilot", "Azure", "Inteligencia Artificial"]
+  },
+  {
+    "title": "Introduction to Oracle SQL",
+    "issuer": "DataCamp",
+    "date": "2026",
+    "credentialId": "50111641",
+    "icon": "simple-icons:oracle",
+    "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path fill=\"#EA1B22\" d=\"M16.42 3.195h-8.84A7.58 7.58 0 0 0 0 10.775v2.45a7.58 7.58 0 0 0 7.58 7.58h8.84a7.58 7.58 0 0 0 7.58-7.58v-2.45a7.58 7.58 0 0 0-7.58-7.58zm3.927 10.03c0 2.169-1.758 3.927-3.927 3.927h-8.84c-2.169 0-3.927-1.758-3.927-3.927v-2.45c0-2.169 1.758-3.927 3.927-3.927h8.84c2.169 0 3.927 1.758 3.927 3.927z\"/></svg>",
+    "url": "/certificados/certificate_Oracle.pdf",
+    "category": "course",
+    "skills": ["Oracle SQL", "Bases de Datos", "SQL", "DataCamp"]
+  },
+  {
+    "title": "Introduction to AI Agents",
+    "issuer": "DataCamp",
+    "date": "2026",
+    "credentialId": "48076028",
+    "icon": "simple-icons:datacamp",
+    "url": "/certificados/certificate_Agentes_IA.pdf",
+    "category": "course",
+    "skills": ["AI Agents", "Python", "Artificial Intelligence"]
+  },
+  {
+    "title": "Intermediate Git",
+    "issuer": "DataCamp",
+    "date": "2026",
+    "credentialId": "48087826",
+    "icon": "logos:git-icon",
+    "url": "/certificados/certificate_Intermediate Git.pdf",
+    "category": "course",
+    "skills": ["Git", "Version Control", "GitHub"]
+  },
+  {
+    "title": "Blockchain",
+    "issuer": "Universidad Tecnológica de Tecamachalco",
+    "date": "2023",
+    "icon": "logos:blockchain",
+    "image": "/images/Logo/Uttecam.png",
+    "url": "/certificados/_Certificado  Hector.png",
+    "category": "course",
+    "skills": ["Blockchain", "Solidity, Wallet"]
+  },
+  {
+    "title": "Título Profesional - TSU en Tecnologías de la Información",
+    "issuer": "Universidad Tecnológica de Tecamachalco",
+    "date": "2026",
+    "icon": "line-md:academic-cap-twotone",
+    "image": "/images/Logo/Uttecam.png",
+    "category": "academic",
+    "skills": ["Desarrollo Multiplataforma", "Bases de Datos", "Ingeniería de Software", "UTTECAM"]
+  },
+  {
+    "title": "Prácticas Profesionales",
+    "issuer": "Digyto Solutions (S.A. de C.V.) / UTTECAM",
+    "date": "2026",
+    "icon": "line-md:briefcase-twotone",
+    "image": "/images/Logo/Digyto.jpg",
+    "url": "/certificados/Héctor Trinidad Carrera.pdf",
+    "category": "academic",
+    "skills": ["Desarrollo", "Gestión de Software", "Digyto"]
+  },
+  {
+    "title": "Constancia Hackathón Por Amor a Puebla",
+    "issuer": "Secretaría de Ciencia, Humanidades, Tecnología e Innovación",
+    "date": "2026",
+    "icon": "line-md:academic-cap-twotone",
+    "image": "/images/Logo/PorAmorAPuebla.png",
+    "url": "/certificados/Hector Carrera Trinidad.pdf",
+    "category": "academic",
+    "skills": ["Innovación", "Soluciones Tecnológicas", "Puebla"]
+  },
+  {
+    "title": "Build AI Apps with ChatGPT, Dall-E, and GPT-4",
+    "issuer": "Scrimba / Coursera",
+    "date": "2026",
+    "credentialId": "QQHDDZAT6VK2",
+    "icon": "logos:openai-icon",
+    "url": "/certificados/Coursera QQHDDZAT6VK2.pdf",
+    "category": "course",
+    "skills": ["ChatGPT", "Dall-E", "GPT-4", "AI Apps"]
+  },
+  {
+    "title": "Curso de Spring Framework y Spring Boot",
+    "issuer": "Código Facilito",
+    "date": "2026",
+    "credentialId": "89c3fd83-f43f-479a-b20c-bf942a89e2ca",
+    "icon": "logos:spring-icon",
+    "url": "/certificados/Certificado - Curso de Spring Framework y Spring Boot.pdf",
+    "category": "course",
+    "skills": ["Spring Boot", "Spring Framework", "Java", "Backend Development"]
+  },
+  {
+    "title": "Curso de Introducción a DevOps: Bases y Conceptos",
+    "issuer": "Código Facilito",
+    "date": "2026",
+    "icon": "logos:jenkins",
+    "url": "/certificados/Certificado - Curso de Introducción a DevOps_ Bases y Conceptos.pdf",
+    "category": "course",
+    "skills": ["DevOps", "CI/CD", "Docker", "Automatización"]
+  },
+  {
+    "title": "Curso de Java Profesional",
+    "issuer": "Código Facilito",
+    "date": "2026",
+    "icon": "logos:java",
+    "url": "/certificados/Certificado - Curso de Java Profesional.pdf",
+    "category": "course",
+    "skills": ["Java", "POO", "Backend Development", "Java Profesional"]
+  },
+  {
+    "title": "Curso Profesional de Docker",
+    "issuer": "Código Facilito",
+    "date": "2026",
+    "icon": "logos:docker-icon",
+    "url": "/certificados/Certificado - Curso Profesional de Docker.pdf",
+    "category": "course",
+    "skills": ["Docker", "Contenedores", "DevOps", "Infraestructura"]
+  },
+  {
+    "title": "Administrador de Bases de Datos",
+    "issuer": "Capacítate para el empleo (Fundación Carlos Slim)",
+    "date": "2023",
+    "credentialId": "CC86CC8F-F086-43D9-A03C-2A54CBBE93C1",
+    "icon": "logos:postgresql",
+    "url": "/certificados/cc86cc8f-f086-43d9-a03c-2a54cbbe93c1_certificado.pdf",
+    "category": "course",
+    "skills": ["Bases de Datos", "SQL", "Administración"]
+  },
+  {
+    "title": "Certificado de Rect",
+    "issuer": "Capacítate para el Empleo (Fundación Carlos Slim)",
+    "date": "2023",
+    "credentialId": "8359410D-50C1-4F0A-AAA4-CF5595A8DE0C",
+    "icon": "logos:react",
+    "url": "/certificados/8359410d-50c1-4f0a-aaa4-cf5595a8de0c_certificado.pdf",
+    "category": "course",
+    "skills": ["Programación", "Lógica", "Desarrollo"]
+  },
+  {
+    "title": "Java para Principiantes",
+    "issuer": "TodoCode",
+    "date": "2023",
+    "icon": "logos:java",
+    "url": "/certificados/certificado-java-para-principiantes-izz5tsyoabel.html",
+    "category": "course",
+    "skills": ["Java", "POO", "Fundamentos"]
+  },
+  {
+    "title": "Claude Code Skilljar Training",
+    "issuer": "Skilljar / Anthropic",
+    "date": "2025",
+    "credentialId": "iwtvbakuiv66",
+    "icon": "simple-icons:anthropic",
+    "url": "/certificados/certificate-iwtvbakuiv66-1766957074.pdf",
+    "category": "course",
+    "skills": ["Google Cloud", "Cloud Computing"]
+  },
+  {
+    "title": "Técnico en Programación",
+    "issuer": "CECYTE Tecamachalco",
+    "date": "2022",
+    "icon": "line-md:laptop-twotone",
+    "image": "/images/Logo/Cecyte.png",
+    "url": "/certificados/Cecyte.pdf",
+    "category": "academic",
+    "skills": ["Técnico", "Programación", "Bases de Datos"]
+  },
+  {
+    "title": "Reconocimiento por Participación en Congreso de TI",
+    "issuer": "Universidad Tecnológica de Tecamachalco",
+    "date": "2024",
+    "icon": "line-md:loading-twotone-loop",
+    "image": "/images/Logo/Uttecam.png",
+    "url": "/certificados/Reconocimiento(Congreso).pdf",
+    "category": "academic",
+    "skills": ["Congreso", "Tecnologías de la Información", "UTTECAM"]
+  },
+  {
+    "title": "Reconocimiento Especial del Congreso de TI",
+    "issuer": "Universidad Tecnológica de Tecamachalco",
+    "date": "2024",
+    "icon": "line-md:loading-twotone-loop",
+    "image": "/images/Logo/Uttecam.png",
+    "url": "/certificados/Reconocimiento(Congreso1).pdf",
+    "category": "academic",
+    "skills": ["Congreso", "Innovación Digital", "UTTECAM"]
+  },
+  {
+    "title": "II Congreso de Tecnologías de la Información",
+    "issuer": "Universidad Tecnológica de Tecamachalco",
+    "date": "2024",
+    "credentialId": "A1921979",
+    "icon": "line-md:loading-twotone-loop",
+    "image": "/images/Logo/Uttecam.png",
+    "url": "/certificados/TRINIDAD CARRERA HECTOR.pdf",
+    "category": "academic",
+    "skills": ["TI", "Innovación Digital", "Congreso"]
+  }
+]

@@ -1,8 +1,8 @@
 ---
-import data from '../data/portfolio.json';
+import { profile } from '../data';
 import { RippleButton } from './ui/ripple-button';
 import { ShimmerButton } from './ui/shimmer-button';
-const { description, experience } = data.about;
+const { about: description, info } = profile;
 ---
 
 <section class="section" id="about">
@@ -73,7 +73,7 @@ const { description, experience } = data.about;
 
       <!-- Contact Info with Icons -->
       <div class="flex flex-col gap-4 py-6 border-y border-[var(--color-border)]">
-        {data.profile.info.map(item => (
+        {info.map(item => (
           <div class="flex items-center gap-4 group">
             <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
               <iconify-icon icon={item.icon} class="text-xl"></iconify-icon>

@@ -1,6 +1,6 @@
 ---
-import data from '../data/portfolio.json';
-const { name } = data.profile;
+import { profile } from '../data';
+const { name, socials } = profile;
 ---
 
 <footer class="bg-[var(--color-body)] border-t border-black/10 dark:border-white/5 py-12">
@@ -16,13 +16,13 @@ const { name } = data.profile;
     </ul>
 
     <div class="flex justify-center gap-4 mb-8">
-      <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="LinkedIn">
+      <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="LinkedIn">
         <i class="ph ph-linkedin-logo text-lg"></i>
       </a>
-      <a href={data.socials.github} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="GitHub">
+      <a href={socials.github} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="GitHub">
         <i class="ph ph-github-logo text-lg"></i>
       </a>
-      <a href={`mailto:${data.socials.email}`} class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="Email">
+      <a href={`mailto:${socials.email}`} class="w-10 h-10 rounded-full border border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5 hover:border-primary/50 flex items-center justify-center text-[var(--color-text)] hover:text-primary transition-all duration-300" aria-label="Email">
         <i class="ph ph-envelope-simple text-lg"></i>
       </a>
     </div>

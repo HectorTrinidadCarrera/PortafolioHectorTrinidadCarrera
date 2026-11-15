@@ -1,81 +1,13 @@
 ---
-import MagicCard from "./ui/magic-card";
+import MagicCard from './ui/magic-card';
+import { getTechIcon } from '../lib/tech-icons';
+import type { Project } from '../types/portfolio';
 
-interface Props {
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  icon: string;
-  links: {
-    demo: string;
-    github: string;
-  };
+interface Props extends Project {
   index: number;
 }
 
-const { title, description, image, technologies, icon, links, index } =
-  Astro.props;
-
-const techIconMap: Record<string, string> = {
-  // Frontend
-  React: "logos:react",
-  "React Native": "logos:react",
-  "Next.js": "logos:nextjs-icon",
-  Astro: "logos:astro-icon",
-  Tailwind: "logos:tailwindcss-icon",
-  JavaScript: "logos:javascript",
-  TypeScript: "logos:typescript-icon",
-  HTML: "logos:html-5",
-  Html: "logos:html-5",
-  CSS: "logos:css-3",
-  Bootstrap: "logos:bootstrap",
-  Angular: "logos:angular-icon",
-  "Angular 18": "logos:angular-icon",
-  "Angular 21": "logos:angular-icon",
-  "Tailwind CSS": "logos:tailwindcss-icon",
-  RxJS: "logos:rxjs",
-  "REST API": "carbon:api",
-  Vue: "logos:vue",
-  "D3.js": "logos:d3",
-  Expo: "logos:expo-icon",
-  Vite: "logos:vitejs",
-
-  // Backend & Languages
-  "Node.js": "logos:nodejs-icon",
-  Express: "logos:express",
-  Java: "logos:java",
-  Maven: "logos:maven",
-  "Spring Boot": "logos:spring-icon",
-  Python: "logos:python",
-  PHP: "logos:php",
-  ".NET": "logos:dotnet",
-  ".NET 8": "logos:dotnet",
-  "C#": "logos:c-sharp",
-  "ASP.NET Core": "logos:dotnet",
-
-  // Database, Cloud & Tools
-  SQL: "logos:postgresql",
-  MySQL: "logos:mysql",
-  PostgreSQL: "logos:postgresql",
-  MongoDB: "logos:mongodb-icon",
-  Firebase: "logos:firebase",
-  "AWS S3": "logos:aws-s3",
-  AWS: "logos:aws",
-  Hangfire: "logos:fire",
-  "SAT API": "carbon:api",
-  Docker: "logos:docker-icon",
-  docker: "logos:docker-icon",
-  GitHub: "logos:github-icon",
-  Git: "logos:git-icon",
-  "CI/CD": "logos:github-actions",
-  "VS Code": "logos:visual-studio-code",
-  Linux: "logos:linux-tux",
-  Ubuntu: "logos:ubuntu",
-  Debian: "logos:debian",
-  Figma: "logos:figma",
-  Vercel: "logos:vercel-icon",
-};
+const { title, description, image, technologies, icon, links } = Astro.props;
 ---
 
 <MagicCard
@@ -86,116 +18,63 @@ const techIconMap: Record<string, string> = {
   className="project-card group glass-card rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl premium-transition transform opacity-0 translate-y-10 flex flex-col h-full"
   data-tilt
 >
-  <!-- Card Header / Image Area -->
-  <div
-    class="relative h-56 bg-gradient-to-br from-primary/5 to-primary/20 overflow-hidden flex items-center justify-center"
-  >
-    <!-- Project Image -->
-    {
-      image && (
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-      )
-    }
+  <div class="relative h-56 bg-gradient-to-br from-primary/5 to-primary/20 overflow-hidden flex items-center justify-center">
+    {image && (
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+      />
+    )}
 
-    <!-- Animated Overlay if no image or as accent -->
-    <div
-      class="absolute inset-0 opacity-10 group-hover:scale-125 transition-transform duration-700 bg-black/10"
-    >
-      <div
-        class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)]"
-      >
-      </div>
+    <div class="absolute inset-0 opacity-10 group-hover:scale-125 transition-transform duration-700 bg-black/10">
+      <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)]"></div>
     </div>
 
-    <!-- Main Project Icon Overlay -->
-    <div
-      class="relative z-10 w-20 h-20 bg-white/90 dark:bg-[#121212]/90 backdrop-blur-md rounded-2xl border border-black/10 dark:border-white/5 flex items-center justify-center text-4xl transform group-hover:-rotate-3 group-hover:scale-105 premium-transition"
-    >
+    <div class="relative z-10 w-20 h-20 bg-white/90 dark:bg-[#121212]/90 backdrop-blur-md rounded-2xl border border-black/10 dark:border-white/5 flex items-center justify-center text-4xl transform group-hover:-rotate-3 group-hover:scale-105 premium-transition">
       <iconify-icon icon={icon}></iconify-icon>
     </div>
 
-    <!-- Floating Decoration -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
-      <iconify-icon
-        icon="line-md:code-loop"
-        class="absolute -top-4 -left-4 text-7xl opacity-5"></iconify-icon>
-      <iconify-icon
-        icon="line-md:loading-twotone-loop"
-        class="absolute -bottom-4 -right-4 text-7xl opacity-5"></iconify-icon>
+      <iconify-icon icon="line-md:code-loop" class="absolute -top-4 -left-4 text-7xl opacity-5"></iconify-icon>
+      <iconify-icon icon="line-md:loading-twotone-loop" class="absolute -bottom-4 -right-4 text-7xl opacity-5"></iconify-icon>
     </div>
 
-    <!-- Floating Tag -->
-    <div
-      class="absolute top-4 right-4 px-3 py-1 bg-primary/95 backdrop-blur-md text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg"
-      data-i18n="projects_latest"
-    >
-      Latest Project
+    <div class="absolute top-4 right-4 px-3 py-1 bg-primary/95 backdrop-blur-md text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg" data-i18n="projects_latest">
+      Proyecto destacado
     </div>
   </div>
 
   <div class="p-6 flex flex-col flex-1">
     <div class="flex items-center gap-2 mb-3">
       <div class="w-1 h-5 bg-primary rounded-full"></div>
-      <h3
-        class="text-xl font-bold text-[var(--color-title)] group-hover:text-primary transition-colors duration-300"
-      >
-        {title}
-      </h3>
+      <h3 class="text-xl font-bold text-[var(--color-title)] group-hover:text-primary transition-colors duration-300">{title}</h3>
     </div>
 
     <div class="flex-1">
-      <p class="text-[var(--color-text)] mb-5 line-clamp-3 leading-relaxed text-xs">
-        {description}
-      </p>
-
-      <!-- Tech Stack with Icons -->
+      <p class="text-[var(--color-text)] mb-5 line-clamp-3 leading-relaxed text-xs">{description}</p>
       <div class="flex flex-wrap gap-1.5 mb-6">
-        {
-          technologies.map((tech) => (
-            <span class="flex items-center gap-1 px-2.5 py-1 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 text-[var(--color-text-light)] text-[9px] uppercase font-bold rounded-lg group-hover:border-primary/20 transition-colors duration-300">
-              <iconify-icon
-                icon={techIconMap[tech] || "line-md:hash-small"}
-                class="text-xs"
-              />
-              {tech}
-            </span>
-          ))
-        }
+        {technologies.map((technology) => (
+          <span class="flex items-center gap-1 px-2.5 py-1 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 text-[var(--color-text-light)] text-[9px] uppercase font-bold rounded-lg group-hover:border-primary/20 transition-colors duration-300">
+            <iconify-icon icon={getTechIcon(technology)} class="text-xs" />
+            {technology}
+          </span>
+        ))}
       </div>
     </div>
 
     <div class="flex items-center justify-between pt-4 border-t border-black/10 dark:border-white/5 mt-auto">
-      <div class="flex items-center gap-6">
-        <a
-          href={links.demo}
-          class="flex items-center gap-2 font-bold text-xs text-primary hover:gap-4 transition-all tracking-wider"
-          data-i18n="projects_explore"
-        >
-          EXPLORAR <iconify-icon icon="line-md:arrow-right" class="text-lg"
-          ></iconify-icon>
-        </a>
-      </div>
+      <a href={links.demo} class="flex items-center gap-2 font-bold text-xs text-primary hover:gap-4 transition-all tracking-wider" data-i18n="projects_explore">
+        EXPLORAR <iconify-icon icon="line-md:arrow-right" class="text-lg"></iconify-icon>
+      </a>
 
-      {
-        links.github && (
-          <div class="flex items-center gap-3">
-            <a
-              href={links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-9 h-9 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/5 text-lg text-[var(--color-text)] hover:text-primary hover:bg-primary/10 transition-all border border-black/5 dark:border-white/5"
-            >
-              <i class="ph ph-github-logo" />
-            </a>
-          </div>
-        )
-      }
+      {links.github && (
+        <a href={links.github} target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-xl bg-black/5 dark:bg-white/5 text-lg text-[var(--color-text)] hover:text-primary hover:bg-primary/10 transition-all border border-black/5 dark:border-white/5">
+          <i class="ph ph-github-logo"></i>
+        </a>
+      )}
     </div>
   </div>
 </MagicCard>

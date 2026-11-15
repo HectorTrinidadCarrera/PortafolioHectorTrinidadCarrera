@@ -1,5 +1,10 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { NAVIGATION } from "../consts";
+
+const desktopNavigation = NAVIGATION.filter(
+  ({ href }) => !["#qualification", "#certifications"].includes(href),
+);
 ---
 
 <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="header">
@@ -11,11 +16,11 @@ import ThemeToggle from "./ThemeToggle.astro";
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
-      <a href="#home" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-house"></i> Inicio</a>
-      <a href="#about" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-user"></i> Sobre mí</a>
-      <a href="#skills" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-lightning"></i> Habilidades</a>
-      <a href="#projects" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-briefcase"></i> Proyectos</a>
-      <a href="#contact" class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2"><i class="ph ph-envelope-simple"></i> Contacto</a>
+      {desktopNavigation.map(({ href, label, icon }) => (
+        <a href={href} class="nav-link text-sm font-medium hover:text-primary transition-colors text-[var(--color-text)] flex items-center gap-2">
+          <i class={`ph ${icon}`}></i> {label}
+        </a>
+      ))}
     </div>
 
     <!-- Right Side Actions: Theme & Lang Toggle -->
@@ -42,13 +47,11 @@ import ThemeToggle from "./ThemeToggle.astro";
   <button id="close-menu-btn" class="absolute top-5 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-container)] border border-[var(--color-border)] text-[var(--color-text)] hover:text-primary transition-colors" aria-label="Cerrar menú">
     <i class="ph ph-x text-xl"></i>
   </button>
-  <a href="#home" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-house text-primary text-xl"></i> Inicio</a>
-  <a href="#about" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-user text-primary text-xl"></i> Sobre mí</a>
-  <a href="#skills" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-lightning text-primary text-xl"></i> Habilidades</a>
-  <a href="#qualification" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-graduation-cap text-primary text-xl"></i> Trayectoria</a>
-  <a href="#projects" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-briefcase text-primary text-xl"></i> Proyectos</a>
-  <a href="#certifications" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-certificate text-primary text-xl"></i> Certificados</a>
-  <a href="#contact" class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors"><i class="ph ph-envelope-simple text-primary text-xl"></i> Contacto</a>
+  {NAVIGATION.map(({ href, label, icon }) => (
+    <a href={href} class="mobile-link flex items-center gap-3 text-lg font-bold text-[var(--color-title)] hover:text-primary transition-colors">
+      <i class={`ph ${icon} text-primary text-xl`}></i> {label}
+    </a>
+  ))}
 </div>
 
 <script>

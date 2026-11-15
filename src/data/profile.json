@@ -1,0 +1,41 @@
+{
+  "name": "Hector Trinidad Carrera",
+  "title": "Software Engineer · Fullstack & UI/UX",
+  "titles": [
+    "Backend Developer · Java",
+    "Fullstack Developer",
+    "UI/UX Designer",
+    "Spring Boot & APIs REST",
+    "Frontend Architect",
+    "Problem Solver"
+  ],
+  "bio": "Ingeniero en Desarrollo de Software especializado en Java, Spring Boot y APIs REST, con experiencia fullstack (React, Next.js, Angular, Astro) y un fuerte enfoque en diseño UI/UX para crear experiencias digitales funcionales y atractivas.",
+  "about": "Ingeniero en Desarrollo y Gestión de Software con experiencia integral en Backend, Frontend y diseño UI/UX. Especializado en Java, Spring Boot y APIs REST, domino tecnologías modernas como React, Next.js, Angular y Astro, combinando solidez técnica, arquitectura y bases de datos con el diseño de interfaces intuitivas y atractivas centradas en el usuario. Busco seguir creando soluciones de alto impacto en desarrollo backend y fullstack.",
+  "email": "hectortrinidad110@gmail.com",
+  "phone": "+52 2491115283",
+  "location": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
+  "available": true,
+  "info": [
+    {
+      "label": "Email",
+      "value": "hectortrinidad110@gmail.com",
+      "icon": "line-md:email-twotone"
+    },
+    {
+      "label": "Teléfono",
+      "value": "+52 2491115283",
+      "icon": "line-md:phone-call-loop"
+    },
+    {
+      "label": "Ubicación",
+      "value": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
+      "icon": "line-md:map-marker-twotone"
+    }
+  ],
+  "socials": {
+    "github": "https://github.com/HectorTrinidadCarrera",
+    "linkedin": "https://linkedin.com/in/héctor-trinidad-carrera-890846337",
+    "twitter": "https://twitter.com/hectortrinidad",
+    "email": "hectortrinidad110@gmail.com"
+  }
+}

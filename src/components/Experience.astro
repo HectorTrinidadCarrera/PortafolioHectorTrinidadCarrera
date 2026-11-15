@@ -1,6 +1,5 @@
 ---
-import data from '../data/portfolio.json';
-const { experience, education } = data.about;
+import { experience, education } from '../data';
 
 const trajectory = [
   ...experience.map(item => ({ ...item, type: 'experience', badge: 'Experiencia' })),
