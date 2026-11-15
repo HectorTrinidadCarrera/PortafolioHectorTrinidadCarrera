@@ -1,15 +1,16 @@
 {
   "profile": {
     "name": "Hector Trinidad Carrera",
-    "title": "Software Engineer & Backend Developer",
+    "title": "Software Engineer · Fullstack & UI/UX",
     "titles": [
       "Backend Developer · Java",
       "Fullstack Developer",
+      "UI/UX Designer",
       "Spring Boot & APIs REST",
       "Frontend Architect",
       "Problem Solver"
     ],
-    "bio": "Ingeniero en Desarrollo de Software especializado en Java, Spring Boot y APIs REST. Con experiencia fullstack en React, Next.js y Angular.",
+    "bio": "Ingeniero en Desarrollo de Software especializado en Java, Spring Boot y APIs REST, con experiencia fullstack (React, Next.js, Angular, Astro) y un fuerte enfoque en diseño UI/UX para crear experiencias digitales funcionales y atractivas.",
     "email": "hectortrinidad110@gmail.com",
     "phone": "+52 2491115283",
     "location": "La Purisima de Hidalgo, Tecamachalco, Puebla, México",
@@ -33,7 +34,7 @@
     ]
   },
   "about": {
-    "description": "Ingeniero en Desarrollo y Gestión de Software con experiencia en Frontend, Web y Backend. Especializado en Java, Spring Boot y APIs REST. Domino tecnologías frontend como React, Next.js y Angular, y cuento con experiencia en arquitectura de software, bases de datos y despliegue con Docker. Busco crecer en desarrollo backend con Java.",
+    "description": "Ingeniero en Desarrollo y Gestión de Software con experiencia integral en Backend, Frontend y diseño UI/UX. Especializado en Java, Spring Boot y APIs REST, domino tecnologías modernas como React, Next.js, Angular y Astro, combinando solidez técnica, arquitectura y bases de datos con el diseño de interfaces intuitivas y atractivas centradas en el usuario. Busco seguir creando soluciones de alto impacto en desarrollo backend y fullstack.",
     "experience": [
       {
         "company": "Portal Uttecam",
@@ -121,7 +122,7 @@
       ],
       "icon": "logos:react",
       "links": {
-        "demo": "",
+        "demo": "https://uttecam.edu.mx/",
         "github": "https://github.com/RaulZamoraPerez/UTTECAM"
       },
       "category": "frontend"
@@ -265,7 +266,7 @@
       "id": 11,
       "title": "SaaS Contabilidad Fiscal — Digyto",
       "description": "Lideré la arquitectura completa de una plataforma SaaS multi-tenant a gran escala. Implementé lógica distribuida con .NET 8 (Clean Architecture), automatización de procesos SAT, procesamiento en segundo plano con Hangfire e integración avanzada de AWS S3. Se agrega el reconocimiento como evidencia ya que el proyecto fue privado para la empresa Digyto.",
-      "image": "/images/Logo/Digyto.jpg",
+      "image": "/images/projects/Digyto_Finance.png",
       "technologies": [
         ".NET 8",
         "Angular 18",
@@ -300,6 +301,24 @@
         "github": "https://github.com/HectorTrinidadCarrera/ProyectoSpringBoot"
       },
       "category": "backend"
+    },
+    {
+      "id": 13,
+      "title": "Quiero Flores ",
+      "description": "E-commerce moderno enfocado en floristería y detalles de regalo, diseñado bajo arquitectura Mobile-First. Desarrollado con Angular 21 (Standalone Components & Signals), Tailwind CSS v4, animaciones interactivas con Lottie y consumo de API REST para catálogo dinámico, categorías, carrito .",
+      "image": "/images/projects/QuieroFlores.png",
+      "technologies": [
+        "Angular 21",
+        "TypeScript",
+        "Tailwind CSS",
+        "REST API"
+      ],
+      "icon": "logos:angular-icon",
+      "links": {
+        "demo": "https://quieroflores.mx/marketplace",
+        "github": ""
+      },
+      "category": "frontend"
     }
 
   ],
